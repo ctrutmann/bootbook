@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722232855) do
+ActiveRecord::Schema.define(version: 20160722233222) do
+
+  create_table "cohorts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "campus"
+    t.date     "graduation_date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "follows", force: :cascade do |t|
     t.integer  "followee_id"
@@ -21,6 +29,12 @@ ActiveRecord::Schema.define(version: 20160722232855) do
 
   create_table "interests", force: :cascade do |t|
     t.string   "interest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_types", force: :cascade do |t|
+    t.string   "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
