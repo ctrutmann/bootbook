@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722233222) do
+ActiveRecord::Schema.define(version: 20160723033101) do
 
   create_table "cohorts", force: :cascade do |t|
     t.string   "name"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20160722233222) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "post_types", force: :cascade do |t|
-    t.string   "type"
+  create_table "post_varieties", force: :cascade do |t|
+    t.string   "variety"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,9 +42,23 @@ ActiveRecord::Schema.define(version: 20160722233222) do
   create_table "posts", force: :cascade do |t|
     t.string   "content"
     t.integer  "user_id"
-    t.string   "post_type_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "post_variety_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "user_cohorts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "cohort_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_interests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "interest_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
