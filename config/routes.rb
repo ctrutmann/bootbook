@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   # Don't forget about resource: :users
 
-  resources :users #, only: []
+  resources :users, only: [:index]
 
   root 'welcome#index'
 
