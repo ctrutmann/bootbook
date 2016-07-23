@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   # Don't forget about resource: :users
 
   resources :users
-  resources :posts
 
   root 'welcome#index'
 
