@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20160723033101) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "cohorts", force: :cascade do |t|
     t.string   "name"
     t.string   "campus"
@@ -62,12 +65,12 @@ ActiveRecord::Schema.define(version: 20160723033101) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                   default: "",  null: false
-    t.string   "encrypted_password",      default: "",  null: false
+    t.string   "email",                   default: "",    null: false
+    t.string   "encrypted_password",      default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           default: 0,   null: false
+    t.integer  "sign_in_count",           default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -76,8 +79,8 @@ ActiveRecord::Schema.define(version: 20160723033101) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "city"
@@ -85,30 +88,30 @@ ActiveRecord::Schema.define(version: 20160723033101) do
     t.integer  "zipcode"
     t.string   "country"
     t.integer  "cohort_id"
-    t.         "profile_image"
+    t.string   "profile_image"
     t.string   "love"
     t.string   "quirk"
-    t.string   "bio"
-    t.string   "is_admin",                default: "f"
+    t.text     "bio"
+    t.text     "advice_to_students"
+    t.text     "advice_to_graduates"
+    t.boolean  "is_admin",                default: false
     t.string   "employment_status"
     t.string   "employer"
     t.string   "role"
-    t.string   "advice_to_students"
-    t.string   "advice_to_graduates"
     t.string   "linkedin"
     t.string   "github"
     t.string   "facebook"
     t.string   "twitter"
     t.string   "employ"
     t.string   "personal_website"
-    t.string   "female_scholarship"
-    t.string   "poc_scholarship"
-    t.string   "lgbtq_scholarship"
-    t.string   "veteran_scholarship"
+    t.boolean  "female_scholarship",      default: false
+    t.boolean  "poc_scholarship",         default: false
+    t.boolean  "lgbtq_scholarship",       default: false
+    t.boolean  "veteran_scholarship",     default: false
     t.string   "prior_coding_experience"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end
