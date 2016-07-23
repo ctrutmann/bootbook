@@ -104,6 +104,8 @@ ActiveRecord::Schema.define(version: 20160723033101) do
     t.string   "twitter"
     t.string   "employ"
     t.string   "personal_website"
+    t.integer  "uid"
+    t.string   "provider"
     t.boolean  "female_scholarship",      default: false
     t.boolean  "poc_scholarship",         default: false
     t.boolean  "lgbtq_scholarship",       default: false

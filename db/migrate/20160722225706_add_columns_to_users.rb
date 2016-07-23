@@ -26,7 +26,8 @@ class AddColumnsToUsers < ActiveRecord::Migration[5.0]
     add_column :users, :twitter, :string
     add_column :users, :employ, :string
     add_column :users, :personal_website, :string
-
+    add_column :users, :uid, :integer
+    add_column :users, :provider, :string
     # data information
     add_column :users, :female_scholarship, :boolean, default: false
     add_column :users, :poc_scholarship, :boolean, default: false
