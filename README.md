@@ -1,4 +1,4 @@
-# Project - BootBook
+# BootBook
 
 # Team Agreements
 
@@ -18,22 +18,21 @@
 - Mentoring/Networking through direct private messaging
 - Categorized posts through main feed
 - Detailed user profile page
-- Devised user model w/ OAuth
+- Devise user model w/ GitHub OAuth
 
 # Stretch
 - Search Function
 - D3 Data Visualization
 - Kaplan Back Office SSO API
-- Github SSO API
 
 # User Stories
 - User can Register and Login
+- User can edit their own profile & see other users' profiles
+- User can direct message other users, with option to specifically request mentorship
 - User can create, read, update and delete their posts
-  - Posts are categorized as mentor requests, mentor offers, collaboration requests, event announcements
-- User can read all posts
-- User can filer posts on location or category
-- User can see other user profiles
-- User can direct message other users
+- User posts are categorized as: requests for project collaboration, pair programming or code review, hackathon team invites, event announcements, or job opportunities
+- User can read all posts, or filter posts by location or category
+ 
+# Schema
 
-# Other To Do's
-
+![Schema](schema.png)
