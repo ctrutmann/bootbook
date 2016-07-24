@@ -20,6 +20,9 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -49,21 +52,21 @@
         </div>
       </div>
     </nav>
+
     <main class="main">
+      <div class="container-fluid">
+        <div class="row">
+        <% if flash[:danger] %>
+          <div class="alert alert-danger">
+            <% flash[:danger].each do |error|%>
+              <%= error %><br>
+            <% end %>
+          </div>
+        <% end %>
 
-    <% if flash[:danger] %>
-    <div class="alert alert-danger">
-      <% flash[:danger].each do |error|%>
-        <%= error %><br>
-      <% end %>
-    </div>
-    <% elsif flash[:success] %>
-    <div class="alert alert-success">
-      <%= flash[:success] %>
-    </div>
-    <% end %>
-
-    <%= yield %>
+        <%= yield %>
+        </div>
+      </div>
     </main>
     <div class="container">
       <footer class="footer">

@@ -63,4 +63,21 @@ class UsersController < ApplicationController
       :advice_to_graduates
       )
   end
+
+  def cohorts_params
+    params.require(:cohorts).permit(
+      :name,
+      :campus,
+      :graduation_date
+    )
+  end
+
+  def interests_params
+    params.require(:interests).permit(
+      :name,
+      :campus,
+      :graduation_date
+    )
+  end
+
 end
