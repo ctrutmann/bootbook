@@ -1,0 +1,56 @@
+
+<div class="form-group">
+  <div class="control-label col-sm-2">
+    <%= f.label :quirk %>
+  </div>
+  <div class="col-sm-8">
+    <%= f.text_field :quirk, class: "form-control", placeholder: "Enter Your Quirk", autofocus: true %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="control-label col-sm-2">
+    <%= f.label :love %>
+  </div>
+  <div class="col-sm-8">
+    <%= f.text_field :love, class: "form-control", placeholder: "Enter Your Love", autofocus: true %>
+  </div>
+</div>
+
+<!-- FUNKY: Cohorts and Interests save/update different resources. -->
+<div class="form-group">
+  <div class="control-label col-sm-2">
+    <%= f.label :cohorts %>
+  </div>
+  <div class="col-sm-8">
+    <%= f.text_field :cohorts, class: "form-control", placeholder: "Enter Your Cohort(s)", autofocus: true %>
+  </div>
+</div>
+
+<div class="form group">
+  <div class="control-label col-sm-2">
+    <%= f.label :interests %>
+  </div>
+    <%= fields_for :user_interests do |i| %>
+    <select class="selectpicker" multiple>
+      <option>Front-end</option>
+      <option>Back-end</option>
+      <option>Full Stack</option>
+      <option>Javascript</option>
+      <option>Ruby on Rails</option>
+      <option>Mobile</option>
+      <option>Finance</option>
+      <option>Health Care</option>
+      <option>Environment</option>
+      <option>Gaming</option>
+      <option>Music</option>
+      <option>Equality</option>
+    </select>
+</div>
+
+
+ <div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+    <%= f.submit class: "btn btn-default"%>
+  </div>
+</div>

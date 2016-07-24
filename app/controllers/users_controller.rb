@@ -74,9 +74,7 @@ class UsersController < ApplicationController
 
   def interests_params
     params.require(:interests).permit(
-      :name,
-      :campus,
-      :graduation_date
+      :interest
     )
   end
 
