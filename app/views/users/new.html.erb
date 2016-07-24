@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Complete Your BootBook Profile</div>
+          <div class="panel-body">
+            <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+              <div class="form-group">
+                <div class="control-label col-sm-2">
+                  <%= f.label :first_name %>
+                </div>
+                <div class="col-sm-8">
+                  <%= f.text_field :first_name, class: "form-control", placeholder: "Enter First Name", autofocus: true %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="control-label col-sm-2">
+                  <%= f.label :last_name %>
+                </div>
+                <div class="col-sm-8">
+                  <%= f.text_field :last_name, class: "form-control", placeholder: "Enter Last Name", autofocus: true %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="control-label col-sm-2">
+                  <%= f.label :city %>
+                </div>
+                <div class="col-sm-8">
+                  <%= f.text_field :city, class: "form-control", placeholder: "Enter Your City", autofocus: true %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="control-label col-sm-2">
+                  <%= f.label :state %>
+                </div>
+                <div class="col-sm-8">
+                  <%= f.text_field :state, class: "form-control", placeholder: "Enter Your State", autofocus: true %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="control-label col-sm-2">
+                  <%= f.label :zipcode %>
+                </div>
+                <div class="col-sm-8">
+                  <%= f.text_field :zipcode, class: "form-control", placeholder: "Enter Your Zip Code", autofocus: true %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="control-label col-sm-2">
+                  <%= f.label :country %>
+                </div>
+                <div class="col-sm-8">
+                  <%= f.text_field :country, class: "form-control", placeholder: "Enter Your Country", autofocus: true %>
+                </div>
+              </div>
+
+               <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <%= f.submit class: "btn btn-default"%>
+                </div>
+              </div>
+
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="container">
+    <footer class="footer">
+      <small>
+        Copyright &copy; <a href="https://github.com"> BootBook </a>
+      </small>
+    </footer>
+  </div>
