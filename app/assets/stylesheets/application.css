@@ -87,7 +87,6 @@ body {
   background-color: #428bca;
 }
 
-
 /*
  * Main content
  */
@@ -125,4 +124,19 @@ body {
   border-radius: 50%;
 }
 
+/*
+* Footer (Christel made this part.)
+*/
 
+.footer {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .footer {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.footer .page-header {
+  margin-top: 0;
+}
