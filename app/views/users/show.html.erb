@@ -1,2 +1,43 @@
-<h1>User#show has been successfully routed</h1>
-<%= @user.first_name %>, is your email!
+<div class="col-sm-3 col-md-2 sidebar">
+  <div class="row placeholders-sidebar">
+    <div class="col-xs-6 col-sm-3 placeholder-sidebar">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+      <h4><%=  @user.first_name %> <%= @user.last_name %></h4>
+    </div>
+  </div>
+  <div class='social-links'>
+    <a class="btn btn-social-icon btn-linkedin">
+      <span class="fa fa-linkedin"></span><%= @user.linkedin %>
+    </a>
+    <a class="btn btn-social-icon btn-github">
+      <span class="fa fa-github"></span><%= @user.github %>
+    </a>
+    <a class="btn btn-social-icon btn-facebook">
+      <span class="fa fa-facebook"></span><%= @user.facebook %>
+    </a>
+    <a class="btn btn-social-icon btn-twitter">
+      <span class="fa fa-twitter"></span><%= @user.twitter %>
+    </a>
+    <a href="<%= @user.employ %>"> Employ Profile</a>
+  </div>
+  <div class='dbc-info'>
+    <p>Quirk: <%= @user.quirk %></p>
+    <p>Love: <%= @user.love %></p>
+  </div>
+
+</div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<% if flash[:danger] %>
+  <div class="alert alert-danger">
+    <% flash[:danger].each do |error|%>
+      <%= error %><br>
+    <% end %>
+  </div>
+  <% elsif flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
+
+</div>
