@@ -87,6 +87,22 @@ body {
   background-color: #428bca;
 }
 
+/* Christel added this part within sidebar... it's not currently doing much. */
+.placeholders-sidebar {
+  margin-bottom: 30px;
+  text-align: center;
+}
+/*.placeholders-sidebar h4 {
+  margin-bottom: 0;
+}*/
+.placeholder-sidebar {
+  margin-bottom: 20px;
+}
+.placeholder-sidebar img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
 /*
  * Main content
  */
