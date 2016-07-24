@@ -17,12 +17,15 @@ class User < ApplicationRecord
   # validates_presence_of :first_name, :last_name
 
   def self.create_with_omniauth(auth)
+    p auth['info']
     create! do |user|
       user.provider = auth['provider']
       user.uid = auth['uid']
       if auth['info']
-         # user.name = auth['info']['name'] || ""
+         user.name = auth['info']['name'] || ""
          user.email = auth['info']['email'] || ""
+         user.profile_image = auth['info']['image'] || ""
+         user.github = auth['info']['GitHub'] || ""
       end
     end
   end
