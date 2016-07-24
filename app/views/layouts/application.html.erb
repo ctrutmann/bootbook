@@ -2,6 +2,13 @@
 <html>
   <head>
     <title>Bootbook</title>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"   ></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js   "></script>
+
     <%= csrf_meta_tags %>
 
     <!-- Latest compiled and minified CSS -->
@@ -18,6 +25,54 @@
   </head>
 
   <body>
+     <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div id="bootbook-nav" class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">BootBook</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <!-- If current_user, show these -->
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search Boots...">
+          </form>
+          <!--  -->
+        </div>
+      </div>
+    </nav>
+    <main class="main">
+
+    <% if flash[:danger] %>
+    <div class="alert alert-danger">
+      <% flash[:danger].each do |error|%>
+        <%= error %><br>
+      <% end %>
+    </div>
+    <% elsif flash[:success] %>
+    <div class="alert alert-success">
+      <%= flash[:success] %>
+    </div>
+    <% end %>
+
     <%= yield %>
+    </main>
+    <div class="container">
+      <footer class="footer">
+        <small>
+          Copyright &copy; <a href="https://github.com"> BootBook </a>
+        </small>
+      </footer>
+    </div>
   </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 </html>
