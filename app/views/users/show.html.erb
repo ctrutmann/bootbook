@@ -53,6 +53,14 @@
     <p>Role: <%= @user.role %></p>
   </div>
   <% end %>
+  <!-- Interests -->
+  <div class='interests-info'>
+    <p>Interests: <%= @user.love %></p>
+    <% @user.interests.each do |interest| %>
+      <p><%= interest %></p>
+    <% end %>
+    </p>
+  </div>
 
 
 

@@ -21,10 +21,20 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
+
   end
 
   def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      flash[:success] = "You're all updated!"
+      redirect_to user_path(@user)
+    else
+      flash[:danger] = @user.errors.full_messages
+      render 'edit'
+    end
   end
 
   def show
@@ -71,4 +81,21 @@ class UsersController < ApplicationController
       :advice_to_graduates
       )
   end
+
+  def cohorts_params
+    params.require(:cohorts).permit(
+      :name,
+      :campus,
+      :graduation_date
+    )
+  end
+
+  def interests_params
+    params.require(:interests).permit(
+      :name,
+      :campus,
+      :graduation_date
+    )
+  end
+
 end
