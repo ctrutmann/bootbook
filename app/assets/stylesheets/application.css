@@ -37,7 +37,11 @@ body {
 }
 
 #bootbook-nav {
-  background-color: #004d1a;
+  background-color: #004d4d;
+}
+
+#logo {
+  color: blue;
 }
 
 /*
