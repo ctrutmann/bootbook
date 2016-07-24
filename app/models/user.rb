@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :followees, through: :followee_follows, source: :followee
   has_many :followee_follows, foreign_key: :follower_id, class_name: "Follow"
 
+  validates_presence_of :first_name, :last_name
+
   # def self.from_omniauth(auth)
   #   where(provider:auth.provider, uid:auth.uid).first_or_create do |user|
   #     user.provider = auth.provider
