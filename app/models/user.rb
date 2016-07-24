@@ -14,8 +14,6 @@ class User < ApplicationRecord
   has_many :messages
   has_many :posts
 
-  # validates_presence_of :first_name, :last_name
-
   def self.create_with_omniauth(auth)
     p auth['info']
     create! do |user|
