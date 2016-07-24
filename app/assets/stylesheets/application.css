@@ -36,15 +36,10 @@ body {
   border: 0;
 }
 
-#navbar {
-  background-color: green;
+#bootbook-nav {
+  background-color: #004d1a;
 }
-.navbar-brand {
-  background-color: green;
-}
-li {
-  background-color: green;
-}
+
 /*
  * Sidebar
  */
