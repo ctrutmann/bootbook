@@ -11,14 +11,14 @@ class User < ApplicationRecord
   has_many :followees, through: :followee_follows, source: :followee
   has_many :followee_follows, foreign_key: :follower_id, class_name: "Follow"
 
-  validates_presence_of :first_name, :last_name
+  # validates_presence_of :first_name, :last_name
 
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth['provider']
       user.uid = auth['uid']
       if auth['info']
-         user.name = auth['info']['name'] || ""
+         # user.name = auth['info']['name'] || ""
          user.email = auth['info']['email'] || ""
       end
     end
