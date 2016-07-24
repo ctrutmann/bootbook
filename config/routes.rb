@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :users
   resources :conversations
 
-  match '/users/auth/:provider/callback', :via => [:get], :to => 'sessions#create'
+  # match '/auth/:provider/callback', :via => [:get], :to => 'sessions#create'
   match '/auth/failure', :via => [:get], :to => 'sessions#failure'
 
   get '/auth/:provider/callback' => 'sessions#create'
