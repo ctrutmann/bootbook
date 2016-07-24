@@ -11,20 +11,21 @@ class User < ApplicationRecord
 
   has_many :sent_conversations, class_name: 'Conversation', foreign_key: :sender_id
   has_many :received_conversations, class_name: 'Conversation', foreign_key: :recipient_id
-
   has_many :messages
-
   has_many :posts
 
-  validates_presence_of :first_name, :last_name
-
-  # def self.from_omniauth(auth)
-  #   where(provider:auth.provider, uid:auth.uid).first_or_create do |user|
-  #     user.provider = auth.provider
-  #     user.uid = auth.uid
-  #     user.email = auth.info.email
-  #     user.password = Devise.friendly_token[0,20]
-  #   end
-  # end
+  def self.create_with_omniauth(auth)
+    p auth['info']
+    create! do |user|
+      user.provider = auth['provider']
+      user.uid = auth['uid']
+      if auth['info']
+         user.name = auth['info']['name'] || ""
+         user.email = auth['info']['email'] || ""
+         user.profile_image = auth['info']['image'] || ""
+         user.github = auth['info']['GitHub'] || ""
+      end
+    end
+  end
 
 end

@@ -2,7 +2,7 @@
   <div class="row placeholders-sidebar">
     <div class="col-xs-6 col-sm-3 placeholder-sidebar">
       <img src="<%= @user.profile_image %>" width="200" height="200" class="img-responsive" alt="Boot profile image">
-      <h4><%=  @user.first_name %> <%= @user.last_name %></h4>
+      <h4><%=  @user.name %></h4>
       <span class="text-muted">
         <% if @user.is_graduate %>
           Graduate

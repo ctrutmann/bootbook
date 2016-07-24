@@ -7,7 +7,7 @@
       <!-- This 'if false' is just a way of commenting out this block -->
       <!-- This should be commented back in once we have current_user -->
       <% if false %>
-        <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
+        <h4><%= current_user.name %></h4>
         <% current_user.cohorts.each do |cohort| %>
           <span class="text-muted"><%= cohort %></span>
         <% end %>
@@ -43,7 +43,7 @@
   <%  @users.each do |user| %>
     <div class="col-xs-6 col-sm-3 placeholder">
       <img src="<%= user.profile_image %>" width="200" height="200" class="img-responsive" alt="profile image">
-      <h4><%= user.first_name %> <%= user.last_name %></h4>
+      <h4><%= user.name %></h4>
       <% user.cohorts.each do |cohort| %>
         <span class="text-muted"><%= cohort %></span>
       <% end %>

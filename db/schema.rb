@@ -89,8 +89,7 @@ ActiveRecord::Schema.define(version: 20160723200402) do
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "name"
     t.string   "email"
     t.string   "city"
     t.string   "state"
