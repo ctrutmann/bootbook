@@ -1,15 +1,18 @@
 class User < ApplicationRecord
   has_many :user_interests
   has_many :interests, through: :user_interests
-  has_many :posts
   has_many :user_cohorts
   has_many :cohorts, through: :user_cohorts
 
   has_many :followers, through: :follower_follows, source: :follower
   has_many :follower_follows, foreign_key: :followee_id, class_name: "Follow"
-
   has_many :followees, through: :followee_follows, source: :followee
   has_many :followee_follows, foreign_key: :follower_id, class_name: "Follow"
+
+  has_many :sent_conversations, class_name: 'Conversation', foreign_key: :sender_id
+  has_many :received_conversations, class_name: 'Conversation', foreign_key: :recipient_id
+  has_many :messages
+  has_many :posts
 
   # validates_presence_of :first_name, :last_name
 

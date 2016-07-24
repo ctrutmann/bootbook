@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  get   '/login', :to => 'sessions#new', :as => :login
+  resources :users
+  resources :conversations
 
-  root 'welcome#index'
-
-  # get   '/login', :to => 'sessions#new', :as => :login
   match '/users/auth/:provider/callback', :via => [:get], :to => 'sessions#create'
   match '/auth/failure', :via => [:get], :to => 'sessions#failure'
 
@@ -12,4 +10,5 @@ Rails.application.routes.draw do
   # get '/signout' => 'sessions#destroy', :as => :signout
   # get '/auth/failure' => 'sessions#failure'
 
+  root 'welcome#index'
 end
