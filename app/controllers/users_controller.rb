@@ -1,17 +1,24 @@
 class UsersController < ApplicationController
- def index
+  def index
     @users = User.all
   end
 
-    # Devise incorporates User New
-    # Devise incorporates User Create
+  def new
+    @user = User.new
+  end
 
-  def show
-    @user = User.find(params[:id])
+  def create
   end
 
   def edit
     @user = current_user
+  end
+
+  def update
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   def delete
@@ -19,8 +26,6 @@ class UsersController < ApplicationController
   end
 
   private
-  # user params is through devise
-
   # def user_params
   #   params.require(:user).permit(
   #     :first_name,
