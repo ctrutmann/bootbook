@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :messages
   has_many :posts
 
+  validates_presence_of :name, :email, :uid, :provider
+  validates_uniqueness_of :email, :uid
+
   def self.create_with_omniauth(auth)
     p auth['info']
     create! do |user|
@@ -23,7 +26,7 @@ class User < ApplicationRecord
          user.name = auth['info']['name'] || ""
          user.email = auth['info']['email'] || ""
          user.profile_image = auth['info']['image'] || ""
-         user.github = auth['info']['GitHub'] || ""
+         user.github = "https://github.com/#{auth['info']['nickname']}" || ""
       end
     end
   end
