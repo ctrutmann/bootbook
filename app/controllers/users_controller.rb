@@ -8,6 +8,15 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.new(user_params)
+
+    if @user.save
+      flash[:success] = "Quirk!"
+      redirect_to user_path(@user)
+    else
+      flash[:danger] = @user.errors.full_messages
+    end
+
   end
 
   def edit
@@ -26,39 +35,39 @@ class UsersController < ApplicationController
   end
 
   private
-  # def user_params
-  #   params.require(:user).permit(
-  #     :first_name,
-  #     :last_name,
-  #     :email,
-  #     :password,
-  #     :city,
-  #     :state,
-  #     :zipcode,
-  #     :country,
-  #     :love,
-  #     :quirk,
-  #     :is_admin,
-  #     :is_graduate,
-  #     :employment_status,
-  #     :role,
-  #     :bio,
-  #     :cohort_id,
-  #     :profile_image,
-  #     :female_scholarship,
-  #     :poc_scholarship,
-  #     :lgbtq_scholarship,
-  #     :veteran_scholarship,
-  #     :linkedin,
-  #     :github,
-  #     :facebook,
-  #     :twitter,
-  #     :employ,
-  #     :prior_coding_experience,
-  #     :personal_website,
-  #     :employer,
-  #     :advice_to_students,
-  #     :advice_to_graduates
-  #     )
-  # end
+  def user_params
+    params.require(:user).permit(
+      :first_name,
+      :last_name,
+      :email,
+      :city,
+      :state,
+      :postal_code,
+      :country,
+      :love,
+      :quirk,
+      :is_graduate,
+      :willing_to_mentor,
+      :willing_to_collaborate,
+      :employment_status,
+      :employer,
+      :role,
+      :bio,
+      :cohort_id,
+      :profile_image,
+      :female_scholarship,
+      :poc_scholarship,
+      :lgbtq_scholarship,
+      :veteran_scholarship,
+      :prior_coding_experience,
+      :linkedin,
+      :github,
+      :facebook,
+      :twitter,
+      :employ,
+      :personal_website,
+      :advice_to_students,
+      :advice_to_graduates
+      )
+  end
 end
