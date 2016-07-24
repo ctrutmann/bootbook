@@ -1,10 +1,19 @@
 <div class="col-sm-3 col-md-2 sidebar">
   <div class="row placeholders-sidebar">
     <div class="col-xs-6 col-sm-3 placeholder-sidebar">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+      <img src="<%= @user.profile_image %>" width="200" height="200" class="img-responsive" alt="Boot profile image">
       <h4><%=  @user.first_name %> <%= @user.last_name %></h4>
+      <span class="text-muted">
+        <% if @user.is_graduate %>
+          Graduate
+        <% else %>
+          Student
+        <% end %>
+      </span>
+
     </div>
   </div>
+  <!-- Social Links -->
   <div class='social-links'>
     <a class="btn btn-social-icon btn-linkedin">
       <span class="fa fa-linkedin"></span><%= @user.linkedin %>
@@ -20,10 +29,32 @@
     </a>
     <a href="<%= @user.employ %>"> Employ Profile</a>
   </div>
+  <!-- DBC Info -->
   <div class='dbc-info'>
     <p>Quirk: <%= @user.quirk %></p>
     <p>Love: <%= @user.love %></p>
+    <% @user.cohorts.each do |cohort| %>
+      <p><%= cohort %></p>
+    <% end %>
+    </p>
   </div>
+  <!-- Location Info -->
+  <div class='location-info'>
+    <% if @user.country != 'USA' %>
+      <p><%= @user.city %>, <%= @user.country %></p>
+    <% else %>
+      <p><%= @user.city %>, <%= @user.state %></p>
+    <% end %>
+  </div>
+  <!-- Employment Info -->
+  <% if @user.employment_status != 'None' %>
+  <div class='employment-info'>
+    <p>Employer: <%= @user.employer %></p>
+    <p>Role: <%= @user.role %></p>
+  </div>
+  <% end %>
+
+
 
 </div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
