@@ -18,6 +18,22 @@
   </head>
 
   <body>
+    <% if flash[:danger] %>
+    <div class="alert alert-danger">
+      <% flash[:danger].each do |error|%>
+        <%= error %><br>
+      <% end %>
+    </div>
+    <% end %>
     <%= yield %>
+
+    <div class="container">
+      <footer class="footer">
+        <small>
+          Copyright &copy; <a href="https://github.com"> BootBook </a>
+        </small>
+      </footer>
+    </div>
+
   </body>
 </html>
