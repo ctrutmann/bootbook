@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # Don't forget about resource: :users
 
   resources :users, only: [:index, :show, :edit]
+  resources :conversations
 
   root 'welcome#index'
 
