@@ -137,36 +137,27 @@ ActiveRecord::Schema.define(version: 20160723200402) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                   default: "",    null: false
-    t.string   "encrypted_password",      default: "",    null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           default: 0,     null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "email"
     t.string   "city"
     t.string   "state"
-    t.integer  "zipcode"
+    t.string   "postal_code"
     t.string   "country"
-    t.integer  "cohort_id"
     t.string   "profile_image"
+    t.boolean  "is_graduate",             default: false
+    t.boolean  "is_admin",                default: false
+    t.integer  "uid"
+    t.string   "provider"
     t.string   "love"
     t.string   "quirk"
     t.text     "bio"
     t.text     "advice_to_students"
     t.text     "advice_to_graduates"
-    t.boolean  "is_admin",                default: false
+    t.boolean  "willing_to_mentor",       default: true
+    t.boolean  "willing_to_collaborate",  default: true
     t.string   "employment_status"
     t.string   "employer"
     t.string   "role"
@@ -181,9 +172,6 @@ ActiveRecord::Schema.define(version: 20160723200402) do
     t.boolean  "lgbtq_scholarship",       default: false
     t.boolean  "veteran_scholarship",     default: false
     t.string   "prior_coding_experience"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"

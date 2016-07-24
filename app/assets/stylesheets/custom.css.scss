@@ -1,0 +1,50 @@
+#logo {
+  float: left;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.center {
+  text-align: center;
+}
+
+.jumbotron {
+  background-image: asset-url('IMG_0611.jpg');
+  background-size: cover;
+  height: 550px;
+}
+
+.jumbotron h1 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+  font-weight: bold;
+  text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+
+}
+
+.m-t-10 {
+    margin-top: 10px;
+    }
+
+
+.text {
+  margin-top: 0;
+}
+
+
+footer {
+  margin-top: 25px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777
+}
