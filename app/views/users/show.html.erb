@@ -96,9 +96,21 @@
         <%= hidden_field_tag(:sender_id, current_user.id) %>
         <%= submit_tag("Message") %>
       <% end %>
+      <%= form_tag("/conversations", method: "post") do %>
+        <%= hidden_field_tag(:conversation_variety_id, "2") %>
+        <%= hidden_field_tag(:recipient_id, @user.id) %>
+        <%= hidden_field_tag(:sender_id, current_user.id) %>
+        <%= submit_tag("Mentor") %>
+      <% end %>
+      <%= form_tag("/conversations", method: "post") do %>
+        <%= hidden_field_tag(:conversation_variety_id, "3") %>
+        <%= hidden_field_tag(:recipient_id, @user.id) %>
+        <%= hidden_field_tag(:sender_id, current_user.id) %>
+        <%= submit_tag("Collaborate") %>
+      <% end %>
       <!-- <a href="/conversations"><button type="button" class="default-message btn btn-primary btn-small">Message</button></a> -->
-      <a href="/conversations"><button type="button" class="mentor-message btn btn-primary btn-small"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Mentor</button></a>
-      <a href="/conversations"><button type="button" class="collaborate-message btn btn-primary btn-small"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Collab</button></a>
+      <!-- <a href="/conversations"><button type="button" class="mentor-message btn btn-primary btn-small"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Mentor</button></a>
+      <a href="/conversations"><button type="button" class="collaborate-message btn btn-primary btn-small"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Collab</button></a> -->
     </div>
   <% end %>
 </div>
