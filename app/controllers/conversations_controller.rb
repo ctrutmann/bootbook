@@ -1,36 +1,25 @@
 class ConversationsController < ApplicationController
+  before_action :authenticate_user!
   def index
-      @conversations = Conversation.where(sender_id: current_user.id)
-      @conversations += Conversation.where(recipient_id: current_user.id)
+    # @users = User.all
+    # # @conversations = Conversation.involving(current_user)
+    # @conversations = Conversation.all
   end
-
-  def show
-    @conversation = Conversation.find(params[:id])
-    @message = Message.new(content: "", user_id: current_user.id, conversation_id: @conversation.id)
-    # if current_user.id == @conversation.sender_id || current_user.id ==  @conversation.recipient_id
-    #   redirect_to 'messages/new'
-    # else
-    #   redirect_to '/'
-    # end
-  end
-
+​
   def create
-    @message.save
-      redirect_to '/'
-  end
-
-  def edit
-    @conversation = Conversation.find(params[:id])
-  end
-
-  def update
-     @message.save
-      redirect_to '/'
-  end
-
-  def delete
-    @conversation = Conversation.find(params[:id])
-    @conversation.destroy
-  end
+    # if Conversation.between(params[:sender_id], params[:recipient_id]).present?
+    #   @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
+    # else
+    #   @conversation = Conversation.create(conversation_params)
+    # end
+​
+    redirect_to conversation_messages_path(@conversation)
+   end
+​
+     private
+​
+#     def conversation_params
+#       params.permit(:sender_id, :recipient_id, :conversation_variety_id)
+#     end
+# ​
 end
-

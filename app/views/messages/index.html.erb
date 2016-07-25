@@ -1,0 +1,18 @@
+<h1> Hey </h1>
+<%= @other.name %>
+<%= link_to "View Profile", @other, class: "btn btn-default wide" %>
+​
+<div id="converse">
+
+</div>
+Conversation with <%=@other.name %>
+​
+<%=form_for [@conversation, @conversation.messages.new] do |f| %>
+  <div class="form-group">
+    <%=f.text_area :content, id: "new_message", placeholder: "Create new message", class: "form-control" %>
+  </div>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  <div class="action">
+    <%= f.submit "Send Message", class: "btn btn-primary" %>
+  </div>
+<% end %>
