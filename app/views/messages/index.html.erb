@@ -1,29 +1,39 @@
-<h1> Hey yayayah Hey yayaya</h1>
-<%= @other.name %>
-<%= link_to "View Profile", @other, class: "btn btn-default wide" %>
-​
-<div id="converse">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1> BootMessager</h1>
+      <div id="converse">
+         Conversation with <%=@other.name %><%= link_to "View Profile", @other, class: "btn btn-default wide" %>
 
-</div>
-Conversation with <%=@other.name %>
-​<div>
-<% @conversation.messages.each do |message| %>
-  <% if message.user_id == @conversation.sender_id %>
-    <p><strong><%= User.find(@conversation.sender_id).name %></strong> : <%= message.content %></p>
-  <% elsif message.user_id == @conversation.recipient_id %>
-    <p><strong><%= User.find(@conversation.recipient_id).name %></strong> : <%= message.content %></p>
-  <% end %>
-<% end %>
+         ​<div>
+         <% @conversation.messages.each do |message| %>
+           <% if message.user_id == @conversation.sender_id %>
+             <div class="sender-message">
+               <div class="time-stamp"><%= message.created_at.strftime('%a, %d %b %Y %H:%M:%S') %></div>
+               <p><strong><%= User.find(@conversation.sender_id).name %></strong> : <%= message.content %></p>
+             </div>
+           <% elsif message.user_id == @conversation.recipient_id %>
+             <div class="recipient-message">
+               <div class="time-stamp"><%= message.created_at.strftime('%a, %d %b %Y %H:%M:%S') %></div>
+               <p><strong><%= User.find(@conversation.recipient_id).name %></strong> : <%= message.content %></p>
+             </div>
+           <% end %>
+         <% end %>
 
-</div>
+         </div>
 
-<%=form_for [@conversation, @conversation.messages.new] do |f| %>
-  <div class="form-group">
-    <%=f.text_area :content, id: "new_message", placeholder: "Create new message", class: "form-control" %>
+         <%=form_for [@conversation, @conversation.messages.new] do |f| %>
+           <div class="form-group">
+             <%=f.text_area :content, id: "new_message", placeholder: "Create new message", class: "form-control" %>
+           </div>
+             <%= f.hidden_field :user_id, value: current_user.id %>
+           <div class="action">
+             <%= f.submit "Send Message", class: "btn btn-primary" %>
+           </div>
+         <% end %>
+
+      </div>
+    </div>
   </div>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-  <div class="action">
-    <%= f.submit "Send Message", class: "btn btn-primary" %>
-  </div>
-<% end %>
+</div>
 
