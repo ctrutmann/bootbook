@@ -27,7 +27,7 @@ class AddColumnsToUsers < ActiveRecord::Migration[5.0]
     add_column :users, :willing_to_collaborate,:boolean, default: true
 
     # Employment fields
-    add_column :users, :employment_status, :string
+    add_column :users, :employment_status, :string, default: "none"
     add_column :users, :employer, :string
     add_column :users, :role, :string
 
