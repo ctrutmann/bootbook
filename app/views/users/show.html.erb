@@ -40,10 +40,10 @@
   </div>
   <!-- Location Info -->
   <div class='location-info'>
-    <% if @user.country != 'USA' %>
-      <p><%= @user.city %>, <%= @user.country %></p>
-    <% else %>
+    <% if @user.country == 'US' %>
       <p><%= @user.city %>, <%= @user.state %></p>
+    <% else %>
+      <p><%= @user.city %>, <%= @user.country %></p>
     <% end %>
   </div>
   <!-- Employment Info -->
@@ -61,6 +61,7 @@
     <% end %>
     </p>
   </div>
+  <a href="/users/<%= @user.id %>/edit"><button type="button" class="btn btn-primary btn-small">Edit</button></a>
 
 
 
