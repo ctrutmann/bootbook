@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
-#   before_action :authenticate_user!
-#   before_action :init_conversation
+  before_action :authenticate_user!
+  before_action :init_conversation
 
   def index
     @conversation = Conversation.find(current_user.id)
