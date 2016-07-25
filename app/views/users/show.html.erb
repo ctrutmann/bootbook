@@ -15,28 +15,38 @@
   </div>
   <!-- Social Links -->
   <div class='social-links'>
-    <% if @user.linkedin != "" %>
+    <% if @user.linkedin %>
       <a href="<%= @user.linkedin %>" target="_blank" class="btn btn-social-icon btn-linkedin">
         <span class="fa fa-linkedin"></span>
       </a>
     <% end %>
-    <% if @user.github != "" %>
+
+    <% if @user.github %>
       <a href="<%= @user.github %>" target="_blank" class="btn btn-social-icon btn-github">
         <span class="fa fa-github"></span>
       </a>
     <% end %>
-    <% if @user.facebook != "" %>
+
+    <% if @user.facebook %>
       <a href="<%= @user.facebook %>" target="_blank" class="btn btn-social-icon btn-facebook">
         <span class="fa fa-facebook"></span>
       </a>
     <% end %>
-    <% if @user.twitter != "" %>
+
+    <% if @user.twitter %>
       <a href="<%= @user.twitter %>" target="_blank" class="btn btn-social-icon btn-twitter">
         <span class="fa fa-twitter"></span>
       </a>
     <% end %>
-    <% if @user.employ != "" %>
+    <br>
+
+    <% if @user.employ %>
       <a href="<%= @user.employ %>" target="_blank"> Employ Profile</a>
+    <% end %>
+    <br>
+
+    <% if @user.personal_website %>
+      <a href="<%= @user.personal_website %>" target="_blank">Personal Website</a>
     <% end %>
   </div>
   <!-- DBC Info -->
