@@ -1,9 +1,18 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
-  def index
+  def index   # this is the mailbox
+
     @users = User.all
     @conversations = Conversation.involving(current_user)
   end
+
+  def new
+    p params
+    @conversation = Conversation.create(sender_id: current_user.id, recipient_id: params[:id], conversation_variety_id: 1)
+    p @conversation
+    render 'index'
+  end
+
   def create
     if Conversation.between(params[:sender_id], params[:recipient_id]).present?
       @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first

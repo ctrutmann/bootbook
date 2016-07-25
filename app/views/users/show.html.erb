@@ -85,6 +85,14 @@
     <a href="/users/<%= @user.id %>/edit"><button type="button" class="btn btn-primary btn-small">Edit</button></a>
   <% end %>
 
+  <% if @user != current_user %>
+    <a href="/conversations/new">
+    <input type="hidden" name="TESTING" value="params[:id]"></input>
+    <button type="button" class="btn btn-primary btn-small">
+    Default Message
+
+    </button></a>
+  <% end %>
 
 
 </div>
