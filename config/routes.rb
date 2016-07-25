@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   #   resources :messages
   # end
 
-  resources :conversations, only: [:index, :create] do
-  resources :messages, only: [:index, :create]
+  resources :conversations do
+    resources :messages
   end
 
   # match '/auth/:provider/callback', :via => [:get], :to => 'sessions#create'

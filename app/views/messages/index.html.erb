@@ -1,4 +1,4 @@
-<h1> Hey </h1>
+<h1> Hey yayayah Hey yayaya</h1>
 <%= @other.name %>
 <%= link_to "View Profile", @other, class: "btn btn-default wide" %>
 ​
@@ -6,7 +6,17 @@
 
 </div>
 Conversation with <%=@other.name %>
-​
+​<div>
+<% @conversation.messages.each do |message| %>
+  <% if message.user_id == @conversation.sender_id %>
+    <p><strong><%= User.find(@conversation.sender_id).name %></strong> : <%= message.content %></p>
+  <% elsif message.user_id == @conversation.recipient_id %>
+    <p><strong><%= User.find(@conversation.recipient_id).name %></strong> : <%= message.content %></p>
+  <% end %>
+<% end %>
+
+</div>
+
 <%=form_for [@conversation, @conversation.messages.new] do |f| %>
   <div class="form-group">
     <%=f.text_area :content, id: "new_message", placeholder: "Create new message", class: "form-control" %>
@@ -17,11 +27,3 @@ Conversation with <%=@other.name %>
   </div>
 <% end %>
 
-<% @conversation.messages.reverse.each do |message| %>
-  <% if message.user_id == current_user.id %>
-    <p><strong><%= current_user.name %></strong> : <%= message.content %></p>
-  <% else %>
-
-    <p><strong><%= User.find(@conversation.sender_id).name %></strong> : <%= message.content %></p>
-  <% end %>
-<% end %>

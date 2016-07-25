@@ -1,2 +1,4 @@
-<h1 align="center"> LET'S CONVERSATE! </h1>
-
+<h1 align="center"> INBOX </h1>
+<% @conversations.each do |convo| %>
+ <a href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.sender.name %> with <%= convo.recipient.name %></a> <br>
+<% end %>
