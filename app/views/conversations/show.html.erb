@@ -1,8 +1,12 @@
 <h1>Insta Message</h1>
+
+
+
 <% @conversation.messages.reverse.each do |message| %>
   <% if message.user_id == current_user.id %>
     <p><strong><%= current_user.name %></strong> : <%= message.content %></p>
   <% else %>
-    <p><strong><%= User.find(@conversation.sender_id).name %></strong>  : <%= message.content %></p>
+
+    <p><strong><%= User.find(@conversation.sender_id).name %></strong> : <%= message.content %></p>
   <% end %>
 <% end %>
