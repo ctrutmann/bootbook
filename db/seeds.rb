@@ -96,12 +96,12 @@ User.create!(
   )
 User.create!(
   # Bare minimum, gets created when first-time user signs in via GitHub
-  email: "mfurlong64@gmail.com",
-  uid: "17836164",
+  email: "marshyup64@gmail.com",
+  uid: "11687064",
   provider: "github",
-  name: "Michael Furlong",
-  github: "https://github.com/mfurlong64",
-  profile_image: "https://avatars.githubusercontent.com/u/17836164",
+  name: "Marshall Agharanya",
+  github: "https://github.com/marshyup",
+  profile_image: "https://avatars.githubusercontent.com/u/11687064",
 
   # The rest
   city: "",
@@ -134,12 +134,12 @@ User.create!(
   )
 User.create!(
   # Bare minimum, gets created when first-time user signs in via GitHub
-  email: "marshyup64@gmail.com",
-  uid: "11687064",
+  email: "mfurlong64@gmail.com",
+  uid: "17836164",
   provider: "github",
-  name: "Marshall Agharanya",
-  github: "https://github.com/marshyup",
-  profile_image: "https://avatars.githubusercontent.com/u/11687064",
+  name: "Michael Furlong",
+  github: "https://github.com/mfurlong64",
+  profile_image: "https://avatars.githubusercontent.com/u/17836164",
 
   # The rest
   city: "",
@@ -350,6 +350,10 @@ UserCohort.create!(
   cohort_id: 2
   )
 UserCohort.create!(
+  user_id: 3,
+  cohort_id: 2
+  )
+UserCohort.create!(
   user_id: 5,
   cohort_id: 2
   )
@@ -390,17 +394,17 @@ Interest.create!(interest: 'Javascript')
 Interest.create!(interest: 'React')
 Interest.create!(interest: 'Python')
 
-UserInterest.create!(user_id: 3, interest_id: 1)
-UserInterest.create!(user_id: 3, interest_id: 8)
-
 UserInterest.create!(user_id: 1, interest_id: 4)
 UserInterest.create!(user_id: 1, interest_id: 7)
 
-UserInterest.create!(user_id: 4, interest_id: 5)
-UserInterest.create!(user_id: 4, interest_id: 10)
-
 UserInterest.create!(user_id: 2, interest_id: 5)
 UserInterest.create!(user_id: 2, interest_id: 8)
+
+UserInterest.create!(user_id: 3, interest_id: 5)
+UserInterest.create!(user_id: 3, interest_id: 10)
+
+UserInterest.create!(user_id: 4, interest_id: 1)
+UserInterest.create!(user_id: 4, interest_id: 8)
 
 Follow.create!(followee_id: 1, follower_id: 2)
 Follow.create!(followee_id: 1, follower_id: 3)
@@ -410,8 +414,8 @@ Follow.create!(followee_id: 2, follower_id: 1)
 Follow.create!(followee_id: 2, follower_id: 3)
 Follow.create!(followee_id: 2, follower_id: 4)
 
-Follow.create!(followee_id: 3, follower_id: 2)
 Follow.create!(followee_id: 3, follower_id: 1)
+Follow.create!(followee_id: 3, follower_id: 2)
 Follow.create!(followee_id: 3, follower_id: 4)
 
 Follow.create!(followee_id: 4, follower_id: 1)
