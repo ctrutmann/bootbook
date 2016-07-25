@@ -41,13 +41,11 @@
         <div id="navbar" class="navbar-collapse collapse">
           <% if current_user %>
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="/conversations"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
             <li><a href="/users/<%= current_user.id %>">Profile</a></li>
             <li><a href="/signout">Sign Out</a></li>
           </ul>
           <% end %>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search Boots...">
-          </form>
         </div>
       </div>
     </nav>
