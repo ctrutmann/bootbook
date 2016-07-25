@@ -61,7 +61,9 @@
     <% end %>
     </p>
   </div>
-  <a href="/users/<%= @user.id %>/edit"><button type="button" class="btn btn-primary btn-small">Edit</button></a>
+  <% if @user == current_user %>
+    <a href="/users/<%= @user.id %>/edit"><button type="button" class="btn btn-primary btn-small">Edit</button></a>
+  <% end %>
 
 
 

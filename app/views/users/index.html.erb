@@ -1,18 +1,11 @@
 <div class="col-sm-3 col-md-2 sidebar">
   <div class="row placeholders-sidebar">
     <div class="col-xs-6 col-sm-3 placeholder-sidebar">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-      <h4>User's Name</h4>
-      <span class="text-muted">User's Cohort</span>
-      <!-- This 'if false' is just a way of commenting out this block -->
-      <!-- This should be commented back in once we have current_user -->
-      <% if false %>
-        <h4><%= current_user.name %></h4>
-        <% current_user.cohorts.each do |cohort| %>
-          <span class="text-muted"><%= cohort %></span>
-        <% end %>
+      <img src="<%= current_user.profile_image %>" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+      <h4><%= current_user.name %></h4>
+      <% current_user.cohorts.each do |cohort| %>
+        <span class="text-muted"><%= cohort %></span>
       <% end %>
-      <!-- Down to here. -->
     </div>
   </div>
   <!-- This is what Bootstrap's template provided. -->
@@ -45,7 +38,7 @@
       <img src="<%= user.profile_image %>" width="200" height="200" class="img-responsive" alt="profile image">
       <h4><%= user.name %></h4>
       <% user.cohorts.each do |cohort| %>
-        <span class="text-muted"><%= cohort %></span>
+        <span class="text-muted"><%= cohort.name %></span>
       <% end %>
     </div>
   <% end %>
