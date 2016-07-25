@@ -422,7 +422,9 @@ Follow.create!(followee_id: 4, follower_id: 1)
 Follow.create!(followee_id: 4, follower_id: 2)
 Follow.create!(followee_id: 4, follower_id: 3)
 
-ConversationVariety.create!(variety: "Mentor Request")
+ConversationVariety.create!(variety: "default")
+ConversationVariety.create!(variety: "mentorship")
+ConversationVariety.create!(variety: "collaboration")
 
 Conversation.create!(sender_id: 1, recipient_id: 2, conversation_variety_id: 1)
 Conversation.create!(sender_id: 2, recipient_id: 3, conversation_variety_id: 1)
