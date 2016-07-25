@@ -41,7 +41,7 @@
   <h1 class="page-header">Boots</h1>
   <div class="row placeholders">
   <%  @users.each do |user| %>
-    <div class="col-xs-6 col-sm-3 placeholder">
+    <div class="col-xs-4 placeholder">
       <img src="<%= user.profile_image %>" width="200" height="200" class="img-responsive" alt="profile image">
       <h4><%= user.name %></h4>
       <% user.cohorts.each do |cohort| %>
@@ -51,4 +51,3 @@
   <% end %>
   </div>
 </div>
-

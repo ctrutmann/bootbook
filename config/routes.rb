@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
+  # get 'message/index'
+
   resources :users
-  resources :conversations
+
+  # resources :conversations do
+  #   resources :messages
+  # end
+
+  resources :conversations, only: [:index, :create] do
+  resources :messages, only: [:index, :create]
+  end
 
   # match '/auth/:provider/callback', :via => [:get], :to => 'sessions#create'
   match '/auth/failure', :via => [:get], :to => 'sessions#failure'

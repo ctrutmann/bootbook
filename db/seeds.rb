@@ -422,3 +422,18 @@ Follow.create!(followee_id: 4, follower_id: 1)
 Follow.create!(followee_id: 4, follower_id: 2)
 Follow.create!(followee_id: 4, follower_id: 3)
 
+ConversationVariety.create!(variety: "Mentor Request")
+
+Conversation.create!(sender_id: 1, recipient_id: 2, conversation_variety_id: 1)
+Conversation.create!(sender_id: 2, recipient_id: 3, conversation_variety_id: 1)
+Conversation.create!(sender_id: 3, recipient_id: 4, conversation_variety_id: 1)
+Conversation.create!(sender_id: 4, recipient_id: 1, conversation_variety_id: 1)
+
+Message.create(content: "Are you looking for a mentor?", user_id: 1, conversation_id: 1)
+Message.create(content: "Hey, thanks for contacting me!", user_id: 2, conversation_id: 1)
+Message.create(content: "How's it going?", user_id: 2, conversation_id: 2)
+Message.create(content: "Good and you?", user_id: 3, conversation_id: 2)
+Message.create(content: "Hey there", user_id: 3, conversation_id: 3)
+Message.create(content: "Hi!", user_id: 4, conversation_id: 3)
+
+
