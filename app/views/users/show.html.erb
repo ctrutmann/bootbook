@@ -15,52 +15,75 @@
   </div>
   <!-- Social Links -->
   <div class='social-links'>
-    <a class="btn btn-social-icon btn-linkedin">
-      <span class="fa fa-linkedin"></span><%= @user.linkedin %>
-    </a>
-    <a class="btn btn-social-icon btn-github">
-      <span class="fa fa-github"></span><%= @user.github %>
-    </a>
-    <a class="btn btn-social-icon btn-facebook">
-      <span class="fa fa-facebook"></span><%= @user.facebook %>
-    </a>
-    <a class="btn btn-social-icon btn-twitter">
-      <span class="fa fa-twitter"></span><%= @user.twitter %>
-    </a>
-    <a href="<%= @user.employ %>"> Employ Profile</a>
+    <% if @user.linkedin %>
+      <a href="<%= @user.linkedin %>" target="_blank" class="btn btn-social-icon btn-linkedin">
+        <span class="fa fa-linkedin"></span>
+      </a>
+    <% end %>
+
+    <% if @user.github %>
+      <a href="<%= @user.github %>" target="_blank" class="btn btn-social-icon btn-github">
+        <span class="fa fa-github"></span>
+      </a>
+    <% end %>
+
+    <% if @user.facebook %>
+      <a href="<%= @user.facebook %>" target="_blank" class="btn btn-social-icon btn-facebook">
+        <span class="fa fa-facebook"></span>
+      </a>
+    <% end %>
+
+    <% if @user.twitter %>
+      <a href="<%= @user.twitter %>" target="_blank" class="btn btn-social-icon btn-twitter">
+        <span class="fa fa-twitter"></span>
+      </a>
+    <% end %>
+    <br>
+
+    <% if @user.employ %>
+      <a href="<%= @user.employ %>" target="_blank"> Employ Profile</a>
+    <% end %>
+    <br>
+
+    <% if @user.personal_website %>
+      <a href="<%= @user.personal_website %>" target="_blank">Personal Website</a>
+    <% end %>
   </div>
   <!-- DBC Info -->
   <div class='dbc-info'>
     <p>Quirk: <%= @user.quirk %></p>
     <p>Love: <%= @user.love %></p>
-    <% @user.cohorts.each do |cohort| %>
-      <p><%= cohort %></p>
+    <p><% @user.cohorts.reverse.each do |cohort| %>
+      <%= cohort.name %><br>
     <% end %>
+    <%= @user.cohorts.last.campus %> '<%= @user.cohorts.last.graduation_date.to_s.slice(2,2) %>
     </p>
   </div>
   <!-- Location Info -->
   <div class='location-info'>
-    <% if @user.country != 'USA' %>
-      <p><%= @user.city %>, <%= @user.country %></p>
-    <% else %>
+    <% if @user.country == 'US' %>
       <p><%= @user.city %>, <%= @user.state %></p>
+    <% else %>
+      <p><%= @user.city %>, <%= @user.country %></p>
     <% end %>
   </div>
   <!-- Employment Info -->
-  <% if @user.employment_status != 'None' %>
-  <div class='employment-info'>
-    <p>Employer: <%= @user.employer %></p>
-    <p>Role: <%= @user.role %></p>
-  </div>
+  <% if @user.employment_status != 'unemployed' %>
+    <div class='employment-info'>
+      <p>Employer: <%= @user.employer %></p>
+      <p>Role: <%= @user.role %></p>
+    </div>
   <% end %>
   <!-- Interests -->
   <div class='interests-info'>
-    <p>Interests: <%= @user.love %></p>
+    <p>Interests:<br>
     <% @user.interests.each do |interest| %>
-      <p><%= interest %></p>
-    <% end %>
-    </p>
+      <%= interest.interest %><br>
+    <% end %></p>
   </div>
+  <% if @user == current_user %>
+    <a href="/users/<%= @user.id %>/edit"><button type="button" class="btn btn-primary btn-small">Edit</button></a>
+  <% end %>
 
 
 

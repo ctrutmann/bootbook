@@ -9,8 +9,8 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-
-    if @user.update(user_params)
+    @user.update(user_params)
+    if @user.save
       flash[:success] = "You're all updated!"
       redirect_to user_path(@user)
     else
@@ -74,9 +74,7 @@ class UsersController < ApplicationController
 
   def interests_params
     params.require(:interests).permit(
-      :name,
-      :campus,
-      :graduation_date
+      :interest
     )
   end
 

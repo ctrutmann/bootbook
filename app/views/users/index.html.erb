@@ -1,18 +1,14 @@
 <div class="col-sm-3 col-md-2 sidebar">
   <div class="row placeholders-sidebar">
     <div class="col-xs-6 col-sm-3 placeholder-sidebar">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-      <h4>User's Name</h4>
-      <span class="text-muted">User's Cohort</span>
-      <!-- This 'if false' is just a way of commenting out this block -->
-      <!-- This should be commented back in once we have current_user -->
-      <% if false %>
-        <h4><%= current_user.name %></h4>
+      <img src="<%= current_user.profile_image %>" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+      <h4><%= current_user.name %></h4>
+      <p><span class="text-muted"><%= current_user.cohorts.last.campus %></span>
+      <span class="text-muted"><%= current_user.cohorts.last.graduation_date.to_s.slice(0,4) %></span>
         <% current_user.cohorts.each do |cohort| %>
-          <span class="text-muted"><%= cohort %></span>
-        <% end %>
+        <span class="text-muted"><%= cohort.name %></span>
       <% end %>
-      <!-- Down to here. -->
+      </p>
     </div>
   </div>
   <!-- This is what Bootstrap's template provided. -->
@@ -40,13 +36,24 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
   <h1 class="page-header">Boots</h1>
   <div class="row placeholders">
-  <%  @users.each do |user| %>
-    <div class="col-xs-4 placeholder">
+  <%  @users.order('name ASC').each do |user| %>
+    <div class="col-xs-6 col-sm-3 placeholder">
       <img src="<%= user.profile_image %>" width="200" height="200" class="img-responsive" alt="profile image">
       <h4><%= user.name %></h4>
-      <% user.cohorts.each do |cohort| %>
-        <span class="text-muted"><%= cohort %></span>
-      <% end %>
+        <span class="text-muted"><%= user.cohorts.last.name %></span><br>
+        <% if user.country == 'US' %>
+          <span class="text-muted"><%= user.city %>, <%= user.state %></span><br>
+        <% else %>
+          <span class="text-muted"><%= user.city %>, <%= user.country %>
+        <% end %>
+
+      <!-- < % user.cohorts.reverse.each do |cohort| %> -->
+        <!-- <span class="text-muted">< %= cohort.name %></span><br> -->
+      <!-- < % end %> -->
+      <!-- < % (5 - user.cohorts.count).times do %> -->
+        <!-- <br> -->
+      <!-- < % end %> -->
+
     </div>
   <% end %>
   </div>

@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Thank you for Sign Up!</div>
+                    <div class="panel-body">
+                        <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+​
+                    <div class="form-group">
+                        <div class="control-label col-sm-2">
+                            <%= f.label :poc_scholarship %>
+                        </div>
+                        <div class="col-sm-8">
+                            <%= f.text_field :poc_scholarship, class: "form-control", placeholder: "Enter poc_scholarship", autofocus: true %>
+                        </div>
+                    </div>
+​
+                    <div class="form-group">
+                        <div class="control-label col-sm-2">
+                            <%= f.label :lgbtq_scholarship %>
+                        </div>
+                        <div class="col-sm-8">
+                            <%= f.text_field :lgbtq_scholarship, class: "form-control", placeholder: "Enter lgbtq_scholarship", autofocus: true %>
+                        </div>
+                    </div>
+​
+                    <div class="form-group">
+                        <div class="control-label col-sm-2">
+                            <%= f.label :veteran_scholarship %>
+                        </div>
+                        <div class="col-sm-8">
+                            <%= f.text_field :veteran_scholarship, class: "form-control", placeholder: "Enter veteran_scholarship", autofocus: true %>
+                        </div>
+                    </div>
+​
+                    <div class="form-group">
+                        <div class="control-label col-sm-2">
+                            <%= f.label :prior_coding_experience %>
+                        </div>
+                        <div class="col-sm-8">
+                            <%= f.text_field :prior_coding_experience, class: "form-control", placeholder: "Enter prior_coding_experience", autofocus: true %>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <%= f.submit class: "btn btn-default"%>
+                        </div>
+                    </div>
+​
+                        <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
