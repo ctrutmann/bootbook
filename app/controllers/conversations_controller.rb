@@ -1,4 +1,4 @@
-class ConversationController < ApplicationController
+class ConversationsController < ApplicationController
   def index
     @conversations = Conversation.where(sender_id: current_user.id)
     @conversations += Conversation.where(recipient_id: current_user.id)
@@ -11,7 +11,7 @@ class ConversationController < ApplicationController
   end
 
   def edit
-      @conversation = Conversation.find(params[:id])
+    @conversation = Conversation.find(params[:id])
   end
 
   def delete
@@ -19,3 +19,4 @@ class ConversationController < ApplicationController
     @conversation.destroy
   end
 end
+
