@@ -82,20 +82,39 @@
     <% end %></p>
   </div>
   <% if @user == current_user %>
-    <a href="/users/<%= @user.id %>/edit"><button type="button" class="btn btn-primary btn-small">Edit</button></a>
+    <div>
+      <a href="/conversations"><button type="button" class="messages btn btn-primary btn-small">Messages</button></a>
+    </div>
+    <div>
+      <a href="/users/<%= @user.id %>/edit"><button type="button" class="btn btn-primary btn-small">Edit</button></a>
+    </div>
+  <% else %>
+    <div>
+      <%= form_tag("/conversations", method: "post") do %>
+        <%= hidden_field_tag(:conversation_variety_id, "1") %>
+        <%= hidden_field_tag(:recipient_id, @user.id) %>
+        <%= hidden_field_tag(:sender_id, current_user.id) %>
+        <%= submit_tag("Message") %>
+      <% end %>
+      <%= form_tag("/conversations", method: "post") do %>
+        <%= hidden_field_tag(:conversation_variety_id, "2") %>
+        <%= hidden_field_tag(:recipient_id, @user.id) %>
+        <%= hidden_field_tag(:sender_id, current_user.id) %>
+        <%= submit_tag("Mentor") %>
+      <% end %>
+      <%= form_tag("/conversations", method: "post") do %>
+        <%= hidden_field_tag(:conversation_variety_id, "3") %>
+        <%= hidden_field_tag(:recipient_id, @user.id) %>
+        <%= hidden_field_tag(:sender_id, current_user.id) %>
+        <%= submit_tag("Collaborate") %>
+      <% end %>
+      <!-- <a href="/conversations"><button type="button" class="default-message btn btn-primary btn-small">Message</button></a> -->
+      <!-- <a href="/conversations"><button type="button" class="mentor-message btn btn-primary btn-small"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Mentor</button></a>
+      <a href="/conversations"><button type="button" class="collaborate-message btn btn-primary btn-small"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Collab</button></a> -->
+    </div>
   <% end %>
-
-  <% if @user != current_user %>
-    <a href="/conversations/new">
-    <button type="button" class="btn btn-primary btn-small">
-    <input type="hidden" name="TESTING" value="params[:id]"></input>
-    Default Message
-
-    </button></a>
-  <% end %>
-
-
 </div>
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <% if flash[:danger] %>
   <div class="alert alert-danger">
@@ -109,5 +128,19 @@
   </div>
 <% end %>
 
+<div>
+  <div class='profile-text-box'>
+    <h1>Bio</h1>
+    <p><%= @user.bio %></p>
+  </div>
 
+  <div class='profile-text-box'>
+    <h1>Tweets of Advice to Students</h1>
+    <p><%= @user.advice_to_students %></p>
+  </div>
+
+  <div class='profile-text-box'>
+    <h1>Tweets of Advice to Graduates</h1>
+    <p><%= @user.advice_to_graduates %></p>
+  </div>
 </div>
