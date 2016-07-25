@@ -54,8 +54,9 @@ ActiveRecord::Schema.define(version: 20160723200402) do
     t.text     "content"
     t.integer  "user_id"
     t.integer  "conversation_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "read",            default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "post_varieties", force: :cascade do |t|
