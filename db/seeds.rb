@@ -79,7 +79,7 @@ User.create!(
   advice_to_graduates: "Network!",
   willing_to_mentor: "true",
   willing_to_collaborate: "true",
-  employment_status: "none",
+  employment_status: "unemployed",  # "unemployed", "fulltime", "other"
   employer: "",
   role: "",
   linkedin: "https://www.linkedin.com/in/edmechem",
