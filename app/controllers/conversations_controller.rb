@@ -1,14 +1,14 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
-  def index   # this is the mailbox
 
+  def index   # this is the mailbox
     @users = User.all
     @conversations = Conversation.involving(current_user)
   end
 
   def new
     p params
-    @conversation = Conversation.create(sender_id: current_user.id, recipient_id: params[:id], conversation_variety_id: 1)
+    @conversation = Conversation.create(sender_id: current_user.id, recipient_id: "TESTING", conversation_variety_id: 1)
     p @conversation
     render 'index'
   end
