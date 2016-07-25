@@ -88,8 +88,8 @@ ActiveRecord::Schema.define(version: 20160723200402) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.string   "name"
     t.string   "email"
     t.string   "city"
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 20160723200402) do
     t.text     "advice_to_graduates"
     t.boolean  "willing_to_mentor",       default: true
     t.boolean  "willing_to_collaborate",  default: true
-    t.string   "employment_status",       default: "none"
+    t.string   "employment_status",       default: "unemployed"
     t.string   "employer"
     t.string   "role"
     t.string   "linkedin"
