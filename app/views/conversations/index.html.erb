@@ -1,4 +1,16 @@
 <h1 align="center"> INBOX </h1>
 <% @conversations.each do |convo| %>
- <a href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.sender.name %> with <%= convo.recipient.name %></a> <br>
+  <% if convo.variety.variety == 'mentorship' %>
+    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+  <% elsif convo.variety.variety == 'collaboration' %>
+    <i class="fa fa-puzzle-piece" aria-hidden="true"></i>
+  <% else %>
+    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+  <% end %>
+
+  <% if convo.sender == current_user %>
+    <a href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.recipient.name %></a> <br>
+  <% else %>
+    <a href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.sender.name %></a> <br>
+  <% end %>
 <% end %>
