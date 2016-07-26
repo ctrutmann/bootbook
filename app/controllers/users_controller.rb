@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.all.order(name: :asc)
   end
 
   def edit
-    @users = User.all
+    @users = User.all.order(name: :asc)
     @user = current_user
   end
 
@@ -24,14 +24,14 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.all
+    @users = User.all.order(name: :asc)
     @user = User.find_by(name: params[:boot_name])
 
     redirect_to user_path(@user)
   end
 
   def show
-    @users = User.all
+    @users = User.all.order(name: :asc)
     @user = User.find(params[:id])
     # @user = User.find(user_params)
   end

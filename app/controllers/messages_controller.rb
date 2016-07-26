@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
   before_action :init_conversation
 
   def index
+    @users = User.all.order(name: :asc)
     @conversation = Conversation.find(params[:conversation_id])
     # @conversation = Conversation.where(sender_id: current_user.id)
     # @conversation += Conversation.where(recipient_id: current_user.id)
