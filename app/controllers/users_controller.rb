@@ -9,7 +9,10 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(user_params)
+    @user.assign_attributes(user_params)
+    @cohort = Cohort.where(cohorts_params).first
+    UserCohort.create(user_id: current_user.id, cohort_id: @cohort.id)
+
     if @user.save
       flash[:success] = "You're all updated!"
       redirect_to user_path(@user)
