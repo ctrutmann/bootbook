@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   # get 'message/index'
 
-  resources :users
+  resources :users do
+    get 'search', :on => :collection
+  end
+
+  # # works
+  # get '/users/search' =>'users#search', :as => :search
 
   # resources :conversations do
   #   resources :messages

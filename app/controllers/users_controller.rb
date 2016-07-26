@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @users = User.all
     @user = current_user
   end
 
@@ -22,7 +23,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    @users = User.all
+    @user = User.find_by(name: params[:boot_name])
+
+    redirect_to user_path(@user)
+  end
+
   def show
+    @users = User.all
     @user = User.find(params[:id])
     # @user = User.find(user_params)
   end

@@ -45,6 +45,15 @@
             <li><a href="/users/<%= current_user.id %>">Profile</a></li>
             <li><a href="/signout">Sign Out</a></li>
           </ul>
+
+          <form class="navbar-form navbar-right" action="/users/search" method="get">
+            <input list="findaboot" name="boot_name" class="form-control" placeholder="Find a boot..." />
+            <datalist id="findaboot">
+            <% @users.each do |user| %>
+              <option value="<%= user.name %>"></option>
+            <% end %>
+            </datalist>
+          </form>
           <% end %>
         </div>
       </div>
