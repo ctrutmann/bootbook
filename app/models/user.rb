@@ -17,6 +17,34 @@ class User < ApplicationRecord
   validates_presence_of :name, :email, :uid, :provider
   validates_uniqueness_of :email, :uid
 
+  scope :city, -> (city) do
+    where('(users.city = ?)', city)
+  end
+
+  scope :state, -> (state) do
+    where('(users.state = ?)', state)
+  end
+
+  scope :country, -> (country) do
+    where('(users.country = ?)', country)
+  end
+
+  scope :cohort, -> (cohort) do
+    joins(:cohorts).where('cohorts.name = ?', cohort)
+  end
+
+  scope :campus, -> (campus) do
+    joins(:cohorts).where('cohorts.campus = ?', campus)
+  end
+
+  scope :graduation_date, -> (graduation_date) do
+    joins(:cohorts).where('cohorts.graduation_date = ?', graduation_date)
+  end
+
+  scope :interest, -> (interest) do
+    joins(:interests).where('interests.interest = ?', interest)
+  end
+
   def self.create_with_omniauth(auth)
     p auth['info']
     create! do |user|
