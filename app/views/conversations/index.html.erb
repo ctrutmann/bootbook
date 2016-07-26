@@ -10,10 +10,19 @@
   <% end %>
 
   <% if convo.sender == current_user %>
-    <strong><a class="name-holder" href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.recipient.name %></a>
-    </strong> <br>
-  <% else %>
-    <a class="name-holder" href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.sender.name %></a> <br>
+    <% if convo.messages.last.read == false && convo.messages.last.user_id != current_user.id %>
+      <strong><a class="name-holder" href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.recipient.name %></a>
+      </strong> <br>
+      <% else %>
+        <a class="name-holder" href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.recipient.name %></a><br>
+      <% end %>
+  <% elsif convo.recipient == current_user %>
+    <% if convo.messages.last.read == false && convo.messages.last.user_id != current_user.id %>
+      <strong><a class="name-holder" href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.sender.name %></a>
+      </strong><br>
+    <% else %>
+      <a class="name-holder" href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.sender.name %></a><br>
+    <% end %>
   <% end %>
 <% end %>
 

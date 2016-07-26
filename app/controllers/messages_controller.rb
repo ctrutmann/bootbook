@@ -9,6 +9,11 @@ class MessagesController < ApplicationController
     if current_user == @conversation.sender || current_user == @conversation.recipient
       @other = current_user == @conversation.sender ? @conversation.recipient : @conversation.sender
       @messages = @conversation.messages
+      if @messages.present? && @messages.last.user_id != @current_user.id
+        @last_message = @messages.last
+        @last_message.read = true
+        @last_message.save
+      end
     else
       # flash[:danger] = "Private Message"
       redirect_to conversations_path
