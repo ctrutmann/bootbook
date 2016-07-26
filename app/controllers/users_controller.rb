@@ -5,8 +5,31 @@ class UsersController < ApplicationController
 
     @cities = []
     User.all.each {|user| @cities << user.city if user.city != nil}
+    @cities.sort!.uniq!
 
+    @states = []
+    User.all.each {|user| @states << user.state if user.state != nil}
+    @states.sort!.uniq!
 
+    @countries = []
+    User.all.each {|user| @countries << user.country if user.country != nil}
+    @countries.sort!.uniq!
+
+    @cohorts = []
+    Cohort.all.each {|cohort| @cohorts << cohort.name if cohort.name != nil}
+    @cohorts.sort!.uniq!
+
+    @campuses = []
+    Cohort.all.each {|cohort| @campuses << cohort.campus if cohort.campus != nil}
+    @campuses.sort!.uniq!
+
+    @graduation_dates = []
+    Cohort.all.each {|cohort| @graduation_dates << cohort.graduation_date.to_s if cohort.graduation_date != nil}
+    @graduation_dates.sort!.uniq!
+
+    @interests = []
+    Interest.all.each {|interest| @interests << interest.interest if interest.interest != nil}
+    @interests.sort!.uniq!
 
     filtering_params(params).each do |key, value|
       @users = @users.city(params[:city]) if params[:city].present?
@@ -106,8 +129,8 @@ class UsersController < ApplicationController
     )
   end
 
-  def filtering_params(parmas)
-    params.slice(:city, :state, :country, :cohort, :interest)
+  def filtering_params(params)
+    params.slice(:city, :state, :country, :cohort, :campus, :graduation_date, :interest)
   end
 
 end

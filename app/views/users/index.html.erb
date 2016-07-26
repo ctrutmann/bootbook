@@ -20,9 +20,51 @@
         <option value="<%= city %>"></option>
       <% end %>
       </datalist>
+
+      <input list="find-state" name="state" class="form-control" placeholder="State" />
+      <datalist id="find-state">
+      <% @states.each do |state| %>
+        <option value="<%= state %>"></option>
+      <% end %>
+      </datalist>
+
+      <input list="find-country" name="country" class="form-control" placeholder="Country" />
+      <datalist id="find-country">
+      <% @countries.each do |country| %>
+        <option value="<%= country %>"></option>
+      <% end %>
+      </datalist>
+
+      <input list="find-cohort" name="cohort" class="form-control" placeholder="Cohort" />
+      <datalist id="find-cohort">
+      <% @cohorts.each do |cohort| %>
+        <option value="<%= cohort %>"></option>
+      <% end %>
+      </datalist>
+
+      <input list="find-campus" name="campus" class="form-control" placeholder="Campus" />
+      <datalist id="find-campus">
+      <% @campuses.each do |campus| %>
+        <option value="<%= campus %>"></option>
+      <% end %>
+      </datalist>
+
+      <input list="find-graduation-date" name="graduation_date" class="form-control" placeholder="Graduation Date" />
+      <datalist id="find-graduation-date">
+      <% @graduation_dates.each do |graduation_date| %>
+        <option value="<%= graduation_date %>"></option>
+      <% end %>
+      </datalist>
+
+      <input list="find-interest" name="interest" class="form-control" placeholder="Interest" />
+      <datalist id="find-interest">
+      <% @interests.each do |interest| %>
+        <option value="<%= interest %>"></option>
+      <% end %>
+      </datalist>
+
+      <input type="submit" value="Filter Boots">
     </form>
-
-
   </div>
 </div>
 
