@@ -2,7 +2,7 @@ class ConversationsController < ApplicationController
   before_action :authenticate_user!
 
   def index   # this is the mailbox
-    @users = User.all.order(name: :asc)
+    @all_users = User.all.order(name: :asc)
     @conversations = Conversation.involving(current_user)
   end
 
