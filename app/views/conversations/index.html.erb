@@ -10,9 +10,10 @@
   <% end %>
 
   <% if convo.sender == current_user %>
-    <a href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.recipient.name %></a> <br>
+    <strong><a class="name-holder" href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.recipient.name %></a>
+    </strong> <br>
   <% else %>
-    <a href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.sender.name %></a> <br>
+    <a class="name-holder" href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.sender.name %></a> <br>
   <% end %>
 <% end %>
 

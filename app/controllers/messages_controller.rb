@@ -19,7 +19,6 @@ class MessagesController < ApplicationController
     @conversation = Conversation.find(params[:conversation_id])
     @message = @conversation.messages.new(message_params)
     @messages = @conversation.messages
-
     if @message.save
       @conversation.touch(:updated_at)
       @conversation.save
