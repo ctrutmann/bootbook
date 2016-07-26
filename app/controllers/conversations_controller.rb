@@ -4,6 +4,12 @@ class ConversationsController < ApplicationController
   def index   # this is the mailbox
     @users = User.all
     @conversations = Conversation.involving(current_user)
+    @conversations.each do |convo|
+      if convo.messages.empty?
+        convo.destroy
+        redirect_to 'index'
+      end
+    end
   end
 
   def new
