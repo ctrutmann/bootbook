@@ -21,6 +21,8 @@ class MessagesController < ApplicationController
     @messages = @conversation.messages
 
     if @message.save
+      @conversation.touch(:updated_at)
+      @conversation.save
       redirect_to conversation_messages_path(@conversation)
     end
   end
