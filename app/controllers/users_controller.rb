@@ -3,6 +3,11 @@ class UsersController < ApplicationController
     @all_users = User.all.order(name: :asc)
     @users = User.where(nil)
 
+    @cities = []
+    User.all.each {|user| @cities << user.city if user.city != nil}
+
+
+
     filtering_params(params).each do |key, value|
       @users = @users.city(params[:city]) if params[:city].present?
       @users = @users.state(params[:state]) if params[:state].present?
