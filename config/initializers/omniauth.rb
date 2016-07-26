@@ -1,5 +1,5 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
 
-  provider :github, ENV['OMNIAUTH_PROVIDER_KEY'], ENV['OMNIAUTH_PROVIDER_SECRET'], scope: 'user:email'
+  provider :github, ENV['OMNIAUTH_PROVIDER_KEY'], ENV['OMNIAUTH_PROVIDER_SECRET'], scope: 'user:email' #['user:email', 'read:org']
 
 end
