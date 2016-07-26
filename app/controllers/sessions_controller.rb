@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   def create
     auth = request.env["omniauth.auth"]
 
-    # EFFORTS TO LIMIT USERS TO DEVBOOTCAMP MEMBERS
+    # # EFFORTS TO LIMIT USERS TO DEVBOOTCAMP MEMBERS
     # p '*************************************************'
     # p auth
     # p '*************************************************'
@@ -42,7 +42,7 @@ class SessionsController < ApplicationController
     redirect_to root_url, :alert => "Authentication error: #{params[:message].humanize}"
   end
 
-  # EFFORTS TO LIMIT USERS TO DEVBOOTCAMP MEMBERS
+  # # EFFORTS TO LIMIT USERS TO DEVBOOTCAMP MEMBERS
   # protected
   # def auth_hash
   #   request.env['omniauth.auth']
