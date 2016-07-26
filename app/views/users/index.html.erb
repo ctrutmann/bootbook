@@ -37,23 +37,17 @@
   <h1 class="page-header">Boots</h1>
   <div class="row placeholders">
   <%  @users.order('name ASC').each do |user| %>
-    <div class="col-xs-6 col-sm-3 placeholder">
+    <div class="col-xs-6 col-sm-3 placeholder mini-boot-show">
+    <a href="users/<%=user.id%>">
       <img src="<%= user.profile_image %>" width="200" height="200" class="img-responsive" alt="profile image">
       <h4><%= user.name %></h4>
+    </a>
         <span class="text-muted"><%= user.cohorts.last.name %></span><br>
         <% if user.country == 'US' %>
           <span class="text-muted"><%= user.city %>, <%= user.state %></span><br>
         <% else %>
           <span class="text-muted"><%= user.city %>, <%= user.country %>
         <% end %>
-
-      <!-- < % user.cohorts.reverse.each do |cohort| %> -->
-        <!-- <span class="text-muted">< %= cohort.name %></span><br> -->
-      <!-- < % end %> -->
-      <!-- < % (5 - user.cohorts.count).times do %> -->
-        <!-- <br> -->
-      <!-- < % end %> -->
-
     </div>
   <% end %>
   </div>

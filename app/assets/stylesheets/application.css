@@ -156,3 +156,19 @@ body {
 .footer .page-header {
   margin-top: 0;
 }
+
+/*
+* Icons (Christel made this part.)
+*/
+
+.fa-graduation-cap {
+  color: red;
+}
+
+.fa-puzzle-piece {
+  color: blue;
+}
+
+.fa-paper-plane {
+  color: purple;
+}

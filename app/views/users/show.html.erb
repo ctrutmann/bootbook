@@ -81,12 +81,12 @@
       <%= interest.interest %><br>
     <% end %></p>
   </div>
+
+  <!-- Message Buttons (and Edit Button) -->
   <% if @user == current_user %>
     <div>
-      <a href="/conversations"><button type="button" class="messages btn btn-primary btn-small">Messages</button></a>
-    </div>
-    <div>
-      <a href="/users/<%= @user.id %>/edit"><button type="button" class="btn btn-primary btn-small">Edit</button></a>
+      <a href="/conversations"><button type="button" class="messages btn btn-primary btn-small"><i class="fa fa-envelope-o" aria-hidden="true"></i></button></a>
+      <a href="/users/<%= @user.id %>/edit"><button type="button" class="btn btn-primary btn-small"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
     </div>
   <% else %>
     <div>
@@ -94,23 +94,30 @@
         <%= hidden_field_tag(:conversation_variety_id, "1") %>
         <%= hidden_field_tag(:recipient_id, @user.id) %>
         <%= hidden_field_tag(:sender_id, current_user.id) %>
-        <%= submit_tag("Message") %>
+        <%= button_tag(type: "submit", class: "default-message btn btn-primary btn-small") do %>
+          <i class="fa fa-paper-plane" aria-hidden="true"></i> Message
+        <% end %>
       <% end %>
-      <%= form_tag("/conversations", method: "post") do %>
-        <%= hidden_field_tag(:conversation_variety_id, "2") %>
-        <%= hidden_field_tag(:recipient_id, @user.id) %>
-        <%= hidden_field_tag(:sender_id, current_user.id) %>
-        <%= submit_tag("Mentor") %>
+      <% if @user.willing_to_mentor %>
+        <%= form_tag("/conversations", method: "post") do %>
+          <%= hidden_field_tag(:conversation_variety_id, "2") %>
+          <%= hidden_field_tag(:recipient_id, @user.id) %>
+          <%= hidden_field_tag(:sender_id, current_user.id) %>
+          <%= button_tag(type: "submit", class: "default-message btn btn-primary btn-small") do %>
+            <i class="fa fa-graduation-cap" aria-hidden="true"></i> Mentor
+          <% end %>
+        <% end %>
       <% end %>
-      <%= form_tag("/conversations", method: "post") do %>
-        <%= hidden_field_tag(:conversation_variety_id, "3") %>
-        <%= hidden_field_tag(:recipient_id, @user.id) %>
-        <%= hidden_field_tag(:sender_id, current_user.id) %>
-        <%= submit_tag("Collaborate") %>
+      <% if @user.willing_to_collaborate %>
+        <%= form_tag("/conversations", method: "post") do %>
+          <%= hidden_field_tag(:conversation_variety_id, "3") %>
+          <%= hidden_field_tag(:recipient_id, @user.id) %>
+          <%= hidden_field_tag(:sender_id, current_user.id) %>
+          <%= button_tag(type: "submit", class: "default-message btn btn-primary btn-small") do %>
+            <i class="fa fa-puzzle-piece" aria-hidden="true"></i> Collab
+          <% end %>
+        <% end %>
       <% end %>
-      <!-- <a href="/conversations"><button type="button" class="default-message btn btn-primary btn-small">Message</button></a> -->
-      <!-- <a href="/conversations"><button type="button" class="mentor-message btn btn-primary btn-small"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Mentor</button></a>
-      <a href="/conversations"><button type="button" class="collaborate-message btn btn-primary btn-small"><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Collab</button></a> -->
     </div>
   <% end %>
 </div>
@@ -129,18 +136,24 @@
 <% end %>
 
 <div>
-  <div class='profile-text-box'>
-    <h1>Bio</h1>
-    <p><%= @user.bio %></p>
-  </div>
+  <% if @user.bio %>
+    <div class='profile-text-box'>
+      <h1>Bio</h1>
+      <p><%= @user.bio %></p>
+    </div>
+  <% end %>
 
-  <div class='profile-text-box'>
-    <h1>Tweets of Advice to Students</h1>
-    <p><%= @user.advice_to_students %></p>
-  </div>
+  <% if @user.advice_to_students %>
+    <div class='profile-text-box'>
+      <h1>Tweets of Advice to Students</h1>
+      <p><%= @user.advice_to_students %></p>
+    </div>
+  <% end %>
 
-  <div class='profile-text-box'>
-    <h1>Tweets of Advice to Graduates</h1>
-    <p><%= @user.advice_to_graduates %></p>
-  </div>
+  <% if @user.advice_to_graduates %>
+    <div class='profile-text-box'>
+      <h1>Tweets of Advice to Graduates</h1>
+      <p><%= @user.advice_to_graduates %></p>
+    </div>
+  <% end %>
 </div>

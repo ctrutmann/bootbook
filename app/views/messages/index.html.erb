@@ -1,29 +1,46 @@
-<h1> Hey yayayah Hey yayaya</h1>
-<%= @other.name %>
-<%= link_to "View Profile", @other, class: "btn btn-default wide" %>
-​
-<div id="converse">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div>
+        <% if @conversation.variety.variety == 'mentorship' %>
+          <h1><i class="fa fa-graduation-cap" aria-hidden="true"></i> Mentorship Conversation with <%= @other.name %></h1>
+        <% elsif @conversation.variety.variety == 'collaboration' %>
+          <h1><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Collaboration Conversation with <%= @other.name %></h1>
+        <% else %>
+          <h1><i class="fa fa-paper-plane" aria-hidden="true"></i> Conversation with <%= @other.name %></h1>
+        <% end %>
+        <div id="converse">
+        <%= link_to "#{@other.name}'s Profile", @other, class: "btn btn-default wide" %>
+      </div><br>
 
-</div>
-Conversation with <%=@other.name %>
-​<div>
-<% @conversation.messages.each do |message| %>
-  <% if message.user_id == @conversation.sender_id %>
-    <p><strong><%= User.find(@conversation.sender_id).name %></strong> : <%= message.content %></p>
-  <% elsif message.user_id == @conversation.recipient_id %>
-    <p><strong><%= User.find(@conversation.recipient_id).name %></strong> : <%= message.content %></p>
-  <% end %>
-<% end %>
+      <div>
+        <% @conversation.messages.each do |message| %>
+          <% if message.user_id == @conversation.sender_id %>
+           <div class="sender-message">
+            <div class="time-stamp"><%= message.created_at.strftime('%a, %d %b %Y %H:%M:%S') %></div>
+            <p><strong><%= User.find(@conversation.sender_id).name %></strong> : <%= message.content %></p>
+            </div>
+          <% elsif message.user_id == @conversation.recipient_id %>
+            <div class="recipient-message">
+            <div class="time-stamp"><%= message.created_at.strftime('%a, %d %b %Y %H:%M:%S') %></div>
+            <p><strong><%= User.find(@conversation.recipient_id).name %></strong> : <%= message.content %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
 
-</div>
+         <%=form_for [@conversation, @conversation.messages.new] do |f| %>
+           <div class="form-group">
+             <%=f.text_area :content, id: "new_message", placeholder: "Create new message", class: "form-control" %>
+           </div>
+             <%= f.hidden_field :user_id, value: current_user.id %>
+           <div class="action">
+             <%= f.submit "Send Message", class: "btn btn-primary" %>
+           </div>
+         <% end %>
 
-<%=form_for [@conversation, @conversation.messages.new] do |f| %>
-  <div class="form-group">
-    <%=f.text_area :content, id: "new_message", placeholder: "Create new message", class: "form-control" %>
+      </div>
+    </div>
   </div>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-  <div class="action">
-    <%= f.submit "Send Message", class: "btn btn-primary" %>
-  </div>
-<% end %>
+</div>
 
