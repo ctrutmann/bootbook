@@ -1,7 +1,17 @@
 class UsersController < ApplicationController
   def index
     @all_users = User.all.order(name: :asc)
-    @users = User.all.order(name: :asc)
+    @users = User.where(nil)
+
+    filtering_params(params).each do |key, value|
+      @users = @users.city(params[:city]) if params[:city].present?
+      @users = @users.state(params[:state]) if params[:state].present?
+      @users = @users.country(params[:country]) if params[:country].present?
+      @users = @users.cohort(params[:cohort]) if params[:cohort].present?
+      @users = @users.campus(params[:campus]).distinct if params[:campus].present?
+      @users = @users.graduation_date(params[:graduation_date]) if params[:graduation_date].present?
+      @users = @users.interest(params[:interest]) if params[:interest].present?
+    end
   end
 
   def edit
@@ -89,6 +99,10 @@ class UsersController < ApplicationController
     params.require(:interests).permit(
       :interest
     )
+  end
+
+  def filtering_params(parmas)
+    params.slice(:city, :state, :country, :cohort, :interest)
   end
 
 end
