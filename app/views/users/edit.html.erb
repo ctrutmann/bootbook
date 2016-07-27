@@ -7,6 +7,7 @@
             <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 
               <!-- DBC Info -->
+              <h4>Dev Bootcamp Info</h4>
               <div class="form-group">
                 <div class="control-label col-sm-2">
                   <%= f.label :quirk! %>
@@ -25,7 +26,32 @@
                 </div>
               </div>
 
+              <div class="form-group">
+                <div class="control-label col-sm-2">
+                  <%= f.label :cohorts %>
+                </div>
+                <div class="col-sm-8">
+                  <%= fields_for :cohorts do |i| %>
+                  <!-- FUNKY: Make this populate out of the database -->
+                  <%= i.select(:name, [['Nighthawks 2016', 'Nighthawks 2016'], ['Pocket Gophers 2016', 'Pocket Gophers 2016'], ['Fiery Skippers 2016', 'Fiery Skippers 2016']]) %>
+                  <!-- FUNKY: Make this populate out of the database -->
+                  <%= i.select(:campus, [['San Francisco', 'San Francisco']]) %>
+                  <!-- FUNKY: Make this populate out of the database -->
+                  <% end %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="control-label col-sm-2">
+                  <%= f.label :graduate? %>
+                </div>
+                <div class="col-sm-8">
+                  <%= f.check_box :is_graduate %>
+                </div>
+              </div>
+
               <!-- Location Info -->
+              <h4>Location Info</h4>
               <div class="form-group">
                 <div class="control-label col-sm-2">
                   <%= f.label :city %>
@@ -62,26 +88,12 @@
                 </div>
               </div>
 
-              <!-- Cohort Info -->
-              <div class="form-group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :cohorts %>
-                </div>
-                <div class="col-sm-8">
-                  <%= fields_for :cohorts do |i| %>
-                  <!-- FUNKY: Make this populate out of the database -->
-                  <%= i.select(:name, [['Nighthawks 2016', 'Nighthawks 2016'], ['Pocket Gophers 2016', 'Pocket Gophers 2016'], ['Fiery Skippers 2016', 'Fiery Skippers 2016']]) %>
-                  <!-- FUNKY: Make this populate out of the database -->
-                  <%= i.select(:campus, [['San Francisco', 'San Francisco']]) %>
-                  <!-- FUNKY: Make this populate out of the database -->
-                  <% end %>
-                </div>
-              </div>
-
               <!-- The following does not display the first time the user signs in. -->
               <!-- This is a hack-y way of checking whether their primary information has been filled in yet. -->
               <% if current_user.city  %>
+
               <!-- Social Media Links -->
+              <h4>Social Media Links</h4>
 	            <div class="form-group">
                 <div class="control-label col-sm-2">
                   <%= f.label :linkedin %>
@@ -127,41 +139,135 @@
 		            </div>
 		          </div>
 
-	            <div class="form-group">
-	              <div class="col-sm-offset-2 col-sm-10">
-	                <%= f.submit class: "btn btn-default"%>
-	              </div>
-	            </div>
-
 	            <!-- Employment Info -->
-	            <div class="form-group">
-                  <div class="control-label col-sm-2">
-                      <%= f.label :employer %>
-                  </div>
-                  <div class="col-sm-8">
-                      <%= f.text_field :employer, class: "form-control", placeholder: "Enter Employer", autofocus: true %>
-                  </div>
-              </div>
-​
+              <h4>Employment Info</h4>
               <div class="form-group">
-                  <div class="control-label col-sm-2">
-                      <%= f.label :role %>
-                  </div>
-                  <div class="col-sm-8">
-                      <%= f.text_field :role, class: "form-control", placeholder: "Enter role", autofocus: true %>
-                  </div>
-              </div>
-​
-              <div class="form-group">
-                  <div class="control-label col-sm-2">
-                      <%= f.label :salary %>
-                  </div>
-                  <div class="col-sm-8">
-                      <%= f.text_field :salary, class: "form-control", placeholder: "Enter salary", autofocus: true %>
-                  </div>
+                <div class="control-label col-sm-2">
+                  <%= f.label :employment_status %>
+                </div>
+                <div class="col-sm-8">
+                  <%= f.select(:employment_status, [['Unemployed', 'Unemployed'], ['Employed Full-Time', 'Employed Full-Time'], ['Other', 'Other']]) %>
+                </div>
               </div>
 
-            	<% end %>
+	            <div class="form-group">
+                <div class="control-label col-sm-2">
+                  <%= f.label :employer %>
+                </div>
+                <div class="col-sm-8">
+                  <%= f.text_field :employer, class: "form-control", placeholder: "Enter Employer", autofocus: true %>
+                </div>
+              </div>
+​
+              <div class="form-group">
+                <div class="control-label col-sm-2">
+                  <%= f.label :role %>
+                </div>
+                <div class="col-sm-8">
+                  <%= f.text_field :role, class: "form-control", placeholder: "Enter role", autofocus: true %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="control-label col-sm-2">
+                  <%= f.label :salary %>
+                </div>
+                <div class="col-sm-8">
+                  <%= fields_for :salary do |s| %>
+                    <%= s.select(:job_since_DBC, [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]) %>
+                    <%= s.select(:year, [['2012', '2012'], ['2013', '2013'], ['2014', '2014'], ['2015', '2015'], ['2016', '2016']]) %>
+                    <%= s.select(:quarter, [['First', 'First'], ['Second', 'Second'], ['Third', 'Third'], ['Quarter', 'Quarter']]) %>
+                    <%= s.select(:salary, [['$30,000-$39,999', '$30,000-$39,999'], ['$40,000-$49,999', '$40,000-$49,999'], ['$50,000-$59,999', '$50,000-$59,999'], ['$60,000-$69,999', '$60,000-$69,999'], ['$70,000-$79,999', '$70,000-$79,999'], ['$80,000-$89,999', '$80,000-$89,999'], ['$90,000-$99,999', '$90,000-$99,999'], ['$100,000-$109,999', '$100,000-$109,999'], ['$110,000-$119,999', '$110,000-$119,999'], ['$120,000 or More', '$120,000 or More']])%>
+                  <% end %>
+                </div>
+              </div>
+
+              <!-- Notification Preferences -->
+              <h4>Notification Preferences</h4>
+              <div class="form-group">
+                <div class="control-label col-sm-2">
+                  <%= f.label :willing_to_mentor %>
+                </div>
+                <div class="col-sm-8">
+                  <%= f.check_box :willing_to_mentor %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="control-label col-sm-2">
+                  <%= f.label :willing_to_collaborate %>
+                </div>
+                <div class="col-sm-8">
+                  <%= f.check_box :willing_to_collaborate %>
+                </div>
+              </div>
+
+              <!-- Demographic Info -->
+              <h4>Demographic Info</h4>
+                <div class="form-group">
+                  <div class="control-label col-sm-2">
+                    <%= f.label :female_scholarship %>
+                  </div>
+                  <div class="col-sm-8">
+                    <%= f.check_box :female_scholarship %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="control-label col-sm-2">
+                    <%= f.label :poc_scholarship %>
+                  </div>
+                  <div class="col-sm-8">
+                    <%= f.check_box :poc_scholarship %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="control-label col-sm-2">
+                    <%= f.label :lgbtq_scholarship %>
+                  </div>
+                  <div class="col-sm-8">
+                    <%= f.check_box :lgbtq_scholarship %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="control-label col-sm-2">
+                    <%= f.label :veteran_scholarship %>
+                  </div>
+                  <div class="col-sm-8">
+                    <%= f.check_box :veteran_scholarship %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="control-label col-sm-2">
+                    <%= f.label :prior_coding_experience %>
+                  </div>
+                  <div class="col-sm-8">
+                    <%= f.select(:prior_coding_experience, [['None', 'None'], ['Some', 'Some'], ['A Lot', 'A Lot']]) %>
+                  </div>
+                </div>
+
+              <!-- Demographic Info -->
+              <h4>Demographic Info</h4>
+                <div class="form-group">
+                  <div class="control-label col-sm-2">
+                    <%= f.label :female_scholarship %>
+                  </div>
+                  <div class="col-sm-8">
+                    <%= f.check_box :female_scholarship %>
+                  </div>
+                </div>
+
+              <% end %>
+
+              <!-- Submit Button -->
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <%= f.submit class: "btn btn-default"%>
+                </div>
+              </div>
             <% end %>
 
           </div>
