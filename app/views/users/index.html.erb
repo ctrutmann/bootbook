@@ -72,8 +72,9 @@
 </div>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-  <h1 class="page-header">Boots</h1>
-  <div class="row placeholders">
+  <span><h1 class="page-header">Boots</h1><a href="#" id="toggle-view" >Show as Grid</a></span>
+
+  <div id="grid-view" class="row placeholders" style="display: none">
   <%  @users.order('name ASC').each do |user| %>
     <div class="col-xs-6 col-sm-3 placeholder mini-boot-show">
     <a href="users/<%=user.id%>">
@@ -89,4 +90,10 @@
     </div>
   <% end %>
   </div>
+
+  <div id="map-view">
+    <div id="map">
+    </div>
+  </div>
+
 </div>

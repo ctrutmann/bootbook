@@ -13,11 +13,13 @@ class SessionsController < ApplicationController
       if @user
         reset_session
         session[:user_id] = @user.id
+        # session[:index_view_state] = "grid"
         redirect_to user_path(@user)
       else
         @user = User.create_with_omniauth(auth_hash)
         reset_session
         session[:user_id] = @user.id
+        # session[:index_view_state] = "grid"
         flash[:success] = "Quirk!" if !current_user.quirk
         redirect_to edit_user_path(@user) #do something differently here
       end

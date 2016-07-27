@@ -18,6 +18,11 @@ body {
   padding-top: 50px;
 }
 
+#map {
+  width: 600px;
+  height: 600px;
+  border: solid gray 1px;
+}
 
 /*
  * Global add-ons
