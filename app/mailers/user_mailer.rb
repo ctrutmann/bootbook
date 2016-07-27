@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'boots@bootbook.com'
+  default from: 'bootbook.herokuapp.com'
 
   def welcome_email(user)
     @user = user 
