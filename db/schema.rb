@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20160723200402) do
     t.string   "postal_code"
     t.string   "country"
     t.string   "profile_image"
+    t.date     "graduation_date"
     t.boolean  "is_graduate",             default: false
     t.boolean  "is_admin",                default: false
     t.integer  "uid"

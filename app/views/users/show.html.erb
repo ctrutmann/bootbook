@@ -4,6 +4,10 @@
       <img src="<%= @user.profile_image %>" width="200" height="200" class="img-responsive" alt="Boot profile image">
       <h4><%=  @user.name %></h4>
       <span class="text-muted">
+        <% @user.cohorts.reverse.each do |cohort| %>
+          <%= cohort.name %><br>
+        <% end %>
+        <%= @user.cohorts.last.campus %>
         <% if @user.is_graduate %>
           Graduate
         <% else %>
@@ -49,16 +53,7 @@
       <a href="<%= @user.personal_website %>" target="_blank">Personal Website</a>
     <% end %>
   </div>
-  <!-- DBC Info -->
-  <div class='dbc-info'>
-    <p>Quirk: <%= @user.quirk %></p>
-    <p>Love: <%= @user.love %></p>
-    <p><% @user.cohorts.reverse.each do |cohort| %>
-      <%= cohort.name %><br>
-    <% end %>
-    <%= @user.cohorts.last.campus %>
-    </p>
-  </div>
+
   <!-- Location Info -->
   <div class='location-info'>
     <% if @user.country == 'US' %>
@@ -74,6 +69,11 @@
       <p>Role: <%= @user.role %></p>
     </div>
   <% end %>
+  <!-- DBC Info -->
+  <div class='dbc-info'>
+    <p>Quirk: <%= @user.quirk %></p>
+    <p>Love: <%= @user.love %></p>
+  </div>
   <!-- Interests -->
   <div class='interests-info'>
     <p>Interests:<br>

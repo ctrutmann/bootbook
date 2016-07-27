@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+
   def index
-    @all_users = User.all.order(name: :asc)
     @users = User.all
 
+    # FUNKY: These all belongs in users_helper.rb. FROM HERE...
     @cities = []
     User.all.each {|user| @cities << user.city if user.city != nil}
     @cities.sort!.uniq!
@@ -24,12 +25,13 @@ class UsersController < ApplicationController
     @campuses.sort!.uniq!
 
     @graduation_dates = []
-    Cohort.all.each {|cohort| @graduation_dates << cohort.graduation_date.to_s if cohort.graduation_date != nil}
+    User.all.each {|user| @graduation_dates << user.graduation_date if user.graduation_date != nil}
     @graduation_dates.sort!.uniq!
 
     @interests = []
     Interest.all.each {|interest| @interests << interest.interest if interest.interest != nil}
     @interests.sort!.uniq!
+    #... TO HERE.
 
     filtering_params(params).each do |key, value|
       @users = @users.city(params[:city]) if params[:city].present?
@@ -37,14 +39,12 @@ class UsersController < ApplicationController
       @users = @users.country(params[:country]) if params[:country].present?
       @users = @users.cohort(params[:cohort]) if params[:cohort].present?
       @users = @users.campus(params[:campus]).distinct if params[:campus].present?
-      # @users = @users.graduation_date(params[:graduation_date]) if params[:graduation_date].present?
-      @users = scope_real_graduation_date(@users) if params[:graduation_date].present?
+      @users = @users.graduation_date(params[:graduation_date]) if params[:graduation_date].present?
       @users = @users.interest(params[:interest]) if params[:interest].present?
     end
   end
 
   def edit
-    @all_users = User.all.order(name: :asc)
     @user = current_user
   end
 
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
     @user = current_user
     @user.assign_attributes(user_params)
     @cohort = Cohort.where(cohorts_params).first
-    UserCohort.create(user_id: current_user.id, cohort_id: @cohort.id)
+    UserCohort.create(user_id: current_user.id, cohort_id: @cohort.id) if @cohort
 
     if @user.save
       flash[:success] = "You're all updated!"
@@ -64,16 +64,12 @@ class UsersController < ApplicationController
   end
 
   def search
-    @all_users = User.all.order(name: :asc)
     @user = User.find_by(name: params[:boot_name])
-
     redirect_to user_path(@user)
   end
 
   def show
-    @all_users = User.all.order(name: :asc)
     @user = User.find(params[:id])
-    # @user = User.find(user_params)
   end
 
   def delete

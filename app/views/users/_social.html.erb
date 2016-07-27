@@ -1,65 +1,57 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Social!</div>
-                    <div class="panel-body">
-                        <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+<div class="panel-heading">Social!</div>
+    <div class="panel-body">
+        <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 
-                    <div class="form-group">
-                        <div class="control-label col-sm-2">
-                            <%= f.label :linkedin %>
-                        </div>
-                        <div class="col-sm-8">
-                            <%= f.text_field :linkedin, class: "form-control", placeholder: "Enter linkedin", autofocus: true %>
-                        </div>
-                    </div>
-​
-                    <div class="form-group">
-                        <div class="control-label col-sm-2">
-                            <%= f.label :facebook %>
-                        </div>
-                        <div class="col-sm-8">
-                            <%= f.text_field :facebook, class: "form-control", placeholder: "Enter facebook", autofocus: true %>
-                        </div>
-                    </div>
-​
-                    <div class="form-group">
-                        <div class="control-label col-sm-2">
-                            <%= f.label :twitter %>
-                        </div>
-                        <div class="col-sm-8">
-                            <%= f.text_field :twitter, class: "form-control", placeholder: "Enter twitter", autofocus: true %>
-                        </div>
-                    </div>
-​
-                    <div class="form-group">
-                        <div class="control-label col-sm-2">
-                            <%= f.label :employ %>
-                        </div>
-                        <div class="col-sm-8">
-                            <%= f.text_field :employ, class: "form-control", placeholder: "Enter employ", autofocus: true %>
-                        </div>
-                    </div>
-​
-                    <div class="form-group">
-                        <div class="control-label col-sm-2">
-                            <%= f.label :personal_website %>
-                        </div>
-                        <div class="col-sm-8">
-                            <%= f.text_field :personal_website, class: "form-control", placeholder: "Enter personal_website", autofocus: true %>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <%= f.submit class: "btn btn-default"%>
-                        </div>
-                    </div>
-​
-                        <% end %>
-                </div>
-            </div>
+    <div class="form-group">
+        <div class="control-label col-sm-2">
+            <%= f.label :linkedin %>
+        </div>
+        <div class="col-sm-8">
+            <%= f.text_field :linkedin, class: "form-control", placeholder: "Enter linkedin", autofocus: true %>
         </div>
     </div>
+    ​
+    <div class="form-group">
+        <div class="control-label col-sm-2">
+            <%= f.label :facebook %>
+        </div>
+        <div class="col-sm-8">
+            <%= f.text_field :facebook, class: "form-control", placeholder: "Enter facebook", autofocus: true %>
+        </div>
+    </div>
+    ​
+    <div class="form-group">
+        <div class="control-label col-sm-2">
+            <%= f.label :twitter %>
+        </div>
+        <div class="col-sm-8">
+            <%= f.text_field :twitter, class: "form-control", placeholder: "Enter twitter", autofocus: true %>
+        </div>
+    </div>
+    ​
+    <div class="form-group">
+        <div class="control-label col-sm-2">
+            <%= f.label :employ %>
+        </div>
+        <div class="col-sm-8">
+            <%= f.text_field :employ, class: "form-control", placeholder: "Enter employ", autofocus: true %>
+        </div>
+    </div>
+    ​
+    <div class="form-group">
+        <div class="control-label col-sm-2">
+            <%= f.label :personal_website %>
+        </div>
+        <div class="col-sm-8">
+            <%= f.text_field :personal_website, class: "form-control", placeholder: "Enter personal_website", autofocus: true %>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <%= f.submit class: "btn btn-default"%>
+        </div>
+    </div>
+​
+    <% end %>
 </div>
