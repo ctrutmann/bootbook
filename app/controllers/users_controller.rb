@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+
   def index
-    @all_users = User.all.order(name: :asc)
     @users = User.all
 
+    # FUNKY: These all belongs in users_helper.rb. FROM HERE...
     @cities = []
     User.all.each {|user| @cities << user.city if user.city != nil}
     @cities.sort!.uniq!
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
     @interests = []
     Interest.all.each {|interest| @interests << interest.interest if interest.interest != nil}
     @interests.sort!.uniq!
+    #... TO HERE.
 
     filtering_params(params).each do |key, value|
       @users = @users.city(params[:city]) if params[:city].present?
@@ -44,7 +46,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @all_users = User.all.order(name: :asc)
     @user = current_user
   end
 
@@ -64,16 +65,13 @@ class UsersController < ApplicationController
   end
 
   def search
-    @all_users = User.all.order(name: :asc)
     @user = User.find_by(name: params[:boot_name])
 
     redirect_to user_path(@user)
   end
 
   def show
-    @all_users = User.all.order(name: :asc)
     @user = User.find(params[:id])
-    # @user = User.find(user_params)
   end
 
   def delete
