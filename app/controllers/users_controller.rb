@@ -94,7 +94,6 @@ class UsersController < ApplicationController
       :employer,
       :role,
       :bio,
-      :cohort_id,
       :profile_image,
       :female_scholarship,
       :poc_scholarship,
