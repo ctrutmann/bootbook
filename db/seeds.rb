@@ -28,10 +28,10 @@ User.create!(
   profile_image: "https://avatars.githubusercontent.com/u/16233095",
 
   # The rest
-  city: nil,
-  state: nil,
-  postal_code: nil,
-  country: nil,
+  city: "Ithaca",
+  state: "NY",
+  postal_code: "14850",
+  country: "US",
   is_graduate: false,
   is_admin: false,
   love: nil,
@@ -104,10 +104,10 @@ User.create!(
   profile_image: "https://avatars.githubusercontent.com/u/11687064",
 
   # The rest
-  city: nil,
+  city: "Medellin",
   state: nil,
   postal_code: nil,
-  country: nil,
+  country: "Colombia",
   is_graduate: false,
   is_admin: false,
   love: nil,
@@ -118,7 +118,7 @@ User.create!(
   willing_to_mentor: false,
   willing_to_collaborate: false,
   employment_status: 'employed',
-  employer: 'Colombia',
+  employer: 'Cat Wizard',
   role: 'Full Stack Developer',
   linkedin: nil,
   facebook: nil,
@@ -142,10 +142,10 @@ User.create!(
   profile_image: "https://avatars.githubusercontent.com/u/17836164",
 
   # The rest
-  city: nil,
-  state: nil,
-  postal_code: nil,
-  country: nil,
+  city: "Walnut Creek",
+  state: "CA",
+  postal_code: "94597",
+  country: "US",
   is_graduate: false,
   is_admin: false,
   love: nil,
@@ -178,6 +178,10 @@ User.create!(
   name: "Abid Ramay",
   github: "https://github.com/aramay",
   profile_image: "https://avatars.githubusercontent.com/u/9372640",
+  city: "San Jose",
+  state: "CA",
+  postal_code: "94126",
+  country: "US",
   )
 User.create!(
   email: "benjaminhyw@gmail.com",
@@ -186,6 +190,10 @@ User.create!(
   name: "Ben Flores",
   github: "https://github.com/benjaminhyw",
   profile_image: "https://avatars.githubusercontent.com/u/17010773",
+  city: "San Francisco",
+  state: "CA",
+  postal_code: "94102",
+  country: "US",
   )
 User.create!(
   email: "placeholder1@placeholder.com",
@@ -194,6 +202,10 @@ User.create!(
   name: "Chris Wong",
   github: "https://github.com/Chris-Wong-1",
   profile_image: "https://avatars.githubusercontent.com/u/17172981",
+  city: "Berkeley",
+  state: "CA",
+  postal_code: "94720",
+  country: "US",
   )
 User.create!(
   email: "placeholder2@placeholder.com",
@@ -202,6 +214,10 @@ User.create!(
   name: "Chris Otto",
   github: "https://github.com/chrisotto",
   profile_image: "https://avatars.githubusercontent.com/u/9118226",
+  city: "San Francisco",
+  state: "CA",
+  postal_code: "94110",
+  country: "US",
   )
 User.create!(
   email: "placeholder3@placeholder.com",
@@ -210,6 +226,10 @@ User.create!(
   name: "David Ramirez",
   github: "https://github.com/davidthegreat",
   profile_image: "https://avatars.githubusercontent.com/u/9848162",
+  city: "Livingston",
+  state: "CA",
+  postal_code: "95324",
+  country: "US",
   )
 User.create!(
   email: "placeholder4@placeholder.com",
@@ -218,6 +238,10 @@ User.create!(
   name: "Jonathan Hall",
   github: "https://github.com/jlhall",
   profile_image: "https://avatars.githubusercontent.com/u/14889356",
+  city: "Sanibel",
+  state: "FL",
+  postal_code: "33908",
+  country: "US",
   )
 User.create!(
   email: "placeholder5@placeholder.com",
@@ -226,6 +250,10 @@ User.create!(
   name: "Justin Wong",
   github: "https://github.com/justincadburywong",
   profile_image: "https://avatars.githubusercontent.com/u/17437771",
+  city: "Mill Valley",
+  state: "CA",
+  postal_code: "94941",
+  country: "US",
   )
 User.create!(
   email: "placeholder6@placeholder.com",
@@ -234,6 +262,10 @@ User.create!(
   name: "Maxwell Workman",
   github: "https://github.com/maxwellworkman",
   profile_image: "https://avatars.githubusercontent.com/u/17833752",
+  city: "San Francisco",
+  state: "CA",
+  postal_code: "94124",
+  country: "US",
   )
 User.create!(
   email: "placeholder7@placeholder.com",
@@ -242,6 +274,10 @@ User.create!(
   name: "Mikael Teklehaimanot",
   github: "https://github.com/Mikael491",
   profile_image: "https://avatars.githubusercontent.com/u/13858091",
+  city: "San Francisco",
+  state: "CA",
+  postal_code: "94103",
+  country: "US",
   )
 User.create!(
   email: "placeholder8@placeholder.com",
@@ -250,6 +286,10 @@ User.create!(
   name: "Mikey Moore",
   github: "https://github.com/MikeyMoore",
   profile_image: "https://avatars.githubusercontent.com/u/17678683",
+  city: "San Francisco",
+  state: "CA",
+  postal_code: "94103",
+  country: "US",
   )
 User.create!(
   email: "placeholder9@placeholder.com",
@@ -258,6 +298,10 @@ User.create!(
   name: "Paul Haney",
   github: "https://github.com/paulunits",
   profile_image: "https://avatars.githubusercontent.com/u/17859590",
+  city: "Oakland",
+  state: "CA",
+  postal_code: "94612",
+  country: "US",
   )
 User.create!(
   email: "placeholder@placeholder.com",
@@ -266,6 +310,10 @@ User.create!(
   name: "Sam Heinz",
   github: "https://github.com/samheinz",
   profile_image: "https://avatars.githubusercontent.com/u/17881460",
+  city: "Yucca Valley",
+  state: "CA",
+  postal_code: "92284",
+  country: "US",
   )
 User.create!(
   email: "tdfratto@gmail.com",
@@ -274,6 +322,10 @@ User.create!(
   name: "Ted Day-Fratto",
   github: "https://github.com/tedsf",
   profile_image: "https://avatars.githubusercontent.com/u/6332732",
+  city: "Beverly Hills",
+  state: "CA",
+  postal_code: "90210",
+  country: "US",
   )
 
 UserCohort.create!(
