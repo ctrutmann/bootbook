@@ -107,7 +107,7 @@ User.create!(
   city: "Medellin",
   state: nil,
   postal_code: nil,
-  country: "Colombia",
+  country: "CO",
   is_graduate: false,
   is_admin: false,
   love: nil,
