@@ -25,10 +25,12 @@ class MessagesController < ApplicationController
     @conversation = Conversation.find(params[:conversation_id])
     @message = @conversation.messages.new(message_params)
     @messages = @conversation.messages
-    if @message.save
+    if @message.save && @message.content != nil
       @conversation.touch(:updated_at)
       @conversation.save
       redirect_to conversation_messages_path(@conversation)
+    else 
+      redirect_to conversation_messages_path
     end
   end
 
