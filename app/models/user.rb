@@ -17,6 +17,8 @@ class User < ApplicationRecord
   validates_presence_of :name, :email, :uid, :provider
   validates_uniqueness_of :email, :uid
 
+  after_save :set_graduation_date
+
   scope :city, -> (city) do
     where('(users.city = ?)', city)
   end
@@ -69,7 +71,10 @@ class User < ApplicationRecord
     end
   end
 
-  def graduation_date
-    self.cohorts.last.graduation_date.to_s
+  def set_graduation_date
+    if self.is_graduate == true && self.graduation_date != self.cohorts.last.graduation_date
+      self.graduation_date = self.cohorts.last.graduation_date
+      self.save
+    end
   end
 end

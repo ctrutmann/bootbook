@@ -8,6 +8,7 @@ class AddColumnsToUsers < ActiveRecord::Migration[5.0]
     add_column :users, :postal_code, :string
     add_column :users, :country, :string
     add_column :users, :profile_image, :string
+    add_column :users, :graduation_date, :date
     add_column :users, :is_graduate, :boolean, default: false
     add_column :users, :is_admin, :boolean, default: false
 
