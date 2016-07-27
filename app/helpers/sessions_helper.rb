@@ -6,7 +6,9 @@ module SessionsHelper
   def unread_message
     @conversations = Conversation.involving(current_user)
     @conversations.each do |convo|
-      return true if convo.messages.last.read == false && convo.messages.last.user_id != current_user.id
+      if convo.messages.present?
+        return true if convo.messages.last.read == false && convo.messages.last.user_id != current_user.id
+      end
     end
   end
 end
