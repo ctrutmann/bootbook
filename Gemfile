@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'dotenv-rails', :groups => [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
@@ -40,7 +41,6 @@ group :development, :test do
   # gem 'factory_girl_rails'
   # gem 'faker'
   # gem 'rspec-rails'
-  gem 'dotenv-rails'
 end
 
 group :development do
@@ -52,11 +52,12 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-group :production do 
+group :production do
   gem 'omniauth'    #, '~>1.2.2'
-  gem 'omniauth-github' 
+  gem 'omniauth-github'
   gem 'pg'
   gem 'rails_12factor'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
