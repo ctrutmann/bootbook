@@ -437,5 +437,6 @@ Message.create(content: "How's it going?", user_id: 2, conversation_id: 2)
 Message.create(content: "Good and you?", user_id: 3, conversation_id: 2)
 Message.create(content: "Hey there", user_id: 3, conversation_id: 3)
 Message.create(content: "Hi!", user_id: 4, conversation_id: 3)
+Message.create(content: "Hi!", user_id: 4, conversation_id: 4)
 
 
