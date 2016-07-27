@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @campuses.sort!.uniq!
 
     @graduation_dates = []
-    Cohort.all.each {|cohort| @graduation_dates << cohort.graduation_date.to_s if cohort.graduation_date != nil}
+    User.all.each {|user| @graduation_dates << user.graduation_date if user.graduation_date != nil}
     @graduation_dates.sort!.uniq!
 
     @interests = []
@@ -39,8 +39,7 @@ class UsersController < ApplicationController
       @users = @users.country(params[:country]) if params[:country].present?
       @users = @users.cohort(params[:cohort]) if params[:cohort].present?
       @users = @users.campus(params[:campus]).distinct if params[:campus].present?
-      # @users = @users.graduation_date(params[:graduation_date]) if params[:graduation_date].present?
-      @users = scope_real_graduation_date(@users) if params[:graduation_date].present?
+      @users = @users.graduation_date(params[:graduation_date]) if params[:graduation_date].present?
       @users = @users.interest(params[:interest]) if params[:interest].present?
     end
   end

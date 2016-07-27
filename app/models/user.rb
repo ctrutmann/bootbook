@@ -39,18 +39,13 @@ class User < ApplicationRecord
     joins(:cohorts).where('cohorts.campus = ?', campus)
   end
 
-  # scope :graduation_date, -> (graduation_date) do
-  #   where('(users.graduation_date = ?)', graduation_date)
-  # end
-
-  # # working but gets too many
   scope :graduation_date, -> (graduation_date) do
-    joins(:cohorts).where('cohorts.graduation_date = ?', graduation_date)
+    where('(users.graduation_date = ?)', graduation_date)
   end
 
-  # not working but gets too many
+  # # working but gets too many
   # scope :graduation_date, -> (graduation_date) do
-  #   joins(:cohorts).where('(cohorts.graduation_date = ?) AND  ORDER BY cohort.id DESC LIMIT 1)', graduation_date)
+  #   joins(:cohorts).where('cohorts.graduation_date = ?', graduation_date)
   # end
 
   scope :interest, -> (interest) do
@@ -72,7 +67,8 @@ class User < ApplicationRecord
   end
 
   def set_graduation_date
-    if self.is_graduate == true && self.graduation_date != self.cohorts.last.graduation_date
+    if self.is_graduate == true && self.cohorts.last && self.graduation_date != self.cohorts.last.graduation_date
+
       self.graduation_date = self.cohorts.last.graduation_date
       self.save
     end
