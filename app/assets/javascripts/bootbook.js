@@ -1,48 +1,53 @@
 $(document).ready(function() {
   toggleView();
   initMap();
+  usersIndex();
 })
 
-function initMap() {
-  // google.maps.controlStyle = 'azteca' // allow 'old-style' Pan Controls w/ new map; thru Aug '16
-  // var map;
-  myLatLng = {lat: 37.784580, lng: -122.397437};
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: myLatLng,
-    zoom: 11,
-    fullscreenControl: false,
-    // panControl: true, // doesn't work even with 'azteca' - forget about it
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+function usersIndex() {
+  $(".navbar-brand").on("click", function(event) {
+    event.preventDefault();
+    $.ajax({
+      url: '/users',
+      method: 'GET',
+      dataType: 'json'
+    }).done(function(response){
+      console.log(response);
+      initMap();
+
+
+
+    }).fail(function(response){
+      console.log("shit");
+    });
+
   });
+}
 
-  var defaultBounds = new google.maps.LatLngBounds(
-    new google.maps.LatLng(37.784580, -122.397437),
-    new google.maps.LatLng(37.784580, -122.397437)
-  );
-  var options = { bounds: defaultBounds };
 
+
+
+
+function initMap() {
+  if (($('#map').length) > 0) {
+    // google.maps.controlStyle = 'azteca' // allow 'old-style' Pan Controls w/ new map; thru Aug '16
+    // var map;
+    myLatLng = {lat: 37.784580, lng: -122.397437};
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: myLatLng,
+      zoom: 11,
+      fullscreenControl: false,
+      // panControl: true, // doesn't work even with 'azteca' - forget about it
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var defaultBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(37.784580, -122.397437),
+      new google.maps.LatLng(37.784580, -122.397437)
+    );
+    var options = { bounds: defaultBounds };
+    }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function toggleView() {

@@ -41,6 +41,13 @@ class UsersController < ApplicationController
       @users = scope_real_graduation_date(@users) if params[:graduation_date].present?
       @users = @users.interest(params[:interest]) if params[:interest].present?
     end
+
+    # p "***************** @users count: #{@users.length}"
+    if request.xhr?
+      p "************* Oh yeah XHR"
+      render :json => { :filecontent => @users}
+    end
+
   end
 
   def edit
