@@ -24,6 +24,10 @@ body {
   border: solid gray 1px;
 }
 
+.smaller-header-text {
+  font-size: 14px;
+}
+
 /*
  * Global add-ons
  */
