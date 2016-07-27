@@ -43,11 +43,6 @@ class User < ApplicationRecord
     where('(users.graduation_date = ?)', graduation_date)
   end
 
-  # # working but gets too many
-  # scope :graduation_date, -> (graduation_date) do
-  #   joins(:cohorts).where('cohorts.graduation_date = ?', graduation_date)
-  # end
-
   scope :interest, -> (interest) do
     joins(:interests).where('interests.interest = ?', interest)
   end
