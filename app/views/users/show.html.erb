@@ -56,7 +56,7 @@
     <p><% @user.cohorts.reverse.each do |cohort| %>
       <%= cohort.name %><br>
     <% end %>
-    <%= @user.cohorts.last.campus %> '<%= @user.cohorts.last.graduation_date.to_s.slice(2,2) %>
+    <%= @user.cohorts.last.campus %>
     </p>
   </div>
   <!-- Location Info -->

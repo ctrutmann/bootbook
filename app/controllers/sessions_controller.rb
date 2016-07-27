@@ -36,10 +36,9 @@ class SessionsController < ApplicationController
     redirect_to root_url, :alert => "Authentication error: #{params[:message].humanize}"
   end
 
-  # # EFFORTS TO LIMIT USERS TO DEVBOOTCAMP MEMBERS
-  # protected
-  # def auth_hash
-  #   request.env['omniauth.auth']
-  # end
+  protected
+  def auth_hash
+    request.env['omniauth.auth']
+  end
 
 end
