@@ -4,6 +4,10 @@
       <img src="<%= @user.profile_image %>" width="200" height="200" class="img-responsive" alt="Boot profile image">
       <h4><%=  @user.name %></h4>
       <span class="text-muted">
+        <% @user.cohorts.reverse.each do |cohort| %>
+          <%= cohort.name %><br>
+        <% end %>
+        <%= @user.cohorts.last.campus %>
         <% if @user.is_graduate %>
           Graduate
         <% else %>

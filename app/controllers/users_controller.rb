@@ -52,7 +52,7 @@ class UsersController < ApplicationController
     @user = current_user
     @user.assign_attributes(user_params)
     @cohort = Cohort.where(cohorts_params).first
-    UserCohort.create(user_id: current_user.id, cohort_id: @cohort.id)
+    UserCohort.create(user_id: current_user.id, cohort_id: @cohort.id) if @cohort
 
     if @user.save
       flash[:success] = "You're all updated!"
