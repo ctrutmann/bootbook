@@ -29,6 +29,10 @@ class MessagesController < ApplicationController
       @conversation.touch(:updated_at)
       @conversation.save
       redirect_to conversation_messages_path(@conversation)
+      if @conversation.messages.count == 0
+        UserMailer.new_convo(@user).deliver
+      end
+
     else 
       redirect_to conversation_messages_path
     end
