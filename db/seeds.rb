@@ -1,19 +1,19 @@
 # Cohorts
 Cohort.create!(
   # id: 1
-  name: "Fiery Skippers",
+  name: "Fiery Skippers 2016",
   campus: "San Francisco",
   graduation_date: "2016-06-10",
   )
 Cohort.create!(
   # id: 2
-  name: "Pocket Gophers",
+  name: "Pocket Gophers 2016",
   campus: "San Francisco",
   graduation_date: "2016-07-01",
   )
 Cohort.create!(
   # id: 3
-  name: "Nighthawks",
+  name: "Nighthawks 2016",
   campus: "San Francisco",
   graduation_date: "2016-07-29",
   )
@@ -437,5 +437,6 @@ Message.create(content: "How's it going?", user_id: 2, conversation_id: 2)
 Message.create(content: "Good and you?", user_id: 3, conversation_id: 2)
 Message.create(content: "Hey there", user_id: 3, conversation_id: 3)
 Message.create(content: "Hi!", user_id: 4, conversation_id: 3)
+Message.create(content: "Hi!", user_id: 4, conversation_id: 4)
 
 
