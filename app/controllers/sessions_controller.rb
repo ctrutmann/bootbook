@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     # Abbreviations for greping user/orgs: chi, sf, sea, nyc, aus, sd, dc
 
     # if client.org_member?(ENV['ORG_NAME'], client.user.login)
-    #   @user = User.where(:provider => auth_hash['provider'], :uid => auth_hash['uid'].to_s).first
+    @user = User.where(:provider => auth_hash['provider'], :uid => auth_hash['uid'].to_s).first
       if @user
         reset_session
         session[:user_id] = @user.id
