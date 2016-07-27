@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     @all_users = User.all.order(name: :asc)
-    @users = User.where(nil)
+    @users = User.all
 
     @cities = []
     User.all.each {|user| @cities << user.city if user.city != nil}
@@ -16,8 +16,8 @@ class UsersController < ApplicationController
     @countries.sort!.uniq!
 
     @cohorts = []
-    Cohort.all.each {|cohort| @cohorts << cohort.name if cohort.name != nil}
-    @cohorts.sort!.uniq!
+    Cohort.all.order(id: :desc).each {|cohort| @cohorts << cohort.name if cohort.name != nil}
+    @cohorts.uniq!
 
     @campuses = []
     Cohort.all.each {|cohort| @campuses << cohort.campus if cohort.campus != nil}
@@ -37,7 +37,8 @@ class UsersController < ApplicationController
       @users = @users.country(params[:country]) if params[:country].present?
       @users = @users.cohort(params[:cohort]) if params[:cohort].present?
       @users = @users.campus(params[:campus]).distinct if params[:campus].present?
-      @users = @users.graduation_date(params[:graduation_date]) if params[:graduation_date].present?
+      # @users = @users.graduation_date(params[:graduation_date]) if params[:graduation_date].present?
+      @users = scope_real_graduation_date(@users) if params[:graduation_date].present?
       @users = @users.interest(params[:interest]) if params[:interest].present?
     end
   end

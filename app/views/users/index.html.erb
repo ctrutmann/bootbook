@@ -49,12 +49,15 @@
       <% end %>
       </datalist>
 
+      <!-- commented out for now -->
+      <% if false %>
       <input list="find-graduation-date" name="graduation_date" class="form-control" placeholder="Graduation Date" />
       <datalist id="find-graduation-date">
       <% @graduation_dates.each do |graduation_date| %>
         <option value="<%= graduation_date %>"></option>
       <% end %>
       </datalist>
+      <% end %>
 
       <input list="find-interest" name="interest" class="form-control" placeholder="Interest" />
       <datalist id="find-interest">
