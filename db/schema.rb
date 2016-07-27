@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 20160723200402) do
     t.string   "twitter"
     t.string   "employ"
     t.string   "personal_website"
-    t.string   "employment_status",       default: "unemployed"
+    t.string   "employment_status",       default: "Unemployed"
     t.string   "employer"
     t.string   "role"
     t.boolean  "willing_to_mentor",       default: true

@@ -33,7 +33,7 @@ class AddColumnsToUsers < ActiveRecord::Migration[5.0]
     add_column :users, :personal_website, :string
 
     # Employment fields
-    add_column :users, :employment_status, :string, default: "unemployed"
+    add_column :users, :employment_status, :string, default: "Unemployed"
     add_column :users, :employer, :string
     add_column :users, :role, :string
 
