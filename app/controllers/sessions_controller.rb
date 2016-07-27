@@ -13,6 +13,9 @@ class SessionsController < ApplicationController
     if @user
       reset_session
       session[:user_id] = @user.id
+       p '$' * 30
+      UserMailer.welcome_email(@user).deliver_later
+      p '$' * 30
       redirect_to user_path(@user)
     else
       @user = User.create_with_omniauth(auth)

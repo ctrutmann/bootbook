@@ -96,7 +96,7 @@ User.create!(
   )
 User.create!(
   # Bare minimum, gets created when first-time user signs in via GitHub
-  email: "marshyup64@gmail.com",
+  email: "marshall.agharanya@gmail.com",
   uid: "11687064",
   provider: "github",
   name: "Marshall Agharanya",
