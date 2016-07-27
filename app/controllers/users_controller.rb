@@ -1,9 +1,50 @@
 class UsersController < ApplicationController
   def index
+    @all_users = User.all.order(name: :asc)
     @users = User.all
+
+    @cities = []
+    User.all.each {|user| @cities << user.city if user.city != nil}
+    @cities.sort!.uniq!
+
+    @states = []
+    User.all.each {|user| @states << user.state if user.state != nil}
+    @states.sort!.uniq!
+
+    @countries = []
+    User.all.each {|user| @countries << user.country if user.country != nil}
+    @countries.sort!.uniq!
+
+    @cohorts = []
+    Cohort.all.order(id: :desc).each {|cohort| @cohorts << cohort.name if cohort.name != nil}
+    @cohorts.uniq!
+
+    @campuses = []
+    Cohort.all.each {|cohort| @campuses << cohort.campus if cohort.campus != nil}
+    @campuses.sort!.uniq!
+
+    @graduation_dates = []
+    Cohort.all.each {|cohort| @graduation_dates << cohort.graduation_date.to_s if cohort.graduation_date != nil}
+    @graduation_dates.sort!.uniq!
+
+    @interests = []
+    Interest.all.each {|interest| @interests << interest.interest if interest.interest != nil}
+    @interests.sort!.uniq!
+
+    filtering_params(params).each do |key, value|
+      @users = @users.city(params[:city]) if params[:city].present?
+      @users = @users.state(params[:state]) if params[:state].present?
+      @users = @users.country(params[:country]) if params[:country].present?
+      @users = @users.cohort(params[:cohort]) if params[:cohort].present?
+      @users = @users.campus(params[:campus]).distinct if params[:campus].present?
+      # @users = @users.graduation_date(params[:graduation_date]) if params[:graduation_date].present?
+      @users = scope_real_graduation_date(@users) if params[:graduation_date].present?
+      @users = @users.interest(params[:interest]) if params[:interest].present?
+    end
   end
 
   def edit
+    @all_users = User.all.order(name: :asc)
     @user = current_user
   end
 
@@ -22,7 +63,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    @all_users = User.all.order(name: :asc)
+    @user = User.find_by(name: params[:boot_name])
+
+    redirect_to user_path(@user)
+  end
+
   def show
+    @all_users = User.all.order(name: :asc)
     @user = User.find(params[:id])
     # @user = User.find(user_params)
   end
@@ -79,6 +128,10 @@ class UsersController < ApplicationController
     params.require(:interests).permit(
       :interest
     )
+  end
+
+  def filtering_params(params)
+    params.slice(:city, :state, :country, :cohort, :campus, :graduation_date, :interest)
   end
 
 end

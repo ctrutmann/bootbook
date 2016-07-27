@@ -7,7 +7,17 @@ class SessionsController < ApplicationController
 
   def create
     auth = request.env["omniauth.auth"]
-    # @user = User.where(:provider => auth['provider'], :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
+
+    # # EFFORTS TO LIMIT USERS TO DEVBOOTCAMP MEMBERS
+    # p '*************************************************'
+    # p auth
+    # p '*************************************************'
+
+    # client = Octokit::Client.new access_token: auth_hash['credentials']['token']
+
+    # if client.org_member?(ENV['ORG_NAME'], client.user.login)
+    #   p "YAAAAAAYYYYYYYYYYYYYY!!!!!!!!!!"
+    # end
 
     @user = User.where(:provider => auth['provider'], :uid => auth['uid'].to_s).first
     if @user
@@ -31,5 +41,11 @@ class SessionsController < ApplicationController
   def failure
     redirect_to root_url, :alert => "Authentication error: #{params[:message].humanize}"
   end
+
+  # # EFFORTS TO LIMIT USERS TO DEVBOOTCAMP MEMBERS
+  # protected
+  # def auth_hash
+  #   request.env['omniauth.auth']
+  # end
 
 end

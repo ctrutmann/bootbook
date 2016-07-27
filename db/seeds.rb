@@ -1,19 +1,19 @@
 # Cohorts
 Cohort.create!(
   # id: 1
-  name: "Fiery Skippers",
+  name: "Fiery Skippers 2016",
   campus: "San Francisco",
   graduation_date: "2016-06-10",
   )
 Cohort.create!(
   # id: 2
-  name: "Pocket Gophers",
+  name: "Pocket Gophers 2016",
   campus: "San Francisco",
   graduation_date: "2016-07-01",
   )
 Cohort.create!(
   # id: 3
-  name: "Nighthawks",
+  name: "Nighthawks 2016",
   campus: "San Francisco",
   graduation_date: "2016-07-29",
   )
