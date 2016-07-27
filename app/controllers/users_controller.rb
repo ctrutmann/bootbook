@@ -65,7 +65,6 @@ class UsersController < ApplicationController
 
   def search
     @user = User.find_by(name: params[:boot_name])
-
     redirect_to user_path(@user)
   end
 
