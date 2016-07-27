@@ -24,9 +24,7 @@ class User < ApplicationRecord
       user.provider = auth['provider']
       user.uid = auth['uid']
       if auth['info']
-        p '$' * 30
-    UserMailer.welcome_email(@user).deliver_later
-    p '$' * 30
+       
          user.name = auth['info']['name'] || ""
          user.email = auth['info']['email'] || ""
          user.profile_image = auth['info']['image'] || ""
