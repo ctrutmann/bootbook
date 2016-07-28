@@ -1091,293 +1091,293 @@ Cohort.create!(
   graduation_date: "2016-09-09",
   github_org: "sf-red-pandas-2016"
   )
-Cohort.create!(
-  #id: 157
-  name: "Salamanders 2016",
-  campus: "New York City",
-  graduation_date: "2016-09-30",
-  github_org: "nyc-salamanders-2016"
-  )
-Cohort.create!(
-  #id: 158
-  name: "Salamanders 2016",
-  campus: "San Francisco",
-  graduation_date: "2016-09-30",
-  github_org: "sf-salamanders-2016"
-  )
-Cohort.create!(
-  #id: 159
-  name: "Salamanders 2016",
-  campus: "San Diego",
-  graduation_date: "2016-09-30",
-  github_org: "sd-salamanders-2016"
-  )
-Cohort.create!(
-  #id: 160
-  name: "Salamanders 2016",
-  campus: "Chicago",
-  graduation_date: "2016-09-30",
-  github_org: "chi-salamanders-2016"
-  )
-Cohort.create!(
-  #id: 161
-  name: "Salamanders 2016",
-  campus: "Seattle",
-  graduation_date: "2016-07-29",
-  github_org: "sea-salamanders-2016"
-  )
-Cohort.create!(
-  #id: 162
-  name: "Wolves 2016",
-  campus: "New York City",
-  graduation_date: "2016-10-21",
-  github_org: "nyc-wolves-2016"
-  )
-Cohort.create!(
-  #id: 163
-  name: "Wolves 2016",
-  campus: "Chicago",
-  graduation_date: "2016-10-21",
-  github_org: "chi-wolves-2016"
-  )
-Cohort.create!(
-  #id: 164
-  name: "Wolves 2016",
-  campus: "Austin",
-  graduation_date: "2016-08-19",
-  github_org: "aus-wolves-2016"
-  )
-Cohort.create!(
-  #id: 165
-  name: "Wolves 2016",
-  campus: "San Francisco",
-  graduation_date: "2016-10-21",
-  github_org: "sf-wolves-2016"
-  )
-Cohort.create!(
-  #id: 166
-  name: "Bobolinks 2016",
-  campus: "Chicago",
-  graduation_date: "2016-11-11",
-  github_org: "chi-bobolinks-2016"
-  )
-Cohort.create!(
-  #id: 167
-  name: "Bobolinks 2016",
-  campus: "Seattle",
-  graduation_date: "2016-11-11",
-  github_org: "sea-bobolinks-2016"
-  )
-Cohort.create!(
-  #id: 168
-  name: "Bobolinks 2016",
-  campus: "New York City",
-  graduation_date: "2016-11-11",
-  github_org: "nyc-bobolinks-2016"
-  )
-Cohort.create!(
-  #id: 169
-  name: "Bobolinks 2016",
-  campus: "San Diego",
-  graduation_date: "2016-09-09",
-  github_org: "sd-bobolinks-2016"
-  )
-Cohort.create!(
-  #id: 170
-  name: "Bobolinks 2016",
-  campus: "San Francisco",
-  graduation_date: "2016-11-11",
-  github_org: "sf-bobolinks-2016"
-  )
-Cohort.create!(
-  #id: 171
-  name: "Coyotes 2016",
-  campus: "Austin",
-  graduation_date: "2016-12-02",
-  github_org: "aus-coyotes-2016"
-  )
-Cohort.create!(
-  #id: 172
-  name: "Coyotes 2016",
-  campus: "San Francisco",
-  graduation_date: "2016-12-02",
-  github_org: "sf-coyotes-2016"
-  )
-Cohort.create!(
-  #id: 173
-  name: "Coyotes 2016",
-  campus: "New York City",
-  graduation_date: "2016-12-02",
-  github_org: "nyc-coyotes-2016"
-  )
-Cohort.create!(
-  #id: 174
-  name: "Coyotes 2016",
-  campus: "San Diego",
-  graduation_date: "2016-09-30",
-  github_org: "sd-coyotes-2016"
-  )
-Cohort.create!(
-  #id: 175
-  name: "Coyotes 2016",
-  campus: "Chicago",
-  graduation_date: "2016-12-02",
-  github_org: "chi-coyotes-2016"
-  )
-Cohort.create!(
-  #id: 176
-  name: "Chipmunks 2016",
-  campus: "San Diego",
-  graduation_date: "2016-12-23",
-  github_org: "sd-chipmunks-2016"
-  )
-Cohort.create!(
-  #id: 177
-  name: "Chipmunks 2016",
-  campus: "San Francisco",
-  graduation_date: "2016-12-23",
-  github_org: "sf-chipmunks-2016"
-  )
-Cohort.create!(
-  #id: 178
-  name: "Chipmunks 2016",
-  campus: "New York City",
-  graduation_date: "2016-12-23",
-  github_org: "nyc-chipmunks-2016"
-  )
-Cohort.create!(
-  #id: 179
-  name: "Chipmunks 2016",
-  campus: "Chicago",
-  graduation_date: "2016-12-23",
-  github_org: "chi-chipmunks-2016"
-  )
-Cohort.create!(
-  #id: 180
-  name: "Jackrabbits 2017",
-  campus: "Chicago",
-  graduation_date: "2017-01-20",
-  github_org: "chi-jackrabbits-2017"
-  )
-Cohort.create!(
-  #id: 181
-  name: "Jackrabbits 2017",
-  campus: "Washington DC",
-  graduation_date: "2017-01-20",
-  github_org: "dc-jackrabbits-2017"
-  )
-Cohort.create!(
-  #id: 182
-  name: "Jackrabbits 2017",
-  campus: "San Francisco",
-  graduation_date: "2017-01-20",
-  github_org: "sf-jackrabbits-2017"
-  )
-Cohort.create!(
-  #id: 183
-  name: "Jackrabbits 2017",
-  campus: "New York City",
-  graduation_date: "2017-01-20",
-  github_org: "nyc-jackrabbits-2017"
-  )
-Cohort.create!(
-  #id: 184
-  name: "Otters 2017",
-  campus: "New York City",
-  graduation_date: "2017-02-10",
-  github_org: "nyc-otters-2017"
-  )
-Cohort.create!(
-  #id: 185
-  name: "Otters 2017",
-  campus: "San Francisco",
-  graduation_date: "2017-02-10",
-  github_org: "sf-otters-2017"
-  )
-Cohort.create!(
-  #id: 186
-  name: "Otters 2017",
-  campus: "Seattle",
-  graduation_date: "2017-02-10",
-  github_org: "sea-otters-2017"
-  )
-Cohort.create!(
-  #id: 187
-  name: "Otters 2017",
-  campus: "Chicago",
-  graduation_date: "2017-02-10",
-  github_org: "chi-otters-2017"
-  )
-Cohort.create!(
-  #id: 188
-  name: "Squirrels 2017",
-  campus: "San Francisco",
-  graduation_date: "2017-03-03",
-  github_org: "sf-squirrels-2017"
-  )
-Cohort.create!(
-  #id: 189
-  name: "Squirrels 2017",
-  campus: "Chicago",
-  graduation_date: "2017-03-03",
-  github_org: "chi-squirrels-2017"
-  )
-Cohort.create!(
-  #id: 190
-  name: "Squirrels 2017",
-  campus: "Austin",
-  graduation_date: "2017-03-03",
-  github_org: "aus-squirrels-2017"
-  )
-Cohort.create!(
-  #id: 191
-  name: "Squirrels 2017",
-  campus: "New York City",
-  graduation_date: "2017-03-03",
-  github_org: "nyc-squirrels-2017"
-  )
-Cohort.create!(
-  #id: 192
-  name: "Fireflies 2017",
-  campus: "Chicago",
-  graduation_date: "2017-03-24",
-  github_org: "chi-fireflies-2017"
-  )
-Cohort.create!(
-  #id: 193
-  name: "Fireflies 2017",
-  campus: "New York City",
-  graduation_date: "2017-03-24",
-  github_org: "nyc-fireflies-2017"
-  )
-Cohort.create!(
-  #id: 194
-  name: "Fireflies 2017",
-  campus: "San Francisco",
-  graduation_date: "2017-03-24",
-  github_org: "sf-fireflies-2017"
-  )
-Cohort.create!(
-  #id: 195
-  name: "Foxes 2017",
-  campus: "Chicago",
-  graduation_date: "2017-04-14",
-  github_org: "chi-foxes-2017"
-  )
-Cohort.create!(
-  #id: 196
-  name: "Foxes 2017",
-  campus: "San Francisco",
-  graduation_date: "2017-04-14",
-  github_org: "sf-foxes-2017"
-  )
-Cohort.create!(
-  #id: 197
-  name: "Foxes 2017",
-  campus: "New York City",
-  graduation_date: "2017-04-14",
-  github_org: "nyc-foxes-2017"
-  )
+# Cohort.create!(
+#   #id: 157
+#   name: "Salamanders 2016",
+#   campus: "New York City",
+#   graduation_date: "2016-09-30",
+#   github_org: "nyc-salamanders-2016"
+#   )
+# Cohort.create!(
+#   #id: 158
+#   name: "Salamanders 2016",
+#   campus: "San Francisco",
+#   graduation_date: "2016-09-30",
+#   github_org: "sf-salamanders-2016"
+#   )
+# Cohort.create!(
+#   #id: 159
+#   name: "Salamanders 2016",
+#   campus: "San Diego",
+#   graduation_date: "2016-09-30",
+#   github_org: "sd-salamanders-2016"
+#   )
+# Cohort.create!(
+#   #id: 160
+#   name: "Salamanders 2016",
+#   campus: "Chicago",
+#   graduation_date: "2016-09-30",
+#   github_org: "chi-salamanders-2016"
+#   )
+# Cohort.create!(
+#   #id: 161
+#   name: "Salamanders 2016",
+#   campus: "Seattle",
+#   graduation_date: "2016-07-29",
+#   github_org: "sea-salamanders-2016"
+#   )
+# Cohort.create!(
+#   #id: 162
+#   name: "Wolves 2016",
+#   campus: "New York City",
+#   graduation_date: "2016-10-21",
+#   github_org: "nyc-wolves-2016"
+#   )
+# Cohort.create!(
+#   #id: 163
+#   name: "Wolves 2016",
+#   campus: "Chicago",
+#   graduation_date: "2016-10-21",
+#   github_org: "chi-wolves-2016"
+#   )
+# Cohort.create!(
+#   #id: 164
+#   name: "Wolves 2016",
+#   campus: "Austin",
+#   graduation_date: "2016-08-19",
+#   github_org: "aus-wolves-2016"
+#   )
+# Cohort.create!(
+#   #id: 165
+#   name: "Wolves 2016",
+#   campus: "San Francisco",
+#   graduation_date: "2016-10-21",
+#   github_org: "sf-wolves-2016"
+#   )
+# Cohort.create!(
+#   #id: 166
+#   name: "Bobolinks 2016",
+#   campus: "Chicago",
+#   graduation_date: "2016-11-11",
+#   github_org: "chi-bobolinks-2016"
+#   )
+# Cohort.create!(
+#   #id: 167
+#   name: "Bobolinks 2016",
+#   campus: "Seattle",
+#   graduation_date: "2016-11-11",
+#   github_org: "sea-bobolinks-2016"
+#   )
+# Cohort.create!(
+#   #id: 168
+#   name: "Bobolinks 2016",
+#   campus: "New York City",
+#   graduation_date: "2016-11-11",
+#   github_org: "nyc-bobolinks-2016"
+#   )
+# Cohort.create!(
+#   #id: 169
+#   name: "Bobolinks 2016",
+#   campus: "San Diego",
+#   graduation_date: "2016-09-09",
+#   github_org: "sd-bobolinks-2016"
+#   )
+# Cohort.create!(
+#   #id: 170
+#   name: "Bobolinks 2016",
+#   campus: "San Francisco",
+#   graduation_date: "2016-11-11",
+#   github_org: "sf-bobolinks-2016"
+#   )
+# Cohort.create!(
+#   #id: 171
+#   name: "Coyotes 2016",
+#   campus: "Austin",
+#   graduation_date: "2016-12-02",
+#   github_org: "aus-coyotes-2016"
+#   )
+# Cohort.create!(
+#   #id: 172
+#   name: "Coyotes 2016",
+#   campus: "San Francisco",
+#   graduation_date: "2016-12-02",
+#   github_org: "sf-coyotes-2016"
+#   )
+# Cohort.create!(
+#   #id: 173
+#   name: "Coyotes 2016",
+#   campus: "New York City",
+#   graduation_date: "2016-12-02",
+#   github_org: "nyc-coyotes-2016"
+#   )
+# Cohort.create!(
+#   #id: 174
+#   name: "Coyotes 2016",
+#   campus: "San Diego",
+#   graduation_date: "2016-09-30",
+#   github_org: "sd-coyotes-2016"
+#   )
+# Cohort.create!(
+#   #id: 175
+#   name: "Coyotes 2016",
+#   campus: "Chicago",
+#   graduation_date: "2016-12-02",
+#   github_org: "chi-coyotes-2016"
+#   )
+# Cohort.create!(
+#   #id: 176
+#   name: "Chipmunks 2016",
+#   campus: "San Diego",
+#   graduation_date: "2016-12-23",
+#   github_org: "sd-chipmunks-2016"
+#   )
+# Cohort.create!(
+#   #id: 177
+#   name: "Chipmunks 2016",
+#   campus: "San Francisco",
+#   graduation_date: "2016-12-23",
+#   github_org: "sf-chipmunks-2016"
+#   )
+# Cohort.create!(
+#   #id: 178
+#   name: "Chipmunks 2016",
+#   campus: "New York City",
+#   graduation_date: "2016-12-23",
+#   github_org: "nyc-chipmunks-2016"
+#   )
+# Cohort.create!(
+#   #id: 179
+#   name: "Chipmunks 2016",
+#   campus: "Chicago",
+#   graduation_date: "2016-12-23",
+#   github_org: "chi-chipmunks-2016"
+#   )
+# Cohort.create!(
+#   #id: 180
+#   name: "Jackrabbits 2017",
+#   campus: "Chicago",
+#   graduation_date: "2017-01-20",
+#   github_org: "chi-jackrabbits-2017"
+#   )
+# Cohort.create!(
+#   #id: 181
+#   name: "Jackrabbits 2017",
+#   campus: "Washington DC",
+#   graduation_date: "2017-01-20",
+#   github_org: "dc-jackrabbits-2017"
+#   )
+# Cohort.create!(
+#   #id: 182
+#   name: "Jackrabbits 2017",
+#   campus: "San Francisco",
+#   graduation_date: "2017-01-20",
+#   github_org: "sf-jackrabbits-2017"
+#   )
+# Cohort.create!(
+#   #id: 183
+#   name: "Jackrabbits 2017",
+#   campus: "New York City",
+#   graduation_date: "2017-01-20",
+#   github_org: "nyc-jackrabbits-2017"
+#   )
+# Cohort.create!(
+#   #id: 184
+#   name: "Otters 2017",
+#   campus: "New York City",
+#   graduation_date: "2017-02-10",
+#   github_org: "nyc-otters-2017"
+#   )
+# Cohort.create!(
+#   #id: 185
+#   name: "Otters 2017",
+#   campus: "San Francisco",
+#   graduation_date: "2017-02-10",
+#   github_org: "sf-otters-2017"
+#   )
+# Cohort.create!(
+#   #id: 186
+#   name: "Otters 2017",
+#   campus: "Seattle",
+#   graduation_date: "2017-02-10",
+#   github_org: "sea-otters-2017"
+#   )
+# Cohort.create!(
+#   #id: 187
+#   name: "Otters 2017",
+#   campus: "Chicago",
+#   graduation_date: "2017-02-10",
+#   github_org: "chi-otters-2017"
+#   )
+# Cohort.create!(
+#   #id: 188
+#   name: "Squirrels 2017",
+#   campus: "San Francisco",
+#   graduation_date: "2017-03-03",
+#   github_org: "sf-squirrels-2017"
+#   )
+# Cohort.create!(
+#   #id: 189
+#   name: "Squirrels 2017",
+#   campus: "Chicago",
+#   graduation_date: "2017-03-03",
+#   github_org: "chi-squirrels-2017"
+#   )
+# Cohort.create!(
+#   #id: 190
+#   name: "Squirrels 2017",
+#   campus: "Austin",
+#   graduation_date: "2017-03-03",
+#   github_org: "aus-squirrels-2017"
+#   )
+# Cohort.create!(
+#   #id: 191
+#   name: "Squirrels 2017",
+#   campus: "New York City",
+#   graduation_date: "2017-03-03",
+#   github_org: "nyc-squirrels-2017"
+#   )
+# Cohort.create!(
+#   #id: 192
+#   name: "Fireflies 2017",
+#   campus: "Chicago",
+#   graduation_date: "2017-03-24",
+#   github_org: "chi-fireflies-2017"
+#   )
+# Cohort.create!(
+#   #id: 193
+#   name: "Fireflies 2017",
+#   campus: "New York City",
+#   graduation_date: "2017-03-24",
+#   github_org: "nyc-fireflies-2017"
+#   )
+# Cohort.create!(
+#   #id: 194
+#   name: "Fireflies 2017",
+#   campus: "San Francisco",
+#   graduation_date: "2017-03-24",
+#   github_org: "sf-fireflies-2017"
+#   )
+# Cohort.create!(
+#   #id: 195
+#   name: "Foxes 2017",
+#   campus: "Chicago",
+#   graduation_date: "2017-04-14",
+#   github_org: "chi-foxes-2017"
+#   )
+# Cohort.create!(
+#   #id: 196
+#   name: "Foxes 2017",
+#   campus: "San Francisco",
+#   graduation_date: "2017-04-14",
+#   github_org: "sf-foxes-2017"
+#   )
+# Cohort.create!(
+#   #id: 197
+#   name: "Foxes 2017",
+#   campus: "New York City",
+#   graduation_date: "2017-04-14",
+#   github_org: "nyc-foxes-2017"
+#   )
 
 User.create!(
   # Bare minimum, gets created when first-time user signs in via GitHub
