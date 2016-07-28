@@ -32,6 +32,14 @@ body {
   font-size: 18px;
 }
 
+.info-window-content {
+  text-align: center;
+}
+
+.center {
+  align: center;
+}
+
 .smaller-header-text {
   font-size: 14px;
 }
