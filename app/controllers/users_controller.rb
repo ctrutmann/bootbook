@@ -33,8 +33,11 @@ class UsersController < ApplicationController
     @interests.sort!.uniq!
     #... TO HERE.
 
+    p "***********************************"
+    p params[:favorite_boots]
+
     filtering_params(params).each do |key, value|
-      # @users = current_user.followees if params[:favorite_boots].present?
+      @users = current_user.followees if params[:favorite_boots] == '1'
       @users = @users.city(params[:city]) if params[:city].present?
       @users = @users.state(params[:state]) if params[:state].present?
       @users = @users.country(params[:country]) if params[:country].present?
