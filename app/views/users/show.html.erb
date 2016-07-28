@@ -158,22 +158,22 @@
   </div>
 <% end %>
 
-<div>
-  <div class='profile-text-box'>
-    <h1>Bio</h1>
-    <p><%= @user.bio if @user.bio %></p>
-    <% if !@user.bio %>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <% end %>
-  </div>
+  <div>
+    <div class='profile-text-box'>
+      <h2>Bio</h2>
+      <p><%= @user.bio if @user.bio %></p>
+      <% if !@user.bio %>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <% end %>
+    </div>
 
     <div class='profile-text-box'>
-      <h1>Tweets of Advice to Students</h1>
+      <h2>Tweets of Advice to Students</h2>
       <p><%= @user.advice_to_students if @user.advice_to_students %></p>
       <% if !@user.advice_to_students %>
         <p>Be more rad. Play your games. P it out. But also DRY it out. Embrace the confusion. Go to events for the free food but then stay for the event and learn something. Wash your mugs. Go to counseling. Go to yoga. Bring your whole self. Tutu Tuesday. Ask all the questions. The problem has a 93% chance of being a typo. Actionable, specific, and kind feedback. </p>
@@ -181,7 +181,7 @@
     </div>
 
     <div class='profile-text-box'>
-      <h1>Tweets of Advice to Graduates</h1>
+      <h2>Tweets of Advice to Graduates</h2>
       <p><%= @user.advice_to_graduates if @user.advice_to_graduates %></p>
       <% if !@user.advice_to_graduates %>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -192,28 +192,34 @@
         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       <% end %>
     </div>
-</div>
+  </div>
+
   <!-- Favorites -->
-  <% if current_user.id == @user.id && current_user.followees.present? %>
+  <div>
+    <% if current_user.id == @user.id && current_user.followees.present? %>
+    <br>
+    <h2 class="page-header"><i class="glyphicon glyphicon-heart" aria-hidden="true"></i> Favorite Boots</h2>
 
-  <h1 class="page-header"><i class="glyphicon glyphicon-heart" aria-hidden="true"></i> My Favorite Boots  <i class="glyphicon glyphicon-heart" aria-hidden="true"></i> </h1>
-
-  <div class="row placeholders">
-    <%current_user.followees('name ASC').each do |user| %>
-      <div class="col-xs-6 col-sm-3 placeholder mini-boot-show">
-        <a href="<%=user.id%>">
-          <img src="<%= user.profile_image %>" width="200" height="200" class="img-responsive" alt="profile image">
-          <h4><%= user.name %></h4>
-        </a>
-        <span class="text-muted"><%= user.cohorts.last.name %></span><br>
-        <% if user.country == 'US' %>
-          <span class="text-muted"><%= user.city %>, <%= user.state %></span><br>
-        <% else %>
-          <span class="text-muted"><%= user.city %>, <%= user.country %>
-        <% end %>
-      </div>
+    <div class="page-header row placeholders">
+      <%current_user.followees('name ASC').each do |user| %>
+        <div class="col-xs-6 col-sm-3 placeholder mini-boot-show">
+          <a href="<%=user.id%>">
+            <img src="<%= user.profile_image %>" width="200" height="200" class="img-responsive" alt="profile image">
+            <h4><%= user.name %></h4>
+          </a>
+          <span class="text-muted">
+            <%= user.cohorts.last.name %><br>
+            <% if user.country == 'US' %>
+              <%= user.city %>, <%= user.state %><br>
+            <% else %>
+              <%= user.city %>, <%= user.country %>
+            <% end %>
+          </span>
+        </div>
+      <% end %>
+    </div>
     <% end %>
   </div>
-  <% end %>
+</div>
 
 

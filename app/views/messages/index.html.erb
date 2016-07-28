@@ -3,19 +3,38 @@
   <div class="col-sm-3 col-md-2 sidebar">
     <div class="row placeholders-sidebar">
       <div class="col-m-6 col-m-3 placeholder-sidebar">
-        <img src="<%= current_user.profile_image %>" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4><%= current_user.name %></h4>
-        <p><span class="text-muted"><%= current_user.cohorts.last.campus %></span>
-        <span class="text-muted"><%= current_user.cohorts.last.graduation_date.to_s.slice(0,4) %></span>
-          <% current_user.cohorts.each do |cohort| %>
-          <span class="text-muted"><%= cohort.name %></span>
+        <%= link_to(current_user) do %>
+          <div class="col-m-6 col-m-3 placeholder">
+            <img src="<%= current_user.profile_image %>" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+          </div>
         <% end %>
-        </p>
+        <h4><%= current_user.name %></h4>
+        <span class="text-muted">
+          <%= current_user.cohorts.last.name%><br>
+          <%= current_user.cohorts.last.campus %>
+        </span>
+      </div>
+    </div>
+    <div class="row placeholders-sidebar">
+      <div class="col-m-6 col-m-3 placeholder-sidebar">
+        <%= link_to(@other) do %>
+          <div class="col-m-6 col-m-3 placeholder">
+            <img src="<%= @other.profile_image %>" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+          </div>
+        <% end %>
+        <h4><%= @other.name %></h4>
+        <span class="text-muted">
+          <%= @other.cohorts.last.name%><br>
+          <%= @other.cohorts.last.campus %>
+        </span>
       </div>
     </div>
   </div>
+
+
+
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="conversation col-md-6 col-md-offset-3">
       <div>
         <% if @conversation.variety.variety == 'mentorship' %>
           <h1><i class="fa fa-graduation-cap" aria-hidden="true"></i> Mentorship Conversation with <%= @other.name %></h1>
@@ -24,8 +43,7 @@
         <% else %>
           <h1><i class="fa fa-paper-plane" aria-hidden="true"></i> Conversation with <%= @other.name %></h1>
         <% end %>
-        <div id="converse">
-        <%= link_to "#{@other.name}'s Profile", @other, class: "btn btn-default wide" %>
+        <!-- <div id="converse"> -->
       </div><br>
 
       <div>
@@ -53,9 +71,9 @@
              <%= f.submit "Send Message", class: "btn btn-primary" %>
            </div>
          <% end %>
-
       </div>
     </div>
-  </div>
+
+
 </div>
 

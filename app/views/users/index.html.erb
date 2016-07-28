@@ -1,19 +1,16 @@
 <div class="col-sm-3 col-md-2 sidebar">
   <div class="row placeholders-sidebar">
     <div class="col-m-6 col-m-3 placeholder-sidebar">
-      <img src="<%= current_user.profile_image %>" width="200" height="200" class="img-responsive" alt="Boot profile image">
+      <%= link_to(current_user) do %>
+        <div class="col-m-6 col-m-3 placeholder">
+          <img src="<%= current_user.profile_image %>" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+        </div>
+      <% end %>
       <h4><%=  current_user.name %></h4>
-      <span class="text-muted"><%= current_user.cohorts.last.name %>
-        <br>
+      <span class="text-muted">
+        <%= current_user.cohorts.last.name %><br>
         <%= current_user.cohorts.last.campus %>
-        <br>
-        <% if current_user.is_graduate %>
-          Graduate
-        <% else %>
-          Student
-        <% end %>
       </span>
-
     </div>
   </div>
 
