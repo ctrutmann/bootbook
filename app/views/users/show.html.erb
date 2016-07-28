@@ -36,22 +36,6 @@
         <% end %>
       <% end  %>
 
-      <% if current_user.id == @user.id %>
-      <div class="my_favorite_boots">
-      <h4> <i class="glyphicon glyphicon-heart" aria-hidden="true"></i> My Favorite Boots  <i class="glyphicon glyphicon-heart" aria-hidden="true"></i> </h4>
-
-      <% current_user.followers.each do |followee|  %>
-        <a href="<%=followee.id%>"><%= followee.name %></a><br>
-      <% end  %>
-
-      </div>
-
-
-
-
-<!--         <a href="/follows/new"><button type="button" class="btn btn-primary btn-small"><i class="glyphicon glyphicon-heart" aria-hidden="true"></i></button></a>
-        <input type="button" class="btn btn-primary btn-small" name="followee_id" value=<%=@user.id%>/> -->
-      <% end %>
     </div>
   </div>
   <!-- Social Links -->
@@ -173,6 +157,33 @@
     <%= flash[:success] %>
   </div>
 <% end %>
+
+  <% if current_user.id == @user.id %>
+
+
+
+
+  <h1> <i class="glyphicon glyphicon-heart" aria-hidden="true"></i> My Favorite Boots  <i class="glyphicon glyphicon-heart" aria-hidden="true"></i> </h1>
+  <div class="row placeholders">
+  <%  current_user.followees('name ASC').each do |user| %>
+    <div class="col-xs-6 col-sm-3 placeholder mini-boot-show">
+    <a href="<%=user.id%>">
+      <img src="<%= user.profile_image %>" width="200" height="200" class="img-responsive" alt="profile image">
+      <h4><%= user.name %></h4>
+    </a>
+        <span class="text-muted"><%= user.cohorts.last.name %></span><br>
+        <% if user.country == 'US' %>
+          <span class="text-muted"><%= user.city %>, <%= user.state %></span><br>
+        <% else %>
+          <span class="text-muted"><%= user.city %>, <%= user.country %>
+        <% end %>
+    </div>
+  <% end %>
+  </div>
+
+<% end %>
+
+
 
 <div>
   <% if @user.bio %>
