@@ -172,3 +172,11 @@ body {
 .fa-paper-plane {
   color: purple;
 }
+
+/*
+* Conversation (Christel made this part.)
+*/
+
+div .conversation {
+  display: inline-block;
+}

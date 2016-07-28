@@ -14,8 +14,11 @@
       </div>
     </div>
   </div>
+
+
+
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="conversation col-md-6 col-md-offset-3">
       <div>
         <% if @conversation.variety.variety == 'mentorship' %>
           <h1><i class="fa fa-graduation-cap" aria-hidden="true"></i> Mentorship Conversation with <%= @other.name %></h1>
@@ -24,8 +27,7 @@
         <% else %>
           <h1><i class="fa fa-paper-plane" aria-hidden="true"></i> Conversation with <%= @other.name %></h1>
         <% end %>
-        <div id="converse">
-        <%= link_to "#{@other.name}'s Profile", @other, class: "btn btn-default wide" %>
+        <!-- <div id="converse"> -->
       </div><br>
 
       <div>
@@ -53,9 +55,16 @@
              <%= f.submit "Send Message", class: "btn btn-primary" %>
            </div>
          <% end %>
-
+      </div>
+      <div class="conversation col-md-3">
+        <%= link_to(@other) do %>
+          <div class="col-m-6 col-m-3 placeholder">
+            <img src="<%= @other.profile_image %>" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+          </div>
+        <% end %>
       </div>
     </div>
-  </div>
+
+
 </div>
 
