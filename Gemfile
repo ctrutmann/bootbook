@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'dotenv-rails', :groups => [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
@@ -33,6 +34,8 @@ gem 'octokit', '~> 2.0'
 # Use 'strip_attributes' to change blank attributes to nil on validation
 gem 'strip_attributes'
 
+gem 'httparty'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -42,7 +45,6 @@ group :development, :test do
   # gem 'factory_girl_rails'
   # gem 'faker'
   # gem 'rspec-rails'
-  gem 'dotenv-rails'
 end
 
 group :development do
@@ -59,6 +61,7 @@ group :production do
   gem 'omniauth-github'
   gem 'pg'
   gem 'rails_12factor'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -46,6 +46,13 @@ class UsersController < ApplicationController
       @users = @users.graduation_date(params[:graduation_date]) if params[:graduation_date].present?
       @users = @users.interest(params[:interest]) if params[:interest].present?
     end
+
+    if request.xhr?
+      render :json => { :filecontent => @users}
+    else
+      render :index
+    end
+
   end
 
   def edit
