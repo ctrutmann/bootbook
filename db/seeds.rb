@@ -1793,6 +1793,10 @@ UserCohort.create!(
   cohort_id: 137
   )
 
+User.all.each do |user|
+  user.save
+end
+
 Interest.create!(interest: 'Kart Racing')
 Interest.create!(interest: 'Judo')
 Interest.create!(interest: 'Geocaching')
