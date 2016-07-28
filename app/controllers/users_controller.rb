@@ -55,6 +55,7 @@ class UsersController < ApplicationController
     # @cohorts = Cohort.where(cohorts_params)
     # UserCohort.create(user_id: current_user.id, cohort_id: @cohort.id) if @cohorts
     # UserInterest.create(user_id: current_user.id, interest_id: )
+    Salary.create(salary_params)
 
     if @user.save
       flash[:success] = "You're all updated!"
@@ -124,6 +125,15 @@ class UsersController < ApplicationController
   def interests_params
     params.require(:interests).permit(
       :interest
+    )
+  end
+
+  def salary_params
+    params.require(:salary).permit(
+      :salary,
+      :year,
+      :quarter,
+      :job_since_dbc
     )
   end
 
