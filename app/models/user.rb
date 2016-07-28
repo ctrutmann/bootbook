@@ -17,6 +17,9 @@ class User < ApplicationRecord
   validates_presence_of :name, :email, :uid, :provider
   validates_uniqueness_of :email, :uid
 
+  # gem 'strip attributes' method that sets blank ('') fields to nil
+  strip_attributes
+
   after_save :set_graduation_date
 
   scope :city, -> (city) do
@@ -70,4 +73,5 @@ class User < ApplicationRecord
       self.save
     end
   end
+
 end
