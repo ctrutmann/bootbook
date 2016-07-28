@@ -80,6 +80,7 @@ class UsersController < ApplicationController
   def show
     @all_users = User.all.order(name: :asc)
     @user = User.find(params[:id])
+    @am_i_following = Follow.find_by(followee_id: @user.id)
     # @user = User.find(user_params)
   end
 
