@@ -8,37 +8,37 @@
           <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 
           <!-- DBC Info -->
-          <div class='DBC-fields'
-            <h4>Dev Bootcamp Info</h4>
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :quirk! %>
-              </div>
-              <div class="col-sm-8">
-                <%= f.text_field :quirk, class: "form-control", placeholder: "I have a flip phone.", autofocus: true %>
-              </div>
+          <div class='DBC-fields'>
+          <h4>Dev Bootcamp Info</h4>
+          <div class="form-group">
+            <div class="control-label col-sm-2">
+              <%= f.label :quirk! %>
             </div>
-
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :love %>
-              </div>
-              <div class="col-sm-8">
-                <%= f.text_field :love, class: "form-control", placeholder: "Tea!", autofocus: true %>
-              </div>
+            <div class="col-sm-8">
+              <%= f.text_field :quirk, class: "form-control", placeholder: "I have a flip phone.", autofocus: true %>
             </div>
+          </div>
 
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :cohorts %>
-              </div>
-              <div class="col-sm-8">
-                <%= fields_for :cohorts do |c| %>
+          <div class="form-group">
+            <div class="control-label col-sm-2">
+              <%= f.label :love %>
+            </div>
+            <div class="col-sm-8">
+              <%= f.text_field :love, class: "form-control", placeholder: "Tea!", autofocus: true %>
+            </div>
+          </div>
 
-                <%= c.select(:name, options_for_select(Cohort.all.map { |cohort| ["#{cohort.name} - #{cohort.campus}", cohort.id] }),
-                    {},
-                    {multiple: true}) %>
-              <% end %>
+          <div class="form-group">
+            <div class="control-label col-sm-2">
+              <%= f.label :cohorts %>
+            </div>
+            <div class="col-sm-8">
+              <%= fields_for :cohorts do |c| %>
+
+              <%= c.select(:name, options_for_select(Cohort.all.map { |cohort| ["#{cohort.name} - #{cohort.campus}", cohort.id] }),
+                {},
+                {multiple: true}) %>
+                <% end %>
               </div>
             </div>
 
@@ -64,269 +64,270 @@
               </div>
             </div>
 
-            <div class="form-group">
+          <div class="form-group">
               <div class="control-label col-sm-2">
                 <%= f.label :state  %>
               </div>
               <div class="col-sm-8">
                <%= f.select(:state, [['Alaska', 'Alaska'], ['Alabama', 'Alabama'], ['Arkansas', 'Arkansas'], ['Arizona', 'Arizona'], ['California', 'California'], ['Colorado', 'Colorado'], ['Connecticut', 'Connecticut'], ['District of Columbia', 'District of Columbia'], ['Delaware', 'Delaware'], ['Florida', 'Florida'], ['Georgia', 'Georgia'], ['Hawaii', 'Hawaii'], ['Iowa', 'Iowa'], ['Idaho', 'Idaho'], ['Illinois', 'Illinois'], ['Indiana', 'Indiana'], ['Kansas', 'Kansas'], ['Kentucky', 'Kentucky'], ['Louisiana', 'Louisiana'], ['Massachusetts', 'Massachusetts'], ['Maryland', 'Maryland'], ['Maine', 'Maine'], ['Michigan', 'Michigan'], ['Minnesota', 'Minnesota'], ['Missouri', 'Missouri'], ['Mississippi', 'Mississippi'], ['Montana', 'Montana'], ['North Carolina', 'North Carolina'], ['North Dakota', 'North Dakota'], ['Nebraska', 'Nebraska'], ['New Hampshire', 'New Hampshire'], ['New Jersey', 'New Jersey'], ['New Mexico', 'New Mexico'], ['Nevada', 'Nevada'], ['New York', 'New York'], ['Ohio', 'Ohio'], ['Oklahoma', 'Oklahoma'], ['Oregon', 'Oregon'], ['Pennsylvania', 'Pennsylvania'], ['Puerto Rico', 'Puerto Rico'], ['Rhode Island', 'Rhode Island'], ['South Carolina', 'South Carolina'], ['South Dakota', 'South Dakota'], ['Tennessee', 'Tennessee'], ['Texas', 'Texas'], ['Utah', 'Utah'], ['Virginia', 'Virginia'], ['Vermont', 'Vermont'], ['Washington', 'Washington'], ['Wisconsin', 'Wisconsin'], ['West Virginia', 'West Virginia'], ['Wyoming', 'Wyoming'], ['N/A (Non-US)', '']]) %>
-              </div>
-            </div>
+             </div>
+          </div>
 
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :postal_code %>
-              </div>
-              <div class="col-sm-8">
-                <%= f.text_field :postal_code, class: "form-control", placeholder: "Enter Your Postal Code", autofocus: true %>
-              </div>
+          <div class="form-group">
+            <div class="control-label col-sm-2">
+              <%= f.label :postal_code %>
             </div>
-
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :country %>
-              </div>
-              <div class="col-md-4">
-               <%= f.select(:country, [['United States', 'US'], ['Afghanistan', 'AF'], ['Åland Islands', 'AX'], ['Albania', 'AL'], ['Algeria', 'DZ'], ['American Samoa', 'AS'], ['Andorra', 'AD'], ['Angola', 'AO'], ['Anguilla', 'AI'], ['Antarctica', 'AQ'], ['Antigua and Barbuda', 'AG'], ['Argentina', 'AR'], ['Armenia', 'AM'], ['Aruba', 'AW'], ['Australia', 'AU'], ['Austria', 'AT'], ['Azerbaijan', 'AZ'], ['Bahamas', 'BS'], ['Bahrain', 'BH'], ['Bangladesh', 'BD'], ['Barbados', 'BB'], ['Belarus', 'BY'], ['Belgium', 'BE'], ['Belize', 'BZ'], ['Benin', 'BJ'], ['Bermuda', 'BM'], ['Bhutan', 'BT'], ['Bolivia, Plurinational State of', 'BO'], ['Bonaire, Sint Eustatius and Saba', 'BQ'], ['Bosnia and Herzegovina', 'BA'], ['Botswana', 'BW'], ['Bouvet Island', 'BV'], ['Brazil', 'BR'], ['British Indian Ocean Territory', 'IO'], ['Brunei Darussalam', 'BN'], ['Bulgaria', 'BG'], ['Burkina Faso', 'BF'], ['Burundi', 'BI'], ['Cambodia', 'KH'], ['Cameroon', 'CM'], ['Canada', 'CA'], ['Cape Verde', 'CV'], ['Cayman Islands', 'KY'], ['Central African Republic', 'CF'], ['Chad', 'TD'], ['Chile', 'CL'], ['China', 'CN'], ['Christmas Island', 'CX'], ['Cocos (Keeling) Islands', 'CC'], ['Colombia', 'CO'], ['Comoros', 'KM'], ['Congo', 'CG'], ['Congo, the Democratic Republic of the', 'CD'], ['Cook Islands', 'CK'], ['Costa Rica', 'CR'], ['Côte ', 'CI'], ['Croatia', 'HR'], ['Cuba', 'CU'], ['Curaçao', 'CW'], ['Cyprus', 'CY'], ['Czech Republic', 'CZ'], ['Denmark', 'DK'], ['Djibouti', 'DJ'], ['Dominica', 'DM'], ['Dominican Republic', 'DO'], ['Ecuador', 'EC'], ['Egypt', 'EG'], ['El Salvador', 'SV'], ['Equatorial Guinea', 'GQ'], ['Eritrea', 'ER'], ['Estonia', 'EE'], ['Ethiopia', 'ET'], ['Falkland Islands (Malvinas)', 'FK'], ['Faroe Islands', 'FO'], ['Fiji', 'FJ'], ['Finland', 'FI'], ['France', 'FR'], ['French Guiana', 'GF'], ['French Polynesia', 'PF'], ['French Southern Territories', 'TF'], ['Gabon', 'GA'], ['Gambia', 'GM'], ['Georgia', 'GE'], ['Germany', 'DE'], ['Ghana', 'GH'], ['Gibraltar', 'GI'], ['Greece', 'GR'], ['Greenland', 'GL'], ['Grenada', 'GD'], ['Guadeloupe', 'GP'], ['Guam', 'GU'], ['Guatemala', 'GT'], ['Guernsey', 'GG'], ['Guinea', 'GN'], ['Guinea-Bissau', 'GW'], ['Guyana', 'GY'], ['Haiti', 'HT'], ['Heard Island and McDonald Islands', 'HM'], ['Holy See (Vatican City State)', 'VA'], ['Honduras', 'HN'], ['Hong Kong', 'HK'], ['Hungary', 'HU'], ['Iceland', 'IS'], ['India', 'IN'], ['Indonesia', 'ID'], ['Iran, Islamic Republic of', 'IR'], ['Iraq', 'IQ'], ['Ireland', 'IE'], ['Isle of Man', 'IM'], ['Israel', 'IL'], ['Italy', 'IT'], ['Jamaica', 'JM'], ['Japan', 'JP'], ['Jersey', 'JE'], ['Jordan', 'JO'], ['Kazakhstan', 'KZ'], ['Kenya', 'KE'], ['Kiribati', 'KI'], ["Korea, Democratic People's Republic of", 'KP'], ['Korea, Republic of', 'KR'], ['Kuwait', 'KW'], ['Kyrgyzstan', 'KG'], ["Lao People's Democratic Republic", 'LA'], ['Latvia', 'LV'], ['Lebanon', 'LB'], ['Lesotho', 'LS'], ['Liberia', 'LR'], ['Libya', 'LY'], ['Liechtenstein', 'LI'], ['Lithuania', 'LT'], ['Luxembourg', 'LU'], ['Macao', 'MO'], ['Macedonia, the former Yugoslav Republic of', 'MK'], ['Madagascar', 'MG'], ['Malawi', 'MW'], ['Malaysia', 'MY'], ['Maldives', 'MV'], ['Mali', 'ML'], ['Malta', 'MT'], ['Marshall Islands', 'MH'], ['Martinique', 'MQ'], ['Mauritania', 'MR'], ['Mauritius', 'MU'], ['Mayotte', 'YT'], ['Mexico', 'MX'], ['Micronesia, Federated States of', 'FM'], ['Moldova, Republic of', 'MD'], ['Monaco', 'MC'], ['Mongolia', 'MN'], ['Montenegro', 'ME'], ['Montserrat', 'MS'], ['Morocco', 'MA'], ['Mozambique', 'MZ'], ['Myanmar', 'MM'], ['Namibia', 'NA'], ['Nauru', 'NR'], ['Nepal', 'NP'], ['Netherlands', 'NL'], ['New Caledonia', 'NC'], ['New Zealand', 'NZ'], ['Nicaragua', 'NI'], ['Niger', 'NE'], ['Nigeria', 'NG'], ['Niue', 'NU'], ['Norfolk Island', 'NF'], ['Northern Mariana Islands', 'MP'], ['Norway', 'NO'], ['Oman', 'OM'], ['Pakistan', 'PK'], ['Palau', 'PW'], ['Palestinian Territory, Occupied', 'PS'], ['Panama', 'PA'], ['Papua New Guinea', 'PG'], ['Paraguay', 'PY'], ['Peru', 'PE'], ['Philippines', 'PH'], ['Pitcairn', 'PN'], ['Poland', 'PL'], ['Portugal', 'PT'], ['Puerto Rico', 'PR'], ['Qatar', 'QA'], ['Réunion', 'RE'], ['Romania', 'RO'], ['Russian Federation', 'RU'], ['Rwanda', 'RW'], ['Saint Barthélemy', 'BL'], ['Saint Helena, Ascension and Tristan da Cunha', 'SH'], ['Saint Kitts and Nevis', 'KN'], ['Saint Lucia', 'LC'], ['Saint Martin (French part)', 'MF'], ['Saint Pierre and Miquelon', 'PM'], ['Saint Vincent and the Grenadines', 'VC'], ['Samoa', 'WS'], ['San Marino', 'SM'], ['Sao Tome and Principe', 'ST'], ['Saudi Arabia', 'SA'], ['Senegal', 'SN'], ['Serbia', 'RS'], ['Seychelles', 'SC'], ['Sierra Leone', 'SL'], ['Singapore', 'SG'], ['Sint Maarten (Dutch part)', 'SX'], ['Slovakia', 'SK'], ['Slovenia', 'SI'], ['Solomon Islands', 'SB'], ['Somalia', 'SO'], ['South Africa', 'ZA'], ['South Georgia and the South Sandwich Islands', 'GS'], ['South Sudan', 'SS'], ['Spain', 'ES'], ['Sri Lanka', 'LK'], ['Sudan', 'SD'], ['Suriname', 'SR'], ['Svalbard and Jan Mayen', 'SJ'], ['Swaziland', 'SZ'], ['Sweden', 'SE'], ['Switzerland', 'CH'], ['Syrian Arab Republic', 'SY'], ['Taiwan, Province of China', 'TW'], ['Tajikistan', 'TJ'], ['Tanzania, United Republic of', 'TZ'], ['Thailand', 'TH'], ['Timor-Leste', 'TL'], ['Togo', 'TG'], ['Tokelau', 'TK'], ['Tonga', 'TO'], ['Trinidad and Tobago', 'TT'], ['Tunisia', 'TN'], ['Turkey', 'TR'], ['Turkmenistan', 'TM'], ['Turks and Caicos Islands', 'TC'], ['Tuvalu', 'TV'], ['Uganda', 'UG'], ['Ukraine', 'UA'], ['United Arab Emirates', 'AE'], ['United Kingdom', 'GB'], ['United States Minor Outlying Islands', 'UM'], ['Uruguay', 'UY'], ['Uzbekistan', 'UZ'], ['Vanuatu', 'VU'], ['Venezuela, Bolivarian Republic of', 'VE'], ['Viet Nam', 'VN'], ['Virgin Islands, British', 'VG'], ['Virgin Islands, U.S.', 'VI'], ['Wallis and Futuna', 'WF'], ['Western Sahara', 'EH'], ['Yemen', 'YE'], ['Zambia', 'ZM'], ['Zimbabwe', 'ZW']]) %>
-              </div>
+            <div class="col-sm-8">
+              <%= f.text_field :postal_code, class: "form-control", placeholder: "Enter Your Postal Code", autofocus: true %>
             </div>
           </div>
 
-          <!-- The following does not display the first time the user signs in. -->
-          <!-- This is a hack-y way of checking whether their primary information has been filled in yet. -->
-          <% if current_user.city  %>
+          <div class="form-group">
+            <div class="control-label col-sm-2">
+              <%= f.label :country %>
+            </div>
+            <div class="col-md-4">
+             <%= f.select(:country, [['United States', 'US'], ['Afghanistan', 'AF'], ['Åland Islands', 'AX'], ['Albania', 'AL'], ['Algeria', 'DZ'], ['American Samoa', 'AS'], ['Andorra', 'AD'], ['Angola', 'AO'], ['Anguilla', 'AI'], ['Antarctica', 'AQ'], ['Antigua and Barbuda', 'AG'], ['Argentina', 'AR'], ['Armenia', 'AM'], ['Aruba', 'AW'], ['Australia', 'AU'], ['Austria', 'AT'], ['Azerbaijan', 'AZ'], ['Bahamas', 'BS'], ['Bahrain', 'BH'], ['Bangladesh', 'BD'], ['Barbados', 'BB'], ['Belarus', 'BY'], ['Belgium', 'BE'], ['Belize', 'BZ'], ['Benin', 'BJ'], ['Bermuda', 'BM'], ['Bhutan', 'BT'], ['Bolivia, Plurinational State of', 'BO'], ['Bonaire, Sint Eustatius and Saba', 'BQ'], ['Bosnia and Herzegovina', 'BA'], ['Botswana', 'BW'], ['Bouvet Island', 'BV'], ['Brazil', 'BR'], ['British Indian Ocean Territory', 'IO'], ['Brunei Darussalam', 'BN'], ['Bulgaria', 'BG'], ['Burkina Faso', 'BF'], ['Burundi', 'BI'], ['Cambodia', 'KH'], ['Cameroon', 'CM'], ['Canada', 'CA'], ['Cape Verde', 'CV'], ['Cayman Islands', 'KY'], ['Central African Republic', 'CF'], ['Chad', 'TD'], ['Chile', 'CL'], ['China', 'CN'], ['Christmas Island', 'CX'], ['Cocos (Keeling) Islands', 'CC'], ['Colombia', 'CO'], ['Comoros', 'KM'], ['Congo', 'CG'], ['Congo, the Democratic Republic of the', 'CD'], ['Cook Islands', 'CK'], ['Costa Rica', 'CR'], ['Côte ', 'CI'], ['Croatia', 'HR'], ['Cuba', 'CU'], ['Curaçao', 'CW'], ['Cyprus', 'CY'], ['Czech Republic', 'CZ'], ['Denmark', 'DK'], ['Djibouti', 'DJ'], ['Dominica', 'DM'], ['Dominican Republic', 'DO'], ['Ecuador', 'EC'], ['Egypt', 'EG'], ['El Salvador', 'SV'], ['Equatorial Guinea', 'GQ'], ['Eritrea', 'ER'], ['Estonia', 'EE'], ['Ethiopia', 'ET'], ['Falkland Islands (Malvinas)', 'FK'], ['Faroe Islands', 'FO'], ['Fiji', 'FJ'], ['Finland', 'FI'], ['France', 'FR'], ['French Guiana', 'GF'], ['French Polynesia', 'PF'], ['French Southern Territories', 'TF'], ['Gabon', 'GA'], ['Gambia', 'GM'], ['Georgia', 'GE'], ['Germany', 'DE'], ['Ghana', 'GH'], ['Gibraltar', 'GI'], ['Greece', 'GR'], ['Greenland', 'GL'], ['Grenada', 'GD'], ['Guadeloupe', 'GP'], ['Guam', 'GU'], ['Guatemala', 'GT'], ['Guernsey', 'GG'], ['Guinea', 'GN'], ['Guinea-Bissau', 'GW'], ['Guyana', 'GY'], ['Haiti', 'HT'], ['Heard Island and McDonald Islands', 'HM'], ['Holy See (Vatican City State)', 'VA'], ['Honduras', 'HN'], ['Hong Kong', 'HK'], ['Hungary', 'HU'], ['Iceland', 'IS'], ['India', 'IN'], ['Indonesia', 'ID'], ['Iran, Islamic Republic of', 'IR'], ['Iraq', 'IQ'], ['Ireland', 'IE'], ['Isle of Man', 'IM'], ['Israel', 'IL'], ['Italy', 'IT'], ['Jamaica', 'JM'], ['Japan', 'JP'], ['Jersey', 'JE'], ['Jordan', 'JO'], ['Kazakhstan', 'KZ'], ['Kenya', 'KE'], ['Kiribati', 'KI'], ["Korea, Democratic People's Republic of", 'KP'], ['Korea, Republic of', 'KR'], ['Kuwait', 'KW'], ['Kyrgyzstan', 'KG'], ["Lao People's Democratic Republic", 'LA'], ['Latvia', 'LV'], ['Lebanon', 'LB'], ['Lesotho', 'LS'], ['Liberia', 'LR'], ['Libya', 'LY'], ['Liechtenstein', 'LI'], ['Lithuania', 'LT'], ['Luxembourg', 'LU'], ['Macao', 'MO'], ['Macedonia, the former Yugoslav Republic of', 'MK'], ['Madagascar', 'MG'], ['Malawi', 'MW'], ['Malaysia', 'MY'], ['Maldives', 'MV'], ['Mali', 'ML'], ['Malta', 'MT'], ['Marshall Islands', 'MH'], ['Martinique', 'MQ'], ['Mauritania', 'MR'], ['Mauritius', 'MU'], ['Mayotte', 'YT'], ['Mexico', 'MX'], ['Micronesia, Federated States of', 'FM'], ['Moldova, Republic of', 'MD'], ['Monaco', 'MC'], ['Mongolia', 'MN'], ['Montenegro', 'ME'], ['Montserrat', 'MS'], ['Morocco', 'MA'], ['Mozambique', 'MZ'], ['Myanmar', 'MM'], ['Namibia', 'NA'], ['Nauru', 'NR'], ['Nepal', 'NP'], ['Netherlands', 'NL'], ['New Caledonia', 'NC'], ['New Zealand', 'NZ'], ['Nicaragua', 'NI'], ['Niger', 'NE'], ['Nigeria', 'NG'], ['Niue', 'NU'], ['Norfolk Island', 'NF'], ['Northern Mariana Islands', 'MP'], ['Norway', 'NO'], ['Oman', 'OM'], ['Pakistan', 'PK'], ['Palau', 'PW'], ['Palestinian Territory, Occupied', 'PS'], ['Panama', 'PA'], ['Papua New Guinea', 'PG'], ['Paraguay', 'PY'], ['Peru', 'PE'], ['Philippines', 'PH'], ['Pitcairn', 'PN'], ['Poland', 'PL'], ['Portugal', 'PT'], ['Puerto Rico', 'PR'], ['Qatar', 'QA'], ['Réunion', 'RE'], ['Romania', 'RO'], ['Russian Federation', 'RU'], ['Rwanda', 'RW'], ['Saint Barthélemy', 'BL'], ['Saint Helena, Ascension and Tristan da Cunha', 'SH'], ['Saint Kitts and Nevis', 'KN'], ['Saint Lucia', 'LC'], ['Saint Martin (French part)', 'MF'], ['Saint Pierre and Miquelon', 'PM'], ['Saint Vincent and the Grenadines', 'VC'], ['Samoa', 'WS'], ['San Marino', 'SM'], ['Sao Tome and Principe', 'ST'], ['Saudi Arabia', 'SA'], ['Senegal', 'SN'], ['Serbia', 'RS'], ['Seychelles', 'SC'], ['Sierra Leone', 'SL'], ['Singapore', 'SG'], ['Sint Maarten (Dutch part)', 'SX'], ['Slovakia', 'SK'], ['Slovenia', 'SI'], ['Solomon Islands', 'SB'], ['Somalia', 'SO'], ['South Africa', 'ZA'], ['South Georgia and the South Sandwich Islands', 'GS'], ['South Sudan', 'SS'], ['Spain', 'ES'], ['Sri Lanka', 'LK'], ['Sudan', 'SD'], ['Suriname', 'SR'], ['Svalbard and Jan Mayen', 'SJ'], ['Swaziland', 'SZ'], ['Sweden', 'SE'], ['Switzerland', 'CH'], ['Syrian Arab Republic', 'SY'], ['Taiwan, Province of China', 'TW'], ['Tajikistan', 'TJ'], ['Tanzania, United Republic of', 'TZ'], ['Thailand', 'TH'], ['Timor-Leste', 'TL'], ['Togo', 'TG'], ['Tokelau', 'TK'], ['Tonga', 'TO'], ['Trinidad and Tobago', 'TT'], ['Tunisia', 'TN'], ['Turkey', 'TR'], ['Turkmenistan', 'TM'], ['Turks and Caicos Islands', 'TC'], ['Tuvalu', 'TV'], ['Uganda', 'UG'], ['Ukraine', 'UA'], ['United Arab Emirates', 'AE'], ['United Kingdom', 'GB'], ['United States Minor Outlying Islands', 'UM'], ['Uruguay', 'UY'], ['Uzbekistan', 'UZ'], ['Vanuatu', 'VU'], ['Venezuela, Bolivarian Republic of', 'VE'], ['Viet Nam', 'VN'], ['Virgin Islands, British', 'VG'], ['Virgin Islands, U.S.', 'VI'], ['Wallis and Futuna', 'WF'], ['Western Sahara', 'EH'], ['Yemen', 'YE'], ['Zambia', 'ZM'], ['Zimbabwe', 'ZW']]) %>
+           </div>
+         </div>
+       </div>
 
-          <!-- Social Media Links -->
-          <div class='social-media-fields'>
-            <h4>Social Media Links</h4>
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :linkedin %>
-              </div>
-              <div class="col-sm-8">
-                <%= f.text_field :linkedin, class: "form-control", placeholder: "Enter linkedin", autofocus: true %>
-              </div>
-            </div>
-          ​
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :facebook %>
-              </div>
-              <div class="col-sm-8">
-                <%= f.text_field :facebook, class: "form-control", placeholder: "Enter facebook", autofocus: true %>
-              </div>
-            </div>
-          ​
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :twitter %>
-              </div>
-              <div class="col-sm-8">
-                <%= f.text_field :twitter, class: "form-control", placeholder: "Enter twitter", autofocus: true %>
-              </div>
-            </div>
-          ​
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :employ %>
-              </div>
-              <div class="col-sm-8">
-                <%= f.text_field :employ, class: "form-control", placeholder: "Enter employ", autofocus: true %>
-              </div>
-            </div>
-          ​
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :personal_website %>
-              </div>
-              <div class="col-sm-8">
-                <%= f.text_field :personal_website, class: "form-control", placeholder: "Enter personal_website", autofocus: true %>
-              </div>
-            </div>
+       <!-- The following does not display the first time the user signs in. -->
+       <!-- This is a hack-y way of checking whether their primary information has been filled in yet. -->
+       <% if current_user.city  %>
+
+       <!-- Social Media Links -->
+       <div class='social-media-fields'>
+        <h4>Social Media Links</h4>
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :linkedin %>
           </div>
-
-          <!-- Employment Info -->
-          <div class='employment-fields'>
-            <h4>Employment Info</h4>
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :employment_status %>
-              </div>
-              <div class="col-sm-8">
-                <%= f.select(:employment_status, [['Unemployed', 'Unemployed'], ['Employed Full-Time', 'Employed Full-Time'], ['Other', 'Other']]) %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :employer %>
-              </div>
-              <div class="col-sm-8">
-                <%= f.text_field :employer, class: "form-control", placeholder: "Enter Employer", autofocus: true %>
-              </div>
-            </div>
-  ​
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :role %>
-              </div>
-              <div class="col-sm-8">
-                <%= f.text_field :role, class: "form-control", placeholder: "Enter role", autofocus: true %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :salary %>
-              </div>
-              <div class="col-sm-8">
-                <%= fields_for :salary do |s| %>
-                  <%= s.select(:job_since_DBC, [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]) %>
-                  <%= s.select(:year, [['2012', '2012'], ['2013', '2013'], ['2014', '2014'], ['2015', '2015'], ['2016', '2016']]) %>
-                  <%= s.select(:quarter, [['First', 'First'], ['Second', 'Second'], ['Third', 'Third'], ['Quarter', 'Quarter']]) %>
-                  <%= s.select(:salary, [['$30,000-$39,999', '$30,000-$39,999'], ['$40,000-$49,999', '$40,000-$49,999'], ['$50,000-$59,999', '$50,000-$59,999'], ['$60,000-$69,999', '$60,000-$69,999'], ['$70,000-$79,999', '$70,000-$79,999'], ['$80,000-$89,999', '$80,000-$89,999'], ['$90,000-$99,999', '$90,000-$99,999'], ['$100,000-$109,999', '$100,000-$109,999'], ['$110,000-$119,999', '$110,000-$119,999'], ['$120,000 or More', '$120,000 or More']])%>
-                <% end %>
-              </div>
-            </div>
+          <div class="col-sm-8">
+            <%= f.text_field :linkedin, class: "form-control", placeholder: "Enter linkedin", autofocus: true %>
           </div>
-
-          <!-- Notification Preferences -->
-          <div class='notification-fiels'
-            <h4>Notification Preferences</h4>
-            <p>Uncheck if you do not want other boots to contact you about mentoring them or collaborating with them.</p>
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :mentor %>
-              </div>
-              <div class="col-sm-8">
-                <%= f.check_box :willing_to_mentor %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="control-label col-sm-2">
-                <%= f.label :collaborate %>
-              </div>
-              <div class="col-sm-8">
-                <%= f.check_box :willing_to_collaborate %>
-              </div>
-            </div>
+        </div>
+        ​
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :facebook %>
           </div>
-
-          <!-- Demographic Info -->
-          <div class='demographic-fields'>
-            <h4>Demographic Info</h4>
-            <p>This information is private and optional.</p>
-              <div class="form-group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :female_scholarship %>
-                </div>
-                <div class="col-sm-8">
-                  <%= f.check_box :female_scholarship %>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :poc_scholarship %>
-                </div>
-                <div class="col-sm-8">
-                  <%= f.check_box :poc_scholarship %>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :lgbtq_scholarship %>
-                </div>
-                <div class="col-sm-8">
-                  <%= f.check_box :lgbtq_scholarship %>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :veteran_scholarship %>
-                </div>
-                <div class="col-sm-8">
-                  <%= f.check_box :veteran_scholarship %>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :prior_coding_experience %>
-                </div>
-                <div class="col-sm-8">
-                  <%= f.select(:prior_coding_experience, [['None', 'None'], ['Some', 'Some'], ['A Lot', 'A Lot']]) %>
-                </div>
-              </div>
-            </div>
-
-            <!-- Interests -->
-            <div class="interests-fields">
-              <h4>Interests</h4>
-              <div class="form group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :interests %>
-                </div>
-                <div class="col-sm-8">
-                  <%= fields_for :user_interests do |i| %>
-                  <%= i.select(:interest_id, options_for_select(Interest.all.map { |interest| [interest.interest, interest.id] }),
-                    {},
-                    {multiple: true}) %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-            <br>
-
-            <!-- Bio and Advice -->
-            <div class="bio-and-advice-fields">
-              <h4>Tell Everyone All the Things</h4>
-              <!-- Bio -->
-              <div class="form-group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :bio %>
-                </div>
-                <div class="col-sm-8">
-                  <%= f.text_area(:bio, size: "50x10")%>
-                </div>
-              </div>
-
-              <!-- Advice to Students -->
-              <div class="form-group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :advice_to_students %>
-                </div>
-                <div class="col-sm-8">
-                  <%= f.text_area(:advice_to_students, size: "50x10") %>
-                </div>
-              </div>
-
-              <!-- Advice to Graduates -->
-              <div class="form-group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :advice_to_graduates %>
-                </div>
-                <div class="col-sm-8">
-                  <%= f.text_area(:advice_to_graduates, size: "50x10") %>
-                </div>
-              </div>
-            </div>
-
-            <!-- This end's larger part of form that's hidden unless user has filled out  -->
-            <% end %>
-
-            <!-- Submit Button -->
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <%= f.submit class: "btn btn-default"%>
-              </div>
-            </div>
-          <% end %>
+          <div class="col-sm-8">
+            <%= f.text_field :facebook, class: "form-control", placeholder: "Enter facebook", autofocus: true %>
+          </div>
+        </div>
+        ​
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :twitter %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_field :twitter, class: "form-control", placeholder: "Enter twitter", autofocus: true %>
+          </div>
+        </div>
+        ​
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :employ %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_field :employ, class: "form-control", placeholder: "Enter employ", autofocus: true %>
+          </div>
+        </div>
+        ​
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :personal_website %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_field :personal_website, class: "form-control", placeholder: "Enter personal_website", autofocus: true %>
+          </div>
         </div>
       </div>
+
+      <!-- Employment Info -->
+      <div class='employment-fields'>
+        <h4>Employment Info</h4>
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :employment_status %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.select(:employment_status, [['Unemployed', 'Unemployed'], ['Employed Full-Time', 'Employed Full-Time'], ['Other', 'Other']]) %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :employer %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_field :employer, class: "form-control", placeholder: "Enter Employer", autofocus: true %>
+          </div>
+        </div>
+        ​
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :role %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_field :role, class: "form-control", placeholder: "Enter role", autofocus: true %>
+          </div>
+        </div>
+
+        <p>(Salary info is stored separately without association to the user. Like, not even timestamps, people).</p>
+        <div class="form-group">
+
+          <div class="control-label col-sm-2">
+            <%= f.label :salary %>
+          </div>
+          <div class="col-sm-8">
+            <%= fields_for :salary do |s| %>
+            <%= s.select(:job_since_DBC, [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]) %>
+            <%= s.select(:year, [['2012', '2012'], ['2013', '2013'], ['2014', '2014'], ['2015', '2015'], ['2016', '2016']]) %>
+            <%= s.select(:quarter, [['First', 'First'], ['Second', 'Second'], ['Third', 'Third'], ['Quarter', 'Quarter']]) %>
+            <%= s.select(:salary, [['$30,000-$39,999', '$30,000-$39,999'], ['$40,000-$49,999', '$40,000-$49,999'], ['$50,000-$59,999', '$50,000-$59,999'], ['$60,000-$69,999', '$60,000-$69,999'], ['$70,000-$79,999', '$70,000-$79,999'], ['$80,000-$89,999', '$80,000-$89,999'], ['$90,000-$99,999', '$90,000-$99,999'], ['$100,000-$109,999', '$100,000-$109,999'], ['$110,000-$119,999', '$110,000-$119,999'], ['$120,000 or More', '$120,000 or More']])%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notification Preferences -->
+      <div class='notification-fiels'>
+      <h4>Notification Preferences</h4>
+      <p>(Uncheck if you do not want other boots to contact you about mentoring them or collaborating with them.)</p>
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :mentor %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.check_box :willing_to_mentor %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :collaborate %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.check_box :willing_to_collaborate %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demographic Info -->
+    <div class='demographic-fields'>
+      <h4>Demographic Info</h4>
+      <p>(This information is private and optional.)</p>
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :female_scholarship %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.check_box :female_scholarship %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :poc_scholarship %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.check_box :poc_scholarship %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :lgbtq_scholarship %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.check_box :lgbtq_scholarship %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :veteran_scholarship %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.check_box :veteran_scholarship %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :prior_coding_experience %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.select(:prior_coding_experience, [['None', 'None'], ['Some', 'Some'], ['A Lot', 'A Lot']]) %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interests -->
+    <div class="interests-fields">
+      <h4>Interests</h4>
+      <div class="form group">
+        <div class="control-label col-sm-2">
+          <%= f.label :interests %>
+        </div>
+        <div class="col-sm-10">
+          <%= fields_for :user_interests do |i| %>
+          <%= i.select(:interest_id, options_for_select(Interest.all.map { |interest| [interest.interest, interest.id] }),
+            {},
+            {multiple: true}) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <!-- Bio and Advice -->
+      <div class="bio-and-advice-fields">
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :bio %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_area(:bio, size: "50x10")%>
+          </div>
+        </div>
+
+        <!-- Advice to Students -->
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :advice_to_students %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_area(:advice_to_students, size: "50x10") %>
+          </div>
+        </div>
+
+        <!-- Advice to Graduates -->
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :advice_to_graduates %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_area(:advice_to_graduates, size: "50x10") %>
+          </div>
+        </div>
+      </div>
+
+      <!-- This end's larger part of form that's hidden unless user has filled out  -->
+      <% end %>
+
+      <% if !current_user.city %>
+        <p>(None of this info is officially required by fancy validations or anything like that, but listen, you can't edit anything else on your profile until you make an effort here.)</p>
+      <% end %>
+      <!-- Submit Button -->
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <%= f.submit class: "btn btn-default"%>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
