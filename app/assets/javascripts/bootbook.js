@@ -57,13 +57,38 @@ function formatDataAndPlaceMarker(users) {
       }
     };
 
-    infoWindowContent = constructInfoWindowContent(profile_image, name, userPageLink, locationString);
-    console.log(infoWindowContent)
+    var infoWindowContent = constructInfoWindowContent(profile_image, name, userPageLink, locationString);
+    // console.log(infoWindowContent)
+
+    var userLatLng = geocode(locationString);
 
     // call set marker here, with locationString & infoWindowContent
 
   });
 }
+
+function geocode(locationString) {
+  var queryString = {locationString: locationString}
+  $.ajax({
+    url: '/geocode',
+    method: 'GET',
+    data: queryString,
+    dataType: 'json'
+  }).done(function(response){
+    actualResponse = response.response.results[0];
+    latLng = actualResponse.geometry.location;
+    console.log(latLng);
+    return latLng;
+  }).fail(function(response){
+    console.log("shit");
+  });
+}
+
+
+
+
+
+
 
 function constructInfoWindowContent(profile_image, name, userPageLink, locationString) {
   contentString =
@@ -75,14 +100,6 @@ function constructInfoWindowContent(profile_image, name, userPageLink, locationS
     '</div>';
     return contentString;
 }
-
-
-
-
-
-
-
-
 
 function initMap() {
   if (($('#map').length) > 0) {

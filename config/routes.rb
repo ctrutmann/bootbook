@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     get 'search', :on => :collection
   end
 
+  # custom AJAX-only route to geocode user locations (get latLng)
+  get '/geocode' => 'geocode#geocode', :as => :geocode
+
   # # works
   # get '/users/search' =>'users#search', :as => :search
 

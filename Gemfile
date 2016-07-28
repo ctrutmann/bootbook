@@ -32,6 +32,8 @@ gem 'omniauth'    #, '~>1.2.2'
 gem 'omniauth-github'
 gem 'octokit', '~> 2.0'
 
+gem 'httparty'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
