@@ -1,102 +1,333 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-primary">
-        <div class="panel-heading">Update Your BootBook Profile</div>
-          <div class="panel-body">
-            <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+        <div class="panel-heading"><strong>Hi <%= @user.name.split(' ').shift %>!</strong></div>
+        <div class="panel-body">
+          <!-- MASSIVE USER EDIT FORM!!! -->
+          <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 
-              <!-- Personal Info -->
-              <div class="form-group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :name %>
-                </div>
-                <div class="col-sm-8">
-                  <%= f.text_field :name, class: "form-control", placeholder: "Enter Name", autofocus: true %>
-                </div>
+          <!-- DBC Info -->
+          <div class='DBC-fields'>
+          <h4>Dev Bootcamp Info</h4>
+          <div class="form-group">
+            <div class="control-label col-sm-2">
+              <%= f.label :quirk! %>
+            </div>
+            <div class="col-sm-8">
+              <%= f.text_field :quirk, class: "form-control", placeholder: "I have a flip phone.", autofocus: true %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="control-label col-sm-2">
+              <%= f.label :love %>
+            </div>
+            <div class="col-sm-8">
+              <%= f.text_field :love, class: "form-control", placeholder: "Tea!", autofocus: true %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="control-label col-sm-2">
+              <%= f.label :cohorts %>
+            </div>
+            <div class="col-sm-8">
+              <%= fields_for :cohorts do |c| %>
+
+              <%= c.select(:id, options_for_select(Cohort.all.map { |cohort| ["#{cohort.name} - #{cohort.campus}", cohort.id] }),
+                {},
+                {multiple: true}) %>
+                <% end %>
               </div>
+            </div>
 
-              <div class="form-group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :quirk! %>
-                </div>
-                <div class="col-sm-8">
-                  <%= f.text_field :quirk, class: "form-control", placeholder: "I have a flip phone.", autofocus: true %>
-                </div>
+            <div class="form-group">
+              <div class="control-label col-sm-2">
+                <%= f.label :graduate? %>
               </div>
-
-              <div class="form-group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :love %>
-                </div>
-                <div class="col-sm-8">
-                  <%= f.text_field :love, class: "form-control", placeholder: "Tea.", autofocus: true %>
-                </div>
+              <div class="col-sm-8">
+                <%= f.check_box :is_graduate %>
               </div>
+            </div>
+          </div>
 
-              <div class="form-group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :city %>
-                </div>
-                <div class="col-sm-8">
-                  <%= f.text_field :city, class: "form-control", placeholder: "Enter Your City", autofocus: true %>
-                </div>
+          <!-- Location Info -->
+          <div class='location-fields'>
+            <h4>Location Info</h4>
+            <div class="form-group">
+              <div class="control-label col-sm-2">
+                <%= f.label :city %>
               </div>
-
-              <div class="form-group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :state  %>
-                </div>
-                <div class="col-sm-8">
-                 <%= f.select(:state, [['Alaska', 'AK'], ['Alabama', 'AL'], ['Arkansas', 'AR'], ['Arizona', 'AZ'], ['California', 'CA'], ['Colorado', 'CO'], ['Connecticut', 'CT'], ['District of Columbia', 'DC'], ['Delaware', 'DE'], ['Florida', 'FL'], ['Georgia', 'GA'], ['Hawaii', 'HI'], ['Iowa', 'IA'], ['Idaho', 'ID'], ['Illinois', 'IL'], ['Indiana', 'IN'], ['Kansas', 'KS'], ['Kentucky', 'KY'], ['Louisiana', 'LA'], ['Massachusetts', 'MA'], ['Maryland', 'MD'], ['Maine', 'ME'], ['Michigan', 'MI'], ['Minnesota', 'MN'], ['Missouri', 'MO'], ['Mississippi', 'MS'], ['Montana', 'MT'], ['North Carolina', 'NC'], ['North Dakota', 'ND'], ['Nebraska', 'NE'], ['New Hampshire', 'NH'], ['New Jersey', 'NJ'], ['New Mexico', 'NM'], ['Nevada', 'NV'], ['New York', 'NY'], ['Ohio', 'OH'], ['Oklahoma', 'OK'], ['Oregon', 'OR'], ['Pennsylvania', 'PA'], ['Puerto Rico', 'PR'], ['Rhode Island', 'RI'], ['South Carolina', 'SC'], ['South Dakota', 'SD'], ['Tennessee', 'TN'], ['Texas', 'TX'], ['Utah', 'UT'], ['Virginia', 'VA'], ['Vermont', 'VT'], ['Washington', 'WA'], ['Wisconsin', 'WI'], ['West Virginia', 'WV'], ['Wyoming', 'WY'], ['N/A (Non-US)', '']]) %>
-                </div>
+              <div class="col-sm-8">
+                <%= f.text_field :city, class: "form-control", placeholder: "Enter Your City", autofocus: true %>
               </div>
+            </div>
 
-              <div class="form-group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :postal_code %>
-                </div>
-                <div class="col-sm-8">
-                  <%= f.text_field :postal_code, class: "form-control", placeholder: "Enter Your Postal Code", autofocus: true %>
-                </div>
+          <div class="form-group">
+              <div class="control-label col-sm-2">
+                <%= f.label :state  %>
               </div>
+              <div class="col-sm-8">
+               <%= f.select(:state, [['Alaska', 'Alaska'], ['Alabama', 'Alabama'], ['Arkansas', 'Arkansas'], ['Arizona', 'Arizona'], ['California', 'California'], ['Colorado', 'Colorado'], ['Connecticut', 'Connecticut'], ['District of Columbia', 'District of Columbia'], ['Delaware', 'Delaware'], ['Florida', 'Florida'], ['Georgia', 'Georgia'], ['Hawaii', 'Hawaii'], ['Iowa', 'Iowa'], ['Idaho', 'Idaho'], ['Illinois', 'Illinois'], ['Indiana', 'Indiana'], ['Kansas', 'Kansas'], ['Kentucky', 'Kentucky'], ['Louisiana', 'Louisiana'], ['Massachusetts', 'Massachusetts'], ['Maryland', 'Maryland'], ['Maine', 'Maine'], ['Michigan', 'Michigan'], ['Minnesota', 'Minnesota'], ['Missouri', 'Missouri'], ['Mississippi', 'Mississippi'], ['Montana', 'Montana'], ['North Carolina', 'North Carolina'], ['North Dakota', 'North Dakota'], ['Nebraska', 'Nebraska'], ['New Hampshire', 'New Hampshire'], ['New Jersey', 'New Jersey'], ['New Mexico', 'New Mexico'], ['Nevada', 'Nevada'], ['New York', 'New York'], ['Ohio', 'Ohio'], ['Oklahoma', 'Oklahoma'], ['Oregon', 'Oregon'], ['Pennsylvania', 'Pennsylvania'], ['Puerto Rico', 'Puerto Rico'], ['Rhode Island', 'Rhode Island'], ['South Carolina', 'South Carolina'], ['South Dakota', 'South Dakota'], ['Tennessee', 'Tennessee'], ['Texas', 'Texas'], ['Utah', 'Utah'], ['Virginia', 'Virginia'], ['Vermont', 'Vermont'], ['Washington', 'Washington'], ['Wisconsin', 'Wisconsin'], ['West Virginia', 'West Virginia'], ['Wyoming', 'Wyoming'], ['N/A (Non-US)', '']]) %>
+             </div>
+          </div>
 
-              <div class="form-group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :country %>
-                </div>
-                <div class="col-md-4">
-                 <%= f.select(:country, [["United States", "United States"], ["Afghanistan", "Afghanistan"], ["Åland Islands", "Åland Islands"], ["Albania", "Albania"], ["Algeria", "Algeria"], ["American Samoa", "American Samoa"], ["Andorra", "Andorra"], ["Angola", "Angola"], ["Anguilla", "Anguilla"], ["Antarctica", "Antarctica"], ["Antigua and Barbuda", "Antigua and Barbuda"], ["Argentina", "Argentina"], ["Armenia", "Armenia"], ["Aruba", "Aruba"], ["Australia", "Australia"], ["Austria", "Austria"], ["Azerbaijan", "Azerbaijan"], ["Bahamas", "Bahamas"], ["Bahrain", "Bahrain"], ["Bangladesh", "Bangladesh"], ["Barbados", "Barbados"], ["Belarus", "Belarus"], ["Belgium", "Belgium"], ["Belize", "Belize"], ["Benin", "Benin"], ["Bermuda", "Bermuda"], ["Bhutan", "Bhutan"], ["Bolivia, Plurinational State of", "Bolivia, Plurinational State of"], ["Bonaire, Sint Eustatius and Saba", "Bonaire, Sint Eustatius and Saba"], ["Bosnia and Herzegovina", "Bosnia and Herzegovina"], ["Botswana", "Botswana"], ["Bouvet Island", "Bouvet Island"], ["Brazil", "Brazil"], ["British Indian Ocean Territory", "British Indian Ocean Territory"], ["Brunei Darussalam", "Brunei Darussalam"], ["Bulgaria", "Bulgaria"], ["Burkina Faso", "Burkina Faso"], ["Burundi", "Burundi"], ["Cambodia", "Cambodia"], ["Cameroon", "Cameroon"], ["Canada", "Canada"], ["Cape Verde", "Cape Verde"], ["Cayman Islands", "Cayman Islands"], ["Central African Republic", "Central African Republic"], ["Chad", "Chad"], ["Chile", "Chile"], ["China", "China"], ["Christmas Island", "Christmas Island"], ["Cocos (Keeling) Islands", "Cocos (Keeling) Islands"], ["Colombia", "Colombia"], ["Comoros", "Comoros"], ["Congo", "Congo"], ["Congo, the Democratic Republic of the", "Congo, the Democratic Republic of the"], ["Cook Islands", "Cook Islands"], ["Costa Rica", "Costa Rica"], ["Côte ", "Côte "], ["Croatia", "Croatia"], ["Cuba", "Cuba"], ["Curaçao", "Curaçao"], ["Cyprus", "Cyprus"], ["Czech Republic", "Czech Republic"], ["Denmark", "Denmark"], ["Djibouti", "Djibouti"], ["Dominica", "Dominica"], ["Dominican Republic", "Dominican Republic"], ["Ecuador", "Ecuador"], ["Egypt", "Egypt"], ["El Salvador", "El Salvador"], ["Equatorial Guinea", "Equatorial Guinea"], ["Eritrea", "Eritrea"], ["Estonia", "Estonia"], ["Ethiopia", "Ethiopia"], ["Falkland Islands (Malvinas)", "Falkland Islands (Malvinas)"], ["Faroe Islands", "Faroe Islands"], ["Fiji", "Fiji"], ["Finland", "Finland"], ["France", "France"], ["French Guiana", "French Guiana"], ["French Polynesia", "French Polynesia"], ["French Southern Territories", "French Southern Territories"], ["Gabon", "Gabon"], ["Gambia", "Gambia"], ["Georgia", "Georgia"], ["Germany", "Germany"], ["Ghana", "Ghana"], ["Gibraltar", "Gibraltar"], ["Greece", "Greece"], ["Greenland", "Greenland"], ["Grenada", "Grenada"], ["Guadeloupe", "Guadeloupe"], ["Guam", "Guam"], ["Guatemala", "Guatemala"], ["Guernsey", "Guernsey"], ["Guinea", "Guinea"], ["Guinea-Bissau", "Guinea-Bissau"], ["Guyana", "Guyana"], ["Haiti", "Haiti"], ["Heard Island and McDonald Islands", "Heard Island and McDonald Islands"], ["Holy See (Vatican City State)", "Holy See (Vatican City State)"], ["Honduras", "Honduras"], ["Hong Kong", "Hong Kong"], ["Hungary", "Hungary"], ["Iceland", "Iceland"], ["India", "India"], ["Indonesia", "Indonesia"], ["Iran, Islamic Republic of", "Iran, Islamic Republic of"], ["Iraq", "Iraq"], ["Ireland", "Ireland"], ["Isle of Man", "Isle of Man"], ["Israel", "Israel"], ["Italy", "Italy"], ["Jamaica", "Jamaica"], ["Japan", "Japan"], ["Jersey", "Jersey"], ["Jordan", "Jordan"], ["Kazakhstan", "Kazakhstan"], ["Kenya", "Kenya"], ["Kiribati", "Kiribati"], ["Korea, Democratic People's Republic of", "Korea, Democratic People's Republic of"], ["Korea, Republic of", "Korea, Republic of"], ["Kuwait", "Kuwait"], ["Kyrgyzstan", "Kyrgyzstan"], ["Lao People's Democratic Republic", "Lao People's Democratic Republic"], ["Latvia", "Latvia"], ["Lebanon", "Lebanon"], ["Lesotho", "Lesotho"], ["Liberia", "Liberia"], ["Libya", "Libya"], ["Liechtenstein", "Liechtenstein"], ["Lithuania", "Lithuania"], ["Luxembourg", "Luxembourg"], ["Macao", "Macao"], ["Macedonia, the former Yugoslav Republic of", "Macedonia, the former Yugoslav Republic of"], ["Madagascar", "Madagascar"], ["Malawi", "Malawi"], ["Malaysia", "Malaysia"], ["Maldives", "Maldives"], ["Mali", "Mali"], ["Malta", "Malta"], ["Marshall Islands", "Marshall Islands"], ["Martinique", "Martinique"], ["Mauritania", "Mauritania"], ["Mauritius", "Mauritius"], ["Mayotte", "Mayotte"], ["Mexico", "Mexico"], ["Micronesia, Federated States of", "Micronesia, Federated States of"], ["Moldova, Republic of", "Moldova, Republic of"], ["Monaco", "Monaco"], ["Mongolia", "Mongolia"], ["Montenegro", "Montenegro"], ["Montserrat", "Montserrat"], ["Morocco", "Morocco"], ["Mozambique", "Mozambique"], ["Myanmar", "Myanmar"], ["Namibia", "Namibia"], ["Nauru", "Nauru"], ["Nepal", "Nepal"], ["Netherlands", "Netherlands"], ["New Caledonia", "New Caledonia"], ["New Zealand", "New Zealand"], ["Nicaragua", "Nicaragua"], ["Niger", "Niger"], ["Nigeria", "Nigeria"], ["Niue", "Niue"], ["Norfolk Island", "Norfolk Island"], ["Northern Mariana Islands", "Northern Mariana Islands"], ["Norway", "Norway"], ["Oman", "Oman"], ["Pakistan", "Pakistan"], ["Palau", "Palau"], ["Palestinian Territory, Occupied", "Palestinian Territory, Occupied"], ["Panama", "Panama"], ["Papua New Guinea", "Papua New Guinea"], ["Paraguay", "Paraguay"], ["Peru", "Peru"], ["Philippines", "Philippines"], ["Pitcairn", "Pitcairn"], ["Poland", "Poland"], ["Portugal", "Portugal"], ["Puerto Rico", "Puerto Rico"], ["Qatar", "Qatar"], ["Réunion", "Réunion"], ["Romania", "Romania"], ["Russian Federation", "Russian Federation"], ["Rwanda", "Rwanda"], ["Saint Barthélemy", "Saint Barthélemy"], ["Saint Helena, Ascension and Tristan da Cunha", "Saint Helena, Ascension and Tristan da Cunha"], ["Saint Kitts and Nevis", "Saint Kitts and Nevis"], ["Saint Lucia", "Saint Lucia"], ["Saint Martin (French part)", "Saint Martin (French part)"], ["Saint Pierre and Miquelon", "Saint Pierre and Miquelon"], ["Saint Vincent and the Grenadines", "Saint Vincent and the Grenadines"], ["Samoa", "Samoa"], ["San Marino", "San Marino"], ["Sao Tome and Principe", "Sao Tome and Principe"], ["Saudi Arabia", "Saudi Arabia"], ["Senegal", "Senegal"], ["Serbia", "Serbia"], ["Seychelles", "Seychelles"], ["Sierra Leone", "Sierra Leone"], ["Singapore", "Singapore"], ["Sint Maarten (Dutch part)", "Sint Maarten (Dutch part)"], ["Slovakia", "Slovakia"], ["Slovenia", "Slovenia"], ["Solomon Islands", "Solomon Islands"], ["Somalia", "Somalia"], ["South Africa", "South Africa"], ["South Georgia and the South Sandwich Islands", "South Georgia and the South Sandwich Islands"], ["South Sudan", "South Sudan"], ["Spain", "Spain"], ["Sri Lanka", "Sri Lanka"], ["Sudan", "Sudan"], ["Suriname", "Suriname"], ["Svalbard and Jan Mayen", "Svalbard and Jan Mayen"], ["Swaziland", "Swaziland"], ["Sweden", "Sweden"], ["Switzerland", "Switzerland"], ["Syrian Arab Republic", "Syrian Arab Republic"], ["Taiwan, Province of China", "Taiwan, Province of China"], ["Tajikistan", "Tajikistan"], ["Tanzania, United Republic of", "Tanzania, United Republic of"], ["Thailand", "Thailand"], ["Timor-Leste", "Timor-Leste"], ["Togo", "Togo"], ["Tokelau", "Tokelau"], ["Tonga", "Tonga"], ["Trinidad and Tobago", "Trinidad and Tobago"], ["Tunisia", "Tunisia"], ["Turkey", "Turkey"], ["Turkmenistan", "Turkmenistan"], ["Turks and Caicos Islands", "Turks and Caicos Islands"], ["Tuvalu", "Tuvalu"], ["Uganda", "Uganda"], ["Ukraine", "Ukraine"], ["United Arab Emirates", "United Arab Emirates"], ["United Kingdom", "United Kingdom"], ["United States Minor Outlying Islands", "United States Minor Outlying Islands"], ["Uruguay", "Uruguay"], ["Uzbekistan", "Uzbekistan"], ["Vanuatu", "Vanuatu"], ["Venezuela, Bolivarian Republic of", "Venezuela, Bolivarian Republic of"], ["Viet Nam", "Viet Nam"], ["Virgin Islands, British", "Virgin Islands, British"], ["Virgin Islands, U.S.", "Virgin Islands, U.S."], ["Wallis and Futuna", "Wallis and Futuna"], ["Western Sahara", "Western Sahara"], ["Yemen", "Yemen"], ["Zambia", "Zambia"], ["Zimbabwe", "Zimbabwe"]]) %>
-                </div>
-              </div>
+          <div class="form-group">
+            <div class="control-label col-sm-2">
+              <%= f.label :postal_code %>
+            </div>
+            <div class="col-sm-8">
+              <%= f.text_field :postal_code, class: "form-control", placeholder: "Enter Your Postal Code", autofocus: true %>
+            </div>
+          </div>
 
-              <div class="form group">
-                <div class="control-label col-sm-2">
-                  <%= f.label :cohorts %>
-                </div>
-                <div class="col-sm-8">
-                  <%= fields_for :cohorts do |i| %>
-                  <%= i.select(:name, [['Nighthawks 2016', 'Nighthawks 2016'], ['Pocket Gophers 2016', 'Pocket Gophers 2016'], ['Fiery Skippers 2016', 'Fiery Skippers 2016']]) %>
-                  <%= i.select(:campus, [['San Francisco', 'San Francisco']]) %>
-                  <%= i.select(:graduation_date, [['June 10, 2016', '2016-06-10'], ['July 1, 2016', '2016-07-01'], ['July 29, 2016', '2016-07-29']]) %>
-                  <% end %>
-                </div>
-              </div>
+          <div class="form-group">
+            <div class="control-label col-sm-2">
+              <%= f.label :country %>
+            </div>
+            <div class="col-md-4">
+              <%= f.select(:country, [["United States", "United States"], ["Afghanistan", "Afghanistan"], ["Åland Islands", "Åland Islands"], ["Albania", "Albania"], ["Algeria", "Algeria"], ["American Samoa", "American Samoa"], ["Andorra", "Andorra"], ["Angola", "Angola"], ["Anguilla", "Anguilla"], ["Antarctica", "Antarctica"], ["Antigua and Barbuda", "Antigua and Barbuda"], ["Argentina", "Argentina"], ["Armenia", "Armenia"], ["Aruba", "Aruba"], ["Australia", "Australia"], ["Austria", "Austria"], ["Azerbaijan", "Azerbaijan"], ["Bahamas", "Bahamas"], ["Bahrain", "Bahrain"], ["Bangladesh", "Bangladesh"], ["Barbados", "Barbados"], ["Belarus", "Belarus"], ["Belgium", "Belgium"], ["Belize", "Belize"], ["Benin", "Benin"], ["Bermuda", "Bermuda"], ["Bhutan", "Bhutan"], ["Bolivia, Plurinational State of", "Bolivia, Plurinational State of"], ["Bonaire, Sint Eustatius and Saba", "Bonaire, Sint Eustatius and Saba"], ["Bosnia and Herzegovina", "Bosnia and Herzegovina"], ["Botswana", "Botswana"], ["Bouvet Island", "Bouvet Island"], ["Brazil", "Brazil"], ["British Indian Ocean Territory", "British Indian Ocean Territory"], ["Brunei Darussalam", "Brunei Darussalam"], ["Bulgaria", "Bulgaria"], ["Burkina Faso", "Burkina Faso"], ["Burundi", "Burundi"], ["Cambodia", "Cambodia"], ["Cameroon", "Cameroon"], ["Canada", "Canada"], ["Cape Verde", "Cape Verde"], ["Cayman Islands", "Cayman Islands"], ["Central African Republic", "Central African Republic"], ["Chad", "Chad"], ["Chile", "Chile"], ["China", "China"], ["Christmas Island", "Christmas Island"], ["Cocos (Keeling) Islands", "Cocos (Keeling) Islands"], ["Colombia", "Colombia"], ["Comoros", "Comoros"], ["Congo", "Congo"], ["Congo, the Democratic Republic of the", "Congo, the Democratic Republic of the"], ["Cook Islands", "Cook Islands"], ["Costa Rica", "Costa Rica"], ["Côte ", "Côte "], ["Croatia", "Croatia"], ["Cuba", "Cuba"], ["Curaçao", "Curaçao"], ["Cyprus", "Cyprus"], ["Czech Republic", "Czech Republic"], ["Denmark", "Denmark"], ["Djibouti", "Djibouti"], ["Dominica", "Dominica"], ["Dominican Republic", "Dominican Republic"], ["Ecuador", "Ecuador"], ["Egypt", "Egypt"], ["El Salvador", "El Salvador"], ["Equatorial Guinea", "Equatorial Guinea"], ["Eritrea", "Eritrea"], ["Estonia", "Estonia"], ["Ethiopia", "Ethiopia"], ["Falkland Islands (Malvinas)", "Falkland Islands (Malvinas)"], ["Faroe Islands", "Faroe Islands"], ["Fiji", "Fiji"], ["Finland", "Finland"], ["France", "France"], ["French Guiana", "French Guiana"], ["French Polynesia", "French Polynesia"], ["French Southern Territories", "French Southern Territories"], ["Gabon", "Gabon"], ["Gambia", "Gambia"], ["Georgia", "Georgia"], ["Germany", "Germany"], ["Ghana", "Ghana"], ["Gibraltar", "Gibraltar"], ["Greece", "Greece"], ["Greenland", "Greenland"], ["Grenada", "Grenada"], ["Guadeloupe", "Guadeloupe"], ["Guam", "Guam"], ["Guatemala", "Guatemala"], ["Guernsey", "Guernsey"], ["Guinea", "Guinea"], ["Guinea-Bissau", "Guinea-Bissau"], ["Guyana", "Guyana"], ["Haiti", "Haiti"], ["Heard Island and McDonald Islands", "Heard Island and McDonald Islands"], ["Holy See (Vatican City State)", "Holy See (Vatican City State)"], ["Honduras", "Honduras"], ["Hong Kong", "Hong Kong"], ["Hungary", "Hungary"], ["Iceland", "Iceland"], ["India", "India"], ["Indonesia", "Indonesia"], ["Iran, Islamic Republic of", "Iran, Islamic Republic of"], ["Iraq", "Iraq"], ["Ireland", "Ireland"], ["Isle of Man", "Isle of Man"], ["Israel", "Israel"], ["Italy", "Italy"], ["Jamaica", "Jamaica"], ["Japan", "Japan"], ["Jersey", "Jersey"], ["Jordan", "Jordan"], ["Kazakhstan", "Kazakhstan"], ["Kenya", "Kenya"], ["Kiribati", "Kiribati"], ["Korea, Democratic People's Republic of", "Korea, Democratic People's Republic of"], ["Korea, Republic of", "Korea, Republic of"], ["Kuwait", "Kuwait"], ["Kyrgyzstan", "Kyrgyzstan"], ["Lao People's Democratic Republic", "Lao People's Democratic Republic"], ["Latvia", "Latvia"], ["Lebanon", "Lebanon"], ["Lesotho", "Lesotho"], ["Liberia", "Liberia"], ["Libya", "Libya"], ["Liechtenstein", "Liechtenstein"], ["Lithuania", "Lithuania"], ["Luxembourg", "Luxembourg"], ["Macao", "Macao"], ["Macedonia, the former Yugoslav Republic of", "Macedonia, the former Yugoslav Republic of"], ["Madagascar", "Madagascar"], ["Malawi", "Malawi"], ["Malaysia", "Malaysia"], ["Maldives", "Maldives"], ["Mali", "Mali"], ["Malta", "Malta"], ["Marshall Islands", "Marshall Islands"], ["Martinique", "Martinique"], ["Mauritania", "Mauritania"], ["Mauritius", "Mauritius"], ["Mayotte", "Mayotte"], ["Mexico", "Mexico"], ["Micronesia, Federated States of", "Micronesia, Federated States of"], ["Moldova, Republic of", "Moldova, Republic of"], ["Monaco", "Monaco"], ["Mongolia", "Mongolia"], ["Montenegro", "Montenegro"], ["Montserrat", "Montserrat"], ["Morocco", "Morocco"], ["Mozambique", "Mozambique"], ["Myanmar", "Myanmar"], ["Namibia", "Namibia"], ["Nauru", "Nauru"], ["Nepal", "Nepal"], ["Netherlands", "Netherlands"], ["New Caledonia", "New Caledonia"], ["New Zealand", "New Zealand"], ["Nicaragua", "Nicaragua"], ["Niger", "Niger"], ["Nigeria", "Nigeria"], ["Niue", "Niue"], ["Norfolk Island", "Norfolk Island"], ["Northern Mariana Islands", "Northern Mariana Islands"], ["Norway", "Norway"], ["Oman", "Oman"], ["Pakistan", "Pakistan"], ["Palau", "Palau"], ["Palestinian Territory, Occupied", "Palestinian Territory, Occupied"], ["Panama", "Panama"], ["Papua New Guinea", "Papua New Guinea"], ["Paraguay", "Paraguay"], ["Peru", "Peru"], ["Philippines", "Philippines"], ["Pitcairn", "Pitcairn"], ["Poland", "Poland"], ["Portugal", "Portugal"], ["Puerto Rico", "Puerto Rico"], ["Qatar", "Qatar"], ["Réunion", "Réunion"], ["Romania", "Romania"], ["Russian Federation", "Russian Federation"], ["Rwanda", "Rwanda"], ["Saint Barthélemy", "Saint Barthélemy"], ["Saint Helena, Ascension and Tristan da Cunha", "Saint Helena, Ascension and Tristan da Cunha"], ["Saint Kitts and Nevis", "Saint Kitts and Nevis"], ["Saint Lucia", "Saint Lucia"], ["Saint Martin (French part)", "Saint Martin (French part)"], ["Saint Pierre and Miquelon", "Saint Pierre and Miquelon"], ["Saint Vincent and the Grenadines", "Saint Vincent and the Grenadines"], ["Samoa", "Samoa"], ["San Marino", "San Marino"], ["Sao Tome and Principe", "Sao Tome and Principe"], ["Saudi Arabia", "Saudi Arabia"], ["Senegal", "Senegal"], ["Serbia", "Serbia"], ["Seychelles", "Seychelles"], ["Sierra Leone", "Sierra Leone"], ["Singapore", "Singapore"], ["Sint Maarten (Dutch part)", "Sint Maarten (Dutch part)"], ["Slovakia", "Slovakia"], ["Slovenia", "Slovenia"], ["Solomon Islands", "Solomon Islands"], ["Somalia", "Somalia"], ["South Africa", "South Africa"], ["South Georgia and the South Sandwich Islands", "South Georgia and the South Sandwich Islands"], ["South Sudan", "South Sudan"], ["Spain", "Spain"], ["Sri Lanka", "Sri Lanka"], ["Sudan", "Sudan"], ["Suriname", "Suriname"], ["Svalbard and Jan Mayen", "Svalbard and Jan Mayen"], ["Swaziland", "Swaziland"], ["Sweden", "Sweden"], ["Switzerland", "Switzerland"], ["Syrian Arab Republic", "Syrian Arab Republic"], ["Taiwan, Province of China", "Taiwan, Province of China"], ["Tajikistan", "Tajikistan"], ["Tanzania, United Republic of", "Tanzania, United Republic of"], ["Thailand", "Thailand"], ["Timor-Leste", "Timor-Leste"], ["Togo", "Togo"], ["Tokelau", "Tokelau"], ["Tonga", "Tonga"], ["Trinidad and Tobago", "Trinidad and Tobago"], ["Tunisia", "Tunisia"], ["Turkey", "Turkey"], ["Turkmenistan", "Turkmenistan"], ["Turks and Caicos Islands", "Turks and Caicos Islands"], ["Tuvalu", "Tuvalu"], ["Uganda", "Uganda"], ["Ukraine", "Ukraine"], ["United Arab Emirates", "United Arab Emirates"], ["United Kingdom", "United Kingdom"], ["United States Minor Outlying Islands", "United States Minor Outlying Islands"], ["Uruguay", "Uruguay"], ["Uzbekistan", "Uzbekistan"], ["Vanuatu", "Vanuatu"], ["Venezuela, Bolivarian Republic of", "Venezuela, Bolivarian Republic of"], ["Viet Nam", "Viet Nam"], ["Virgin Islands, British", "Virgin Islands, British"], ["Virgin Islands, U.S.", "Virgin Islands, U.S."], ["Wallis and Futuna", "Wallis and Futuna"], ["Western Sahara", "Western Sahara"], ["Yemen", "Yemen"], ["Zambia", "Zambia"], ["Zimbabwe", "Zimbabwe"]]) %>
+           </div>
+         </div>
+       </div>
 
-              <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <%= f.submit class: "btn btn-default"%>
-                  </div>
-              </div>
+       <!-- The following does not display the first time the user signs in. -->
+       <!-- This is a hack-y way of checking whether their primary information has been filled in yet. -->
+       <% if current_user.city  %>
 
-
-            <% end %>
-
+       <!-- Social Media Links -->
+       <div class='social-media-fields'>
+        <h4>Social Media Links</h4>
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :linkedin %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_field :linkedin, class: "form-control", placeholder: "Enter linkedin", autofocus: true %>
+          </div>
+        </div>
+        ​
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :facebook %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_field :facebook, class: "form-control", placeholder: "Enter facebook", autofocus: true %>
+          </div>
+        </div>
+        ​
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :twitter %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_field :twitter, class: "form-control", placeholder: "Enter twitter", autofocus: true %>
+          </div>
+        </div>
+        ​
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :employ %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_field :employ, class: "form-control", placeholder: "Enter employ", autofocus: true %>
+          </div>
+        </div>
+        ​
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :personal_website %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_field :personal_website, class: "form-control", placeholder: "Enter personal_website", autofocus: true %>
           </div>
         </div>
       </div>
+
+      <!-- Employment Info -->
+      <div class='employment-fields'>
+        <h4>Employment Info</h4>
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :employment_status %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.select(:employment_status, [['Unemployed', 'Unemployed'], ['Employed Full-Time', 'Employed Full-Time'], ['Other', 'Other']]) %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :employer %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_field :employer, class: "form-control", placeholder: "Enter Employer", autofocus: true %>
+          </div>
+        </div>
+        ​
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :role %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_field :role, class: "form-control", placeholder: "Enter role", autofocus: true %>
+          </div>
+        </div>
+
+        <p>(Salary info is stored separately without association to the user. Like, not even timestamps, people).</p>
+        <div class="form-group">
+
+          <div class="control-label col-sm-2">
+            <%= f.label :salary %>
+          </div>
+          <div class="col-sm-8">
+            <%= fields_for :salary do |s| %>
+            <%= s.select(:job_since_dbc, [['', ''], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]) %>
+            <%= s.select(:year, [['', ''], ['2012', '2012'], ['2013', '2013'], ['2014', '2014'], ['2015', '2015'], ['2016', '2016']]) %>
+            <%= s.select(:quarter, [['', ''], ['First', 'First'], ['Second', 'Second'], ['Third', 'Third'], ['Quarter', 'Quarter']]) %>
+            <%= s.select(:salary, [['', ''], ['$30,000-$39,999', '$30,000-$39,999'], ['$40,000-$49,999', '$40,000-$49,999'], ['$50,000-$59,999', '$50,000-$59,999'], ['$60,000-$69,999', '$60,000-$69,999'], ['$70,000-$79,999', '$70,000-$79,999'], ['$80,000-$89,999', '$80,000-$89,999'], ['$90,000-$99,999', '$90,000-$99,999'], ['$100,000-$109,999', '$100,000-$109,999'], ['$110,000-$119,999', '$110,000-$119,999'], ['$120,000 or More', '$120,000 or More']])%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notification Preferences -->
+      <div class='notification-fiels'>
+      <h4>Notification Preferences</h4>
+      <p>(Uncheck if you do not want other boots to contact you about mentoring them or collaborating with them.)</p>
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :mentor %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.check_box :willing_to_mentor %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :collaborate %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.check_box :willing_to_collaborate %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demographic Info -->
+    <div class='demographic-fields'>
+      <h4>Demographic Info</h4>
+      <p>(This information is private and optional.)</p>
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :female_scholarship %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.check_box :female_scholarship %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :poc_scholarship %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.check_box :poc_scholarship %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :lgbtq_scholarship %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.check_box :lgbtq_scholarship %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :veteran_scholarship %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.check_box :veteran_scholarship %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :prior_coding_experience %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.select(:prior_coding_experience, [['None', 'None'], ['Some', 'Some'], ['A Lot', 'A Lot']]) %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interests -->
+    <div class="interests-fields">
+      <h4>Interests</h4>
+      <div class="form group">
+        <div class="control-label col-sm-2">
+          <%= f.label :interests %>
+        </div>
+        <div class="col-sm-10">
+          <%= fields_for :interests do |i| %>
+          <%= i.select(:interest_id, options_for_select(Interest.all.map { |interest| [interest.interest, interest.id] }),
+            {},
+            {multiple: true}) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <!-- Bio and Advice -->
+      <div class="bio-and-advice-fields">
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :bio %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_area(:bio, size: "50x10")%>
+          </div>
+        </div>
+
+        <!-- Advice to Students -->
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :advice_to_students %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_area(:advice_to_students, size: "50x10") %>
+          </div>
+        </div>
+
+        <!-- Advice to Graduates -->
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= f.label :advice_to_graduates %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_area(:advice_to_graduates, size: "50x10") %>
+          </div>
+        </div>
+      </div>
+
+      <!-- This end's larger part of form that's hidden unless user has filled out  -->
+      <% end %>
+
+      <% if !current_user.city %>
+        <p>(None of this info is officially required by fancy validations or anything like that, but listen, you can't edit anything else on your profile until you make an effort here.)</p>
+      <% end %>
+      <!-- Submit Button -->
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <%= f.submit class: "btn btn-default"%>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
-
-

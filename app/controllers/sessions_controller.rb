@@ -5,11 +5,15 @@ class SessionsController < ApplicationController
     redirect_to '/auth/github'
   end
 
+
   def create
     client = Octokit::Client.new access_token: auth_hash['credentials']['token']
 
-    #if client.org_member?(ENV['ORG_NAME'], client.user.login)
-      @user = User.where(:provider => auth_hash['provider'], :uid => auth_hash['uid'].to_s).first
+    # COMMENTED OUT: Logic checking if user is part of Devbootcamp org on Github.
+    # Abbreviations for greping user/orgs: chi, sf, sea, nyc, aus, sd, dc
+
+    # if client.org_member?(ENV['ORG_NAME'], client.user.login)
+    @user = User.where(:provider => auth_hash['provider'], :uid => auth_hash['uid'].to_s).first
       if @user
         reset_session
         session[:user_id] = @user.id
@@ -35,7 +39,7 @@ class SessionsController < ApplicationController
   end
 
   def failure
-    redirect_to root_url, :alert => "Authentication error: #{params[:message].humanize}"
+    redirect_to root_url, :alert => ["Authentication error: #{params[:message].humanize}"]
   end
 
   protected

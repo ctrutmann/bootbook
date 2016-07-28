@@ -1,15 +1,40 @@
 <div class="col-sm-3 col-md-2 sidebar">
   <div class="row placeholders-sidebar">
-    <div class="col-xs-6 col-sm-3 placeholder-sidebar">
+    <div class="col-m-6 col-m-3 placeholder-sidebar">
       <img src="<%= @user.profile_image %>" width="200" height="200" class="img-responsive" alt="Boot profile image">
       <h4><%=  @user.name %></h4>
       <span class="text-muted">
+        <% @user.cohorts.reverse.each do |cohort| %>
+          <%= cohort.name %><br>
+        <% end %>
+        <%= @user.cohorts.last.campus %>
+        <br>
         <% if @user.is_graduate %>
           Graduate
         <% else %>
           Student
         <% end %>
       </span>
+    <!-- I <3 -->
+      <% if current_user.id != @user.id && !@am_i_following %>
+        <%= form_tag("/follows", method: "post") do %>
+          <%= hidden_field_tag(:followee_id, @user.id) %>
+          <%= hidden_field_tag(:follower_id, current_user.id) %>
+          <%= button_tag(type: "submit", class: "default-message btn btn-primary btn-small") do %>
+            <i class="glyphicon glyphicon-heart" aria-hidden="true"></i> Favorite
+          <% end %>
+        <% end %>
+
+      <% elsif current_user.id != @user.id && @am_i_following  %>
+        <%= form_tag("/follows/#{@am_i_following.id}", method: "delete") do %>
+          <%= hidden_field_tag(:followee_id, @user.id) %>
+          <%= hidden_field_tag(:follower_id, current_user.id) %>
+          <%= hidden_field_tag(:id, @am_i_following.id) %>
+          <%= button_tag(type: "submit", class: "default-message btn btn-primary btn-small") do %>
+            <i class="glyphicon glyphicon-remove" aria-hidden="true"></i> Unfavorite
+          <% end %>
+        <% end %>
+      <% end  %>
 
     </div>
   </div>
@@ -49,37 +74,35 @@
       <a href="<%= @user.personal_website %>" target="_blank">Personal Website</a>
     <% end %>
   </div>
-  <!-- DBC Info -->
-  <div class='dbc-info'>
-    <p>Quirk: <%= @user.quirk %></p>
-    <p>Love: <%= @user.love %></p>
-    <p><% @user.cohorts.reverse.each do |cohort| %>
-      <%= cohort.name %><br>
-    <% end %>
-    <%= @user.cohorts.last.campus %>
-    </p>
-  </div>
+
   <!-- Location Info -->
   <div class='location-info'>
     <% if @user.country == 'US' %>
-      <p><%= @user.city %>, <%= @user.state %></p>
+      <p><%= @user.city ? "#{@user.city}" : "Winterfell" %>, <%= @user.state ? "#{@user.state}" : "Neverland"%></p>
     <% else %>
-      <p><%= @user.city %>, <%= @user.country %></p>
+      <p><%= @user.city ? "#{@user.city}" : "SS Enterprise" %>, <%= @user.country ? "#{@user.country}" : "Galaxy Far Far Away"%></p>
     <% end %>
   </div>
   <!-- Employment Info -->
-  <% if @user.employment_status != 'unemployed' %>
+  <% if @user.employment_status != 'Unemployed' %>
     <div class='employment-info'>
-      <p>Employer: <%= @user.employer %></p>
-      <p>Role: <%= @user.role %></p>
+      <p><strong>Employer:</strong> <%= @user.employer %></p>
+      <p><strong>Role:</strong> <%= @user.role %></p>
     </div>
   <% end %>
+  <!-- DBC Info -->
+  <div class='dbc-info'>
+    <p><strong>Quirk: </strong> <%= @user.quirk ? "#{@user.quirk}" : "Believing beets are edible." %></p>
+    <p><strong>Love:</strong> <%= @user.love ? "#{@user.love}" : "Justin Bieber" %></p>
+  </div>
   <!-- Interests -->
   <div class='interests-info'>
-    <p>Interests:<br>
+    <p><strong>Interests:</strong>
+    <ul>
     <% @user.interests.each do |interest| %>
-      <%= interest.interest %><br>
-    <% end %></p>
+      <li><%= interest.interest %></li>
+    <% end %>
+    </ul>
   </div>
 
   <!-- Message Buttons (and Edit Button) -->
@@ -135,25 +158,68 @@
   </div>
 <% end %>
 
-<div>
-  <% if @user.bio %>
+  <div>
     <div class='profile-text-box'>
-      <h1>Bio</h1>
-      <p><%= @user.bio %></p>
+      <h2>Bio</h2>
+      <p><%= @user.bio if @user.bio %></p>
+      <% if !@user.bio %>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <% end %>
     </div>
-  <% end %>
 
-  <% if @user.advice_to_students %>
     <div class='profile-text-box'>
-      <h1>Tweets of Advice to Students</h1>
-      <p><%= @user.advice_to_students %></p>
+      <h2>Tweets of Advice to Students</h2>
+      <p><%= @user.advice_to_students if @user.advice_to_students %></p>
+      <% if !@user.advice_to_students %>
+        <p>Be more rad. Play your games. P it out. But also DRY it out. Embrace the confusion. Go to events for the free food but then stay for the event and learn something. Wash your mugs. Go to counseling. Go to yoga. Bring your whole self. Tutu Tuesday. Ask all the questions. The problem has a 93% chance of being a typo. Actionable, specific, and kind feedback. </p>
+      <% end %>
     </div>
-  <% end %>
 
-  <% if @user.advice_to_graduates %>
     <div class='profile-text-box'>
-      <h1>Tweets of Advice to Graduates</h1>
-      <p><%= @user.advice_to_graduates %></p>
+      <h2>Tweets of Advice to Graduates</h2>
+      <p><%= @user.advice_to_graduates if @user.advice_to_graduates %></p>
+      <% if !@user.advice_to_graduates %>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <% end %>
     </div>
-  <% end %>
+  </div>
+
+  <!-- Favorites -->
+  <div>
+    <% if current_user.id == @user.id && current_user.followees.present? %>
+    <br>
+    <h2 class="page-header"><i class="glyphicon glyphicon-heart" aria-hidden="true"></i> Favorite Boots</h2>
+
+    <div class="page-header row placeholders">
+      <%current_user.followees('name ASC').each do |user| %>
+        <div class="col-xs-6 col-sm-3 placeholder mini-boot-show">
+          <a href="<%=user.id%>">
+            <img src="<%= user.profile_image %>" width="200" height="200" class="img-responsive" alt="profile image">
+            <h4><%= user.name %></h4>
+          </a>
+          <span class="text-muted">
+            <%= user.cohorts.last.name %><br>
+            <% if user.country == 'US' %>
+              <%= user.city %>, <%= user.state %><br>
+            <% else %>
+              <%= user.city %>, <%= user.country %>
+            <% end %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
 </div>
+
+

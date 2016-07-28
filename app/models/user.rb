@@ -17,6 +17,11 @@ class User < ApplicationRecord
   validates_presence_of :name, :email, :uid, :provider
   validates_uniqueness_of :email, :uid
 
+  # gem 'strip attributes' method that sets blank ('') fields to nil
+  strip_attributes
+
+  after_save :set_graduation_date
+
   scope :city, -> (city) do
     where('(users.city = ?)', city)
   end
@@ -37,19 +42,9 @@ class User < ApplicationRecord
     joins(:cohorts).where('cohorts.campus = ?', campus)
   end
 
-  # scope :graduation_date, -> (graduation_date) do
-  #   where('(users.graduation_date = ?)', graduation_date)
-  # end
-
-  # # working but gets too many
   scope :graduation_date, -> (graduation_date) do
-    joins(:cohorts).where('cohorts.graduation_date = ?', graduation_date)
+    where('(users.graduation_date = ?)', graduation_date)
   end
-
-  # not working but gets too many
-  # scope :graduation_date, -> (graduation_date) do
-  #   joins(:cohorts).where('(cohorts.graduation_date = ?) AND  ORDER BY cohort.id DESC LIMIT 1)', graduation_date)
-  # end
 
   scope :interest, -> (interest) do
     joins(:interests).where('interests.interest = ?', interest)
@@ -62,7 +57,7 @@ class User < ApplicationRecord
       user.provider = auth['provider']
       user.uid = auth['uid']
       if auth['info']
-       
+
          user.name = auth['info']['name'] || ""
          user.email = auth['info']['email'] || ""
          user.profile_image = auth['info']['image'] || ""
@@ -71,7 +66,12 @@ class User < ApplicationRecord
     end
   end
 
-  def graduation_date
-    self.cohorts.last.graduation_date.to_s
+  def set_graduation_date
+    if self.is_graduate == true && self.cohorts.last && self.graduation_date != self.cohorts.last.graduation_date
+
+      self.graduation_date = self.cohorts.last.graduation_date
+      self.save
+    end
   end
+
 end

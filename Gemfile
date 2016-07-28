@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'omniauth'    #, '~>1.2.2'
 gem 'omniauth-github'
 gem 'octokit', '~> 2.0'
+# Use 'strip_attributes' to change blank attributes to nil on validation
+gem 'strip_attributes'
 
 gem 'httparty'
 
