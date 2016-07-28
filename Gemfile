@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'omniauth'    #, '~>1.2.2'
 gem 'omniauth-github'
 gem 'octokit', '~> 2.0'
+# Use 'strip_attributes' to change blank attributes to nil on validation
+gem 'strip_attributes'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -52,9 +54,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-group :production do 
+group :production do
   gem 'omniauth'    #, '~>1.2.2'
-  gem 'omniauth-github' 
+  gem 'omniauth-github'
   gem 'pg'
   gem 'rails_12factor'
 end
