@@ -25,13 +25,13 @@ class MessagesController < ApplicationController
     @conversation = Conversation.find(params[:conversation_id])
     @message = @conversation.messages.new(message_params)
     @messages = @conversation.messages
-    if @message.save
+    if @conversation.messages.count == 0 && @message.content != nil
+      UserMailer.new_convo(current_user).deliver_now
+    end
+    if @message.save && @message.content != nil
       @conversation.touch(:updated_at)
       @conversation.save
       redirect_to conversation_messages_path(@conversation)
-      if @conversation.messages.count == 0
-        UserMailer.new_convo(@user).deliver
-      end
     else
       redirect_to conversation_messages_path
     end
