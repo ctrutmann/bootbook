@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-
   def index
+    @all_users = User.all.order(name: :asc)
     @users = User.all
 
-    # FUNKY: These all belongs in users_helper.rb. FROM HERE...
     @cities = []
     User.all.each {|user| @cities << user.city if user.city != nil}
     @cities.sort!.uniq!
@@ -25,25 +24,21 @@ class UsersController < ApplicationController
     @campuses.sort!.uniq!
 
     @graduation_dates = []
-    User.all.each {|user| @graduation_dates << user.graduation_date if user.graduation_date != nil}
+    Cohort.all.each {|cohort| @graduation_dates << cohort.graduation_date.to_s if cohort.graduation_date != nil}
     @graduation_dates.sort!.uniq!
 
     @interests = []
     Interest.all.each {|interest| @interests << interest.interest if interest.interest != nil}
     @interests.sort!.uniq!
-    #... TO HERE.
-
-    p "***********************************"
-    p params[:favorite_boots]
 
     filtering_params(params).each do |key, value|
-      @users = current_user.followees if params[:favorite_boots] == '1'
       @users = @users.city(params[:city]) if params[:city].present?
       @users = @users.state(params[:state]) if params[:state].present?
       @users = @users.country(params[:country]) if params[:country].present?
       @users = @users.cohort(params[:cohort]) if params[:cohort].present?
       @users = @users.campus(params[:campus]).distinct if params[:campus].present?
-      @users = @users.graduation_date(params[:graduation_date]) if params[:graduation_date].present?
+      # @users = @users.graduation_date(params[:graduation_date]) if params[:graduation_date].present?
+      @users = scope_real_graduation_date(@users) if params[:graduation_date].present?
       @users = @users.interest(params[:interest]) if params[:interest].present?
     end
 
@@ -56,27 +51,15 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @all_users = User.all.order(name: :asc)
     @user = current_user
   end
 
   def update
     @user = current_user
     @user.assign_attributes(user_params)
-
-    # Create new UserCohort relationship if cohorts field provided.
-    params[:cohorts][:id].each do |cohort_id|
-      if !cohort_id.blank?
-        UserCohort.create(user_id: current_user.id, cohort_id: cohort_id)
-      end
-    end
-
-    # Create new UserInterest relationship if interests field provided.
-    params[:interests][:interest_id].each do |id|
-      UserInterest.create(user_id: current_user.id, interest_id: id) if !id.blank?
-    end
-
-    # Create new Salary object if salary fields provided.
-    Salary.create(salary_params)
+    @cohort = Cohort.where(cohorts_params).first
+    UserCohort.create(user_id: current_user.id, cohort_id: @cohort.id)
 
     if @user.save
       flash[:success] = "You're all updated!"
@@ -88,13 +71,16 @@ class UsersController < ApplicationController
   end
 
   def search
+    @all_users = User.all.order(name: :asc)
     @user = User.find_by(name: params[:boot_name])
+
     redirect_to user_path(@user)
   end
 
   def show
+    @all_users = User.all.order(name: :asc)
     @user = User.find(params[:id])
-    @am_i_following = Follow.find_by(followee_id: @user.id)
+    # @user = User.find(user_params)
   end
 
   def delete
@@ -119,6 +105,7 @@ class UsersController < ApplicationController
       :employer,
       :role,
       :bio,
+      :cohort_id,
       :profile_image,
       :female_scholarship,
       :poc_scholarship,
@@ -146,21 +133,12 @@ class UsersController < ApplicationController
 
   def interests_params
     params.require(:interests).permit(
-      :interest_id
-    )
-  end
-
-  def salary_params
-    params.require(:salary).permit(
-      :salary,
-      :year,
-      :quarter,
-      :job_since_dbc
+      :interest
     )
   end
 
   def filtering_params(params)
-    params.slice(:favorite_boots, :city, :state, :country, :cohort, :campus, :graduation_date, :interest)
+    params.slice(:city, :state, :country, :cohort, :campus, :graduation_date, :interest)
   end
 
 end
