@@ -83,6 +83,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @am_i_following = Follow.find_by(followee_id: @user.id)
   end
 
   def delete
