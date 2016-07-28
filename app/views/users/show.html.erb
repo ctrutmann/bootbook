@@ -15,6 +15,26 @@
           Student
         <% end %>
       </span>
+    <!-- I <3 -->
+      <% if current_user.id != @user.id && !@am_i_following %>
+        <%= form_tag("/follows", method: "post") do %>
+          <%= hidden_field_tag(:followee_id, @user.id) %>
+          <%= hidden_field_tag(:follower_id, current_user.id) %>
+          <%= button_tag(type: "submit", class: "default-message btn btn-primary btn-small") do %>
+            <i class="glyphicon glyphicon-heart" aria-hidden="true"></i> Favorite
+          <% end %>
+        <% end %>
+
+      <% elsif current_user.id != @user.id && @am_i_following  %>
+        <%= form_tag("/follows/#{@am_i_following.id}", method: "delete") do %>
+          <%= hidden_field_tag(:followee_id, @user.id) %>
+          <%= hidden_field_tag(:follower_id, current_user.id) %>
+          <%= hidden_field_tag(:id, @am_i_following.id) %>
+          <%= button_tag(type: "submit", class: "default-message btn btn-primary btn-small") do %>
+            <i class="glyphicon glyphicon-remove" aria-hidden="true"></i> Unfavorite
+          <% end %>
+        <% end %>
+      <% end  %>
 
     </div>
   </div>
@@ -160,3 +180,27 @@
     </div>
   <% end %>
 </div>
+  <!-- Favorites -->
+  <% if current_user.id == @user.id && current_user.followees.present? %>
+
+  <h1 class="page-header"><i class="glyphicon glyphicon-heart" aria-hidden="true"></i> My Favorite Boots  <i class="glyphicon glyphicon-heart" aria-hidden="true"></i> </h1>
+
+  <div class="row placeholders">
+    <%current_user.followees('name ASC').each do |user| %>
+      <div class="col-xs-6 col-sm-3 placeholder mini-boot-show">
+        <a href="<%=user.id%>">
+          <img src="<%= user.profile_image %>" width="200" height="200" class="img-responsive" alt="profile image">
+          <h4><%= user.name %></h4>
+        </a>
+        <span class="text-muted"><%= user.cohorts.last.name %></span><br>
+        <% if user.country == 'US' %>
+          <span class="text-muted"><%= user.city %>, <%= user.state %></span><br>
+        <% else %>
+          <span class="text-muted"><%= user.city %>, <%= user.country %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+
+
