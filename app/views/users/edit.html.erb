@@ -35,7 +35,7 @@
             <div class="col-sm-8">
               <%= fields_for :cohorts do |c| %>
 
-              <%= c.select(:name, options_for_select(Cohort.all.map { |cohort| ["#{cohort.name} - #{cohort.campus}", cohort.id] }),
+              <%= c.select(:id, options_for_select(Cohort.all.map { |cohort| ["#{cohort.name} - #{cohort.campus}", cohort.id] }),
                 {},
                 {multiple: true}) %>
                 <% end %>
@@ -273,7 +273,7 @@
           <%= f.label :interests %>
         </div>
         <div class="col-sm-10">
-          <%= fields_for :user_interests do |i| %>
+          <%= fields_for :interests do |i| %>
           <%= i.select(:interest_id, options_for_select(Interest.all.map { |interest| [interest.interest, interest.id] }),
             {},
             {multiple: true}) %>

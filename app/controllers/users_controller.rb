@@ -52,9 +52,19 @@ class UsersController < ApplicationController
     @user = current_user
     @user.assign_attributes(user_params)
 
-    # @cohorts = Cohort.where(cohorts_params)
-    # UserCohort.create(user_id: current_user.id, cohort_id: @cohort.id) if @cohorts
-    # UserInterest.create(user_id: current_user.id, interest_id: )
+    # Create new UserCohort relationship if cohorts field provided.
+    params[:cohorts][:id].each do |cohort_id|
+      if !cohort_id.blank?
+        UserCohort.create(user_id: current_user.id, cohort_id: cohort_id)
+      end
+    end
+
+    # Create new UserInterest relationship if interests field provided.
+    params[:interests][:interest_id].each do |id|
+      UserInterest.create(user_id: current_user.id, interest_id: id) if !id.blank?
+    end
+
+    # Create new Salary object if salary fields provided.
     Salary.create(salary_params)
 
     if @user.save
@@ -124,7 +134,7 @@ class UsersController < ApplicationController
 
   def interests_params
     params.require(:interests).permit(
-      :interest
+      :interest_id
     )
   end
 
