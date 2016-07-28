@@ -6,4 +6,10 @@ class UserMailer < ApplicationMailer
     @url = 'http://example.com/login'
     mail(to: @user.email, subject: 'Welcome to BootBook')
   end
+
+  def new_convo(user)
+    @user = user 
+    @url = 'http://example.com'
+    mail(to: @user.email, subject: 'You have a new Conversation')
+  end
 end
