@@ -149,7 +149,7 @@ class UsersController < ApplicationController
   end
 
   def filtering_params(params)
-    params.slice(:city, :state, :country, :cohort, :campus, :graduation_date, :interest)
+    params.slice(:favorite_boots, :city, :state, :country, :cohort, :campus, :graduation_date, :interest)
   end
 
 end
