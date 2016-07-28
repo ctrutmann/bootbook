@@ -43,11 +43,6 @@ class User < ApplicationRecord
     where('(users.graduation_date = ?)', graduation_date)
   end
 
-  # # working but gets too many
-  # scope :graduation_date, -> (graduation_date) do
-  #   joins(:cohorts).where('cohorts.graduation_date = ?', graduation_date)
-  # end
-
   scope :interest, -> (interest) do
     joins(:interests).where('interests.interest = ?', interest)
   end
@@ -59,7 +54,7 @@ class User < ApplicationRecord
       user.provider = auth['provider']
       user.uid = auth['uid']
       if auth['info']
-       
+
          user.name = auth['info']['name'] || ""
          user.email = auth['info']['email'] || ""
          user.profile_image = auth['info']['image'] || ""

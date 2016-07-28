@@ -1,6 +1,6 @@
 <div class="col-sm-3 col-md-2 sidebar">
   <div class="row placeholders-sidebar">
-    <div class="col-xs-6 col-sm-3 placeholder-sidebar">
+    <div class="col-m-6 col-m-3 placeholder-sidebar">
       <img src="<%= @user.profile_image %>" width="200" height="200" class="img-responsive" alt="Boot profile image">
       <h4><%=  @user.name %></h4>
       <span class="text-muted">
@@ -8,6 +8,7 @@
           <%= cohort.name %><br>
         <% end %>
         <%= @user.cohorts.last.campus %>
+        <br>
         <% if @user.is_graduate %>
           Graduate
         <% else %>
@@ -63,23 +64,25 @@
     <% end %>
   </div>
   <!-- Employment Info -->
-  <% if @user.employment_status != 'unemployed' %>
+  <% if @user.employment_status != 'Unemployed' %>
     <div class='employment-info'>
-      <p>Employer: <%= @user.employer %></p>
-      <p>Role: <%= @user.role %></p>
+      <p><strong>Employer:</strong> <%= @user.employer %></p>
+      <p><strong>Role:</strong> <%= @user.role %></p>
     </div>
   <% end %>
   <!-- DBC Info -->
   <div class='dbc-info'>
-    <p>Quirk: <%= @user.quirk %></p>
-    <p>Love: <%= @user.love %></p>
+    <p><strong>Quirk: </strong> <%= @user.quirk %></p>
+    <p><strong>Love:</strong> <%= @user.love %></p>
   </div>
   <!-- Interests -->
   <div class='interests-info'>
-    <p>Interests:<br>
+    <p><strong>Interests:</strong>
+    <ul>
     <% @user.interests.each do |interest| %>
-      <%= interest.interest %><br>
-    <% end %></p>
+      <li><%= interest.interest %></li>
+    <% end %>
+    </ul>
   </div>
 
   <!-- Message Buttons (and Edit Button) -->

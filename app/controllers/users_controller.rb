@@ -51,8 +51,10 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.assign_attributes(user_params)
-    @cohort = Cohort.where(cohorts_params).first
-    UserCohort.create(user_id: current_user.id, cohort_id: @cohort.id) if @cohort
+
+    # @cohorts = Cohort.where(cohorts_params)
+    # UserCohort.create(user_id: current_user.id, cohort_id: @cohort.id) if @cohorts
+    # UserInterest.create(user_id: current_user.id, interest_id: )
 
     if @user.save
       flash[:success] = "You're all updated!"
@@ -94,7 +96,6 @@ class UsersController < ApplicationController
       :employer,
       :role,
       :bio,
-      :cohort_id,
       :profile_image,
       :female_scholarship,
       :poc_scholarship,
@@ -129,5 +130,9 @@ class UsersController < ApplicationController
   def filtering_params(params)
     params.slice(:city, :state, :country, :cohort, :campus, :graduation_date, :interest)
   end
+
+  # def no_strings_user_params
+  #   user_params.each { |key, value| value = nil if value == "" }
+  # end
 
 end

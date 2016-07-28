@@ -90,39 +90,39 @@ ActiveRecord::Schema.define(version: 20160723200402) do
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
+    t.integer  "uid"
+    t.string   "provider"
     t.string   "name"
     t.string   "email"
+    t.string   "profile_image"
     t.string   "city"
     t.string   "state"
     t.string   "postal_code"
     t.string   "country"
-    t.string   "profile_image"
     t.date     "graduation_date"
-    t.boolean  "is_graduate",             default: false
     t.boolean  "is_admin",                default: false
-    t.integer  "uid"
-    t.string   "provider"
     t.string   "love"
     t.string   "quirk"
-    t.text     "bio"
-    t.text     "advice_to_students"
-    t.text     "advice_to_graduates"
-    t.boolean  "willing_to_mentor",       default: true
-    t.boolean  "willing_to_collaborate",  default: true
-    t.string   "employment_status",       default: "unemployed"
-    t.string   "employer"
-    t.string   "role"
+    t.boolean  "is_graduate",             default: false
     t.string   "linkedin"
     t.string   "github"
     t.string   "facebook"
     t.string   "twitter"
     t.string   "employ"
     t.string   "personal_website"
+    t.string   "employment_status",       default: "Unemployed"
+    t.string   "employer"
+    t.string   "role"
+    t.boolean  "willing_to_mentor",       default: true
+    t.boolean  "willing_to_collaborate",  default: true
     t.boolean  "female_scholarship",      default: false
     t.boolean  "poc_scholarship",         default: false
     t.boolean  "lgbtq_scholarship",       default: false
     t.boolean  "veteran_scholarship",     default: false
     t.string   "prior_coding_experience"
+    t.text     "bio"
+    t.text     "advice_to_students"
+    t.text     "advice_to_graduates"
   end
 
 end
