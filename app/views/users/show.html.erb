@@ -58,9 +58,9 @@
   <!-- Location Info -->
   <div class='location-info'>
     <% if @user.country == 'US' %>
-      <p><%= @user.city %>, <%= @user.state %></p>
+      <p><%= @user.city ? "#{@user.city}" : "Winterfell" %>, <%= @user.state ? "#{@user.state}" : "Neverland"%></p>
     <% else %>
-      <p><%= @user.city %>, <%= @user.country %></p>
+      <p><%= @user.city ? "#{@user.city}" : "SS Enterprise" %>, <%= @user.country ? "#{@user.country}" : "Galaxy Far Far Away"%></p>
     <% end %>
   </div>
   <!-- Employment Info -->
@@ -72,8 +72,8 @@
   <% end %>
   <!-- DBC Info -->
   <div class='dbc-info'>
-    <p><strong>Quirk: </strong> <%= @user.quirk %></p>
-    <p><strong>Love:</strong> <%= @user.love %></p>
+    <p><strong>Quirk: </strong> <%= @user.quirk ? "#{@user.quirk}" : "Believing beets are edible." %></p>
+    <p><strong>Love:</strong> <%= @user.love ? "#{@user.love}" : "Justin Bieber" %></p>
   </div>
   <!-- Interests -->
   <div class='interests-info'>
@@ -139,24 +139,37 @@
 <% end %>
 
 <div>
-  <% if @user.bio %>
-    <div class='profile-text-box'>
-      <h1>Bio</h1>
-      <p><%= @user.bio %></p>
-    </div>
-  <% end %>
+  <div class='profile-text-box'>
+    <h1>Bio</h1>
+    <p><%= @user.bio if @user.bio %></p>
+    <% if !@user.bio %>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <% end %>
+  </div>
 
-  <% if @user.advice_to_students %>
     <div class='profile-text-box'>
       <h1>Tweets of Advice to Students</h1>
-      <p><%= @user.advice_to_students %></p>
+      <p><%= @user.advice_to_students if @user.advice_to_students %></p>
+      <% if !@user.advice_to_students %>
+        <p>Be more rad. Play your games. P it out. But also DRY it out. Embrace the confusion. Go to events for the free food but then stay for the event and learn something. Wash your mugs. Go to counseling. Go to yoga. Bring your whole self. Tutu Tuesday. Ask all the questions. The problem has a 93% chance of being a typo. Actionable, specific, and kind feedback. </p>
+      <% end %>
     </div>
-  <% end %>
 
-  <% if @user.advice_to_graduates %>
     <div class='profile-text-box'>
       <h1>Tweets of Advice to Graduates</h1>
-      <p><%= @user.advice_to_graduates %></p>
+      <p><%= @user.advice_to_graduates if @user.advice_to_graduates %></p>
+      <% if !@user.advice_to_graduates %>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <% end %>
     </div>
-  <% end %>
 </div>
