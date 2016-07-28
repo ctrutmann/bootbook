@@ -131,8 +131,4 @@ class UsersController < ApplicationController
     params.slice(:city, :state, :country, :cohort, :campus, :graduation_date, :interest)
   end
 
-  # def no_strings_user_params
-  #   user_params.each { |key, value| value = nil if value == "" }
-  # end
-
 end
