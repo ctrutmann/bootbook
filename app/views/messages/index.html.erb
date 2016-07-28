@@ -1,4 +1,19 @@
 <div class="container">
+
+  <div class="col-sm-3 col-md-2 sidebar">
+    <div class="row placeholders-sidebar">
+      <div class="col-m-6 col-m-3 placeholder-sidebar">
+        <img src="<%= current_user.profile_image %>" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4><%= current_user.name %></h4>
+        <p><span class="text-muted"><%= current_user.cohorts.last.campus %></span>
+        <span class="text-muted"><%= current_user.cohorts.last.graduation_date.to_s.slice(0,4) %></span>
+          <% current_user.cohorts.each do |cohort| %>
+          <span class="text-muted"><%= cohort.name %></span>
+        <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <div>
