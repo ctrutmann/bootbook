@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  resources :follows
+
   match '/auth/failure', :via => [:get], :to => 'sessions#failure'
 
   get '/auth/:provider/callback' => 'sessions#create'

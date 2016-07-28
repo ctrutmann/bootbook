@@ -15,7 +15,43 @@
           Student
         <% end %>
       </span>
+    <!-- I <3 -->
+      <% if current_user.id != @user.id && !@am_i_following %>
+        <%= form_tag("/follows", method: "post") do %>
+          <%= hidden_field_tag(:followee_id, @user.id) %>
+          <%= hidden_field_tag(:follower_id, current_user.id) %>
+          <%= button_tag(type: "submit", class: "default-message btn btn-primary btn-small") do %>
+            <i class="glyphicon glyphicon-heart" aria-hidden="true"></i> Favorite
+          <% end %>
+        <% end %>
 
+      <% elsif current_user.id != @user.id && @am_i_following  %>
+        <%= form_tag("/follows/#{@am_i_following.id}", method: "delete") do %>
+          <%= hidden_field_tag(:followee_id, @user.id) %>
+          <%= hidden_field_tag(:follower_id, current_user.id) %>
+          <%= hidden_field_tag(:id, @am_i_following.id) %>
+          <%= button_tag(type: "submit", class: "default-message btn btn-primary btn-small") do %>
+            <i class="glyphicon glyphicon-remove" aria-hidden="true"></i> Unfavorite
+          <% end %>
+        <% end %>
+      <% end  %>
+
+      <% if current_user.id == @user.id %>
+      <div class="my_favorite_boots">
+      <h4> <i class="glyphicon glyphicon-heart" aria-hidden="true"></i> My Favorite Boots  <i class="glyphicon glyphicon-heart" aria-hidden="true"></i> </h4>
+
+      <% current_user.followers.each do |followee|  %>
+        <a href="<%=followee.id%>"><%= followee.name %></a><br>
+      <% end  %>
+
+      </div>
+
+
+
+
+<!--         <a href="/follows/new"><button type="button" class="btn btn-primary btn-small"><i class="glyphicon glyphicon-heart" aria-hidden="true"></i></button></a>
+        <input type="button" class="btn btn-primary btn-small" name="followee_id" value=<%=@user.id%>/> -->
+      <% end %>
     </div>
   </div>
   <!-- Social Links -->
