@@ -20,12 +20,61 @@ function usersIndex() {
   });
 }
 
+
 function formatDataAndPlaceMarker(users) {
   users.forEach(function(user){
     var name = user.name;
     var id = user.id;
     var userPageLink = '/users/' + id;
     var profile_image = user.profile_image;
+    var locationStringShort = generateLocationStringShort(user);
+    var locationStringLong = generateLocationStringLong(user);
+
+    var infoWindowContent = constructInfoWindowContent(profile_image, name, userPageLink, locationStringShort);
+
+    var queryString = {locationString: locationStringLong}
+    $.ajax({
+      url: '/geocode',
+      method: 'GET',
+      data: queryString,
+      dataType: 'json'
+    }).done(function(response){
+      var actualResponse = response.response.results[0];
+      var latLng = actualResponse.geometry.location;
+      setMarker(latLng, infoWindowContent);
+    }).fail(function(response){
+      console.log("fail");
+    });
+  });
+}
+
+function generateLocationStringShort(user) {
+    var city = user.city;
+    var state = user.state;
+    var postal_code = user.postal_code;
+    var country = user.country;
+    var locationString = "";
+    if (city != null) { locationString += city; };
+    if (state != null) {
+      if (city != null) {
+        locationString += (', ' + state);
+      } else {
+        locationString += (state);
+      };
+    };
+    if (country != null) {
+      if (country != "US") {
+        if (locationString != "") {
+          locationString += (' ' + country);
+        } else {
+          locationString += country;
+        }
+      }
+    };
+    return locationString;
+}
+
+function generateLocationStringLong(user) {
     var city = user.city;
     var state = user.state;
     var postal_code = user.postal_code;
@@ -55,23 +104,19 @@ function formatDataAndPlaceMarker(users) {
         }
       }
     };
+    return locationString;
+}
 
-    var infoWindowContent = constructInfoWindowContent(profile_image, name, userPageLink, locationString);
 
-    var queryString = {locationString: locationString}
-    $.ajax({
-      url: '/geocode',
-      method: 'GET',
-      data: queryString,
-      dataType: 'json'
-    }).done(function(response){
-      var actualResponse = response.response.results[0];
-      var latLng = actualResponse.geometry.location;
-      setMarker(latLng, infoWindowContent);
-    }).fail(function(response){
-      console.log("fail");
-    });
-  });
+function constructInfoWindowContent(profile_image, name, userPageLink, locationString) {
+  contentString =
+    '<div id="content">' +
+      '<div><a href="' + userPageLink + '"><img src="' + profile_image + '" width="40" height="40" class="img-responsive marker-image"></a></div><span class="marker-name"><a href="' + userPageLink + '">' + name + '</a></span>' +
+      '<div id="bodyContent">' +
+        '<p>' + locationString + '<p>' +
+      '</div>' +
+    '</div>';
+    return contentString;
 }
 
 
@@ -88,17 +133,6 @@ function setMarker(latLng, infoWindowContent) {
   })
 }
 
-
-function constructInfoWindowContent(profile_image, name, userPageLink, locationString) {
-  contentString =
-    '<div id="content">' +
-      '<a href="' + userPageLink + '"><span><img src="' + profile_image + '" width="40" height="40" class="img-responsive"></span><h2 id="firstHeading" class="firstHeading">' + name + '</h2></a>' +
-      '<div id="bodyContent">' +
-        '<p>' + locationString + '<p>' +
-      '</div>' +
-    '</div>';
-    return contentString;
-}
 
 function initMap() {
   if (($('#map').length) > 0) {

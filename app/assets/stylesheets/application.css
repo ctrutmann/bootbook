@@ -24,6 +24,14 @@ body {
   border: solid gray 1px;
 }
 
+.marker-image {
+  border-radius: 50%;
+}
+
+.marker-name {
+  font-size: 18px;
+}
+
 .smaller-header-text {
   font-size: 14px;
 }
