@@ -19,6 +19,10 @@
 
   <div>
     <form class="navbar-form navbar-right" action="/users" method="get">
+      <label>Only Favorite Boots</label>
+      <input name="favorite_boots" type="hidden" value="0" />
+      <input type="checkbox" id="favorite_boots" name="favorite_boots" value="1" />
+
       <input list="find-city" name="city" class="form-control" placeholder="City" />
       <datalist id="find-city">
       <% @cities.each do |city| %>
