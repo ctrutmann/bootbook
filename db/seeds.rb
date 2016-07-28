@@ -31,7 +31,7 @@ User.create!(
   city: "Ithaca",
   state: "NY",
   postal_code: "14850",
-  country: "US",
+  country: "United States",
   is_graduate: false,
   is_admin: false,
   love: nil,
@@ -69,7 +69,7 @@ User.create!(
   city: "Oakland",
   state: "CA",
   postal_code: "94611",
-  country: "US",
+  country: "United States",
   is_graduate: "true",
   is_admin: "true",
   love: "Homebrew kombucha",
@@ -107,7 +107,7 @@ User.create!(
   city: "Medellin",
   state: nil,
   postal_code: nil,
-  country: "CO",
+  country: "Colombia",
   is_graduate: false,
   is_admin: false,
   love: nil,
@@ -145,7 +145,7 @@ User.create!(
   city: "Walnut Creek",
   state: "CA",
   postal_code: "94597",
-  country: "US",
+  country: "United States",
   is_graduate: false,
   is_admin: false,
   love: nil,
@@ -180,8 +180,8 @@ User.create!(
   profile_image: "https://avatars.githubusercontent.com/u/9372640",
   city: "San Jose",
   state: "CA",
-  postal_code: "94126",
-  country: "US",
+  postal_code: "95113",
+  country: "United States",
   )
 User.create!(
   email: "benjaminhyw@gmail.com",
@@ -193,7 +193,7 @@ User.create!(
   city: "San Francisco",
   state: "CA",
   postal_code: "94102",
-  country: "US",
+  country: "United States",
   )
 User.create!(
   email: "placeholder1@placeholder.com",
@@ -205,7 +205,7 @@ User.create!(
   city: "Berkeley",
   state: "CA",
   postal_code: "94720",
-  country: "US",
+  country: "United States",
   )
 User.create!(
   email: "placeholder2@placeholder.com",
@@ -217,7 +217,7 @@ User.create!(
   city: "San Francisco",
   state: "CA",
   postal_code: "94110",
-  country: "US",
+  country: "United States",
   )
 User.create!(
   email: "placeholder3@placeholder.com",
@@ -229,7 +229,7 @@ User.create!(
   city: "Livingston",
   state: "CA",
   postal_code: "95324",
-  country: "US",
+  country: "United States",
   )
 User.create!(
   email: "placeholder4@placeholder.com",
@@ -238,10 +238,10 @@ User.create!(
   name: "Jonathan Hall",
   github: "https://github.com/jlhall",
   profile_image: "https://avatars.githubusercontent.com/u/14889356",
-  city: "Reykjavik",
-  state: "IS",
-  postal_code: "33908",
-  country: "US",
+  city: "Reykjavík",
+  state: "",
+  postal_code: "",
+  country: "Iceland",
   )
 User.create!(
   email: "placeholder5@placeholder.com",
@@ -253,7 +253,7 @@ User.create!(
   city: "Mill Valley",
   state: "CA",
   postal_code: "94941",
-  country: "US",
+  country: "United States",
   )
 User.create!(
   email: "placeholder6@placeholder.com",
@@ -265,7 +265,7 @@ User.create!(
   city: "San Francisco",
   state: "CA",
   postal_code: "94124",
-  country: "US",
+  country: "United States",
   )
 User.create!(
   email: "placeholder7@placeholder.com",
@@ -277,7 +277,7 @@ User.create!(
   city: "San Francisco",
   state: "CA",
   postal_code: "94103",
-  country: "US",
+  country: "United States",
   )
 User.create!(
   email: "placeholder8@placeholder.com",
@@ -289,7 +289,7 @@ User.create!(
   city: "San Francisco",
   state: "CA",
   postal_code: "94103",
-  country: "US",
+  country: "United States",
   )
 User.create!(
   email: "placeholder9@placeholder.com",
@@ -301,7 +301,7 @@ User.create!(
   city: "Oakland",
   state: "CA",
   postal_code: "94612",
-  country: "US",
+  country: "United States",
   )
 User.create!(
   email: "placeholder@placeholder.com",
@@ -313,7 +313,7 @@ User.create!(
   city: "Yucca Valley",
   state: "CA",
   postal_code: "92284",
-  country: "US",
+  country: "United States",
   )
 User.create!(
   email: "tdfratto@gmail.com",
@@ -325,7 +325,7 @@ User.create!(
   city: "Beverly Hills",
   state: "CA",
   postal_code: "90210",
-  country: "US",
+  country: "United States",
   )
 
 UserCohort.create!(

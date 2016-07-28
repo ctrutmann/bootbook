@@ -4,6 +4,39 @@ $(document).ready(function() {
   usersIndex();
 })
 
+function toggleView() {
+  $("#toggle-view").on("click", function(event) {
+    event.preventDefault();
+    if ($('#map-view').is(':hidden')) {
+      $('#grid-view').hide();
+      $('#map-view').show();
+      $('#toggle-view')[0].text = "Show as Grid"
+    } else {
+      $('#map-view').hide();
+      $('#grid-view').show();
+      $('#toggle-view')[0].text = "Show as Map"
+    }
+  })
+}
+
+function initMap() {
+  if (($('#map').length) > 0) {
+    myLatLng = {lat: 37.784580, lng: -122.397437};
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: myLatLng,
+      zoom: 11,
+      fullscreenControl: false,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var defaultBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(37.784580, -122.397437),
+      new google.maps.LatLng(37.784580, -122.397437)
+    );
+    var options = { bounds: defaultBounds };
+    }
+};
+
 function usersIndex() {
   $(".navbar-brand").on("click", function(event) {
     event.preventDefault();
@@ -20,16 +53,15 @@ function usersIndex() {
   });
 }
 
-
 function formatDataAndPlaceMarker(users) {
   users.forEach(function(user){
     var name = user.name;
     var id = user.id;
     var userPageLink = '/users/' + id;
     var profile_image = user.profile_image;
+
     var locationStringShort = generateLocationStringShort(user);
     var locationStringLong = generateLocationStringLong(user);
-
     var infoWindowContent = constructInfoWindowContent(profile_image, name, userPageLink, locationStringShort);
 
     var queryString = {locationString: locationStringLong}
@@ -49,64 +81,63 @@ function formatDataAndPlaceMarker(users) {
 }
 
 function generateLocationStringShort(user) {
-    var city = user.city;
-    var state = user.state;
-    var postal_code = user.postal_code;
-    var country = user.country;
-    var locationString = "";
-    if (city != null) { locationString += city; };
-    if (state != null) {
-      if (city != null) {
-        locationString += (', ' + state);
+  var city = user.city;
+  var state = user.state;
+  var postal_code = user.postal_code;
+  var country = user.country;
+  var locationString = "";
+  if (city != null) { locationString += city; };
+  if (state != null) {
+    if (city != null) {
+      locationString += (', ' + state);
+    } else {
+      locationString += (state);
+    };
+  };
+  if (country != null) {
+    if (country != "US") {
+      if (locationString != "") {
+        locationString += (' ' + country);
       } else {
-        locationString += (state);
-      };
-    };
-    if (country != null) {
-      if (country != "US") {
-        if (locationString != "") {
-          locationString += (' ' + country);
-        } else {
-          locationString += country;
-        }
+        locationString += country;
       }
-    };
-    return locationString;
+    }
+  };
+  return locationString;
 }
 
 function generateLocationStringLong(user) {
-    var city = user.city;
-    var state = user.state;
-    var postal_code = user.postal_code;
-    var country = user.country;
-    var locationString = "";
-    if (city != null) { locationString += city; };
-    if (state != null) {
-      if (city != null) {
-        locationString += (', ' + state);
-      } else {
-        locationString += (state);
-      };
+  var city = user.city;
+  var state = user.state;
+  var postal_code = user.postal_code;
+  var country = user.country;
+  var locationString = "";
+  if (city != null) { locationString += city; };
+  if (state != null) {
+    if (city != null) {
+      locationString += (', ' + state);
+    } else {
+      locationString += (state);
     };
-    if (postal_code != null) {
+  };
+  if (postal_code != null) {
+    if (locationString != "") {
+      locationString += (' ' + postal_code);
+    } else {
+      locationString += postal_code;
+    }
+  };
+  if (country != null) {
+    if (country != "US") {
       if (locationString != "") {
-        locationString += (' ' + postal_code);
+        locationString += (' ' + country);
       } else {
-        locationString += postal_code;
+        locationString += country;
       }
-    };
-    if (country != null) {
-      if (country != "US") {
-        if (locationString != "") {
-          locationString += (' ' + country);
-        } else {
-          locationString += country;
-        }
-      }
-    };
-    return locationString;
+    }
+  };
+  return locationString;
 }
-
 
 function constructInfoWindowContent(profile_image, name, userPageLink, locationString) {
   contentString =
@@ -116,9 +147,8 @@ function constructInfoWindowContent(profile_image, name, userPageLink, locationS
         '<p>' + locationString + '<p>' +
       '</div>' +
     '</div>';
-    return contentString;
+  return contentString;
 }
-
 
 function setMarker(latLng, infoWindowContent) {
   var infowindow = new google.maps.InfoWindow;
@@ -130,43 +160,5 @@ function setMarker(latLng, infoWindowContent) {
   // infowindow.open(map, marker);
   marker.addListener('click', function() {
     infowindow.open(map, marker)
-  })
-}
-
-
-function initMap() {
-  if (($('#map').length) > 0) {
-    // google.maps.controlStyle = 'azteca' // allow 'old-style' Pan Controls w/ new map; thru Aug '16
-    // var map;
-    myLatLng = {lat: 37.784580, lng: -122.397437};
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: myLatLng,
-      zoom: 11,
-      fullscreenControl: false,
-      // panControl: true, // doesn't work even with 'azteca' - forget about it
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-
-    var defaultBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(37.784580, -122.397437),
-      new google.maps.LatLng(37.784580, -122.397437)
-    );
-    var options = { bounds: defaultBounds };
-    }
-};
-
-
-function toggleView() {
-  $("#toggle-view").on("click", function(event) {
-    event.preventDefault();
-    if ($('#map-view').is(':hidden')) {
-      $('#grid-view').hide();
-      $('#map-view').show();
-      $('#toggle-view')[0].text = "Show as Grid"
-    } else {
-      $('#map-view').hide();
-      $('#grid-view').show();
-      $('#toggle-view')[0].text = "Show as Map"
-    }
   })
 }
