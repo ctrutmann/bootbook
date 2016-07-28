@@ -37,7 +37,7 @@
 
               <%= c.select(:id, options_for_select(Cohort.all.map { |cohort| ["#{cohort.name} - #{cohort.campus}", cohort.id] }),
                 {},
-                {multiple: true}) %>
+                {multiple: true}), required: true %>
                 <% end %>
               </div>
             </div>
@@ -60,7 +60,7 @@
                 <%= f.label :city %>
               </div>
               <div class="col-sm-8">
-                <%= f.text_field :city, class: "form-control", placeholder: "Enter Your City", autofocus: true %>
+                <%= f.text_field :city, class: "form-control", placeholder: "Enter Your City", autofocus: true, required: true %>
               </div>
             </div>
 
