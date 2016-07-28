@@ -26,7 +26,7 @@ class MessagesController < ApplicationController
     @message = @conversation.messages.new(message_params)
     @messages = @conversation.messages
     if @conversation.messages.count == 0 && @message.content != nil
-       UserMailer.new_convo(@user).deliver
+       UserMailer.new_convo(current_user).deliver
     end
     if @message.save && @message.content != nil
       @conversation.touch(:updated_at)
