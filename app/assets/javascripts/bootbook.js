@@ -1,24 +1,39 @@
 $(document).ready(function() {
+  switchToGridViewOnUsersIndexLoad();
   toggleView();
-  // initMap();
-  // usersIndex();
 })
+
+function switchToGridViewOnUsersIndexLoad () {
+  var currentPath = window.location.pathname;
+  if (currentPath = '/users') {
+    switchToGridView();
+  }
+}
 
 function toggleView() {
   $("#toggle-view").on("click", function(event) {
     event.preventDefault();
-    if ($('#map-view').is(':hidden')) {
-      initMap();
-      populateMapViewWithAllBoots();
-      $('#grid-view').hide();
-      $('#map-view').show();
-      $('#toggle-view')[0].text = "Show as Grid"
+    if ($('#toggle-view')[0].text == "Show as Map") {
+      $('#toggle-view')[0].text = "Show as Grid";
+      switchToMapView();
     } else {
-      $('#map-view').hide();
-      $('#grid-view').show();
-      $('#toggle-view')[0].text = "Show as Map"
+      $('#toggle-view')[0].text = "Show as Map";
+      switchToGridView();
     }
   })
+}
+
+function switchToMapView() {
+  $('#grid-view').hide();
+  $('#map-view').show();
+  initMap();
+  populateMapViewWithAllBoots();
+}
+
+function switchToGridView() {
+  // initMap();
+  $('#map-view').hide();
+  $('#grid-view').show();
 }
 
 function initMap() {
@@ -38,13 +53,6 @@ function initMap() {
   }
 }
 
-// function usersIndex() {
-//   $(".navbar-brand").on("click", function(event) {
-//     event.preventDefault();
-//     populateMapViewWithAllBoots();
-//   });
-// }
-
 function populateMapViewWithAllBoots() {
   $.ajax({
     url: '/users',
@@ -52,13 +60,13 @@ function populateMapViewWithAllBoots() {
     dataType: 'json'
   }).done(function(response){
     initMap();   // maybe don't need this here again...
-    formatDataAndPlaceMarker(response.filecontent);
+    formatDataAndPlaceMarkers(response.filecontent);
   }).fail(function(response){
     console.log("shit");
   });
 }
 
-function formatDataAndPlaceMarker(users) {
+function formatDataAndPlaceMarkers(users) {
   users.forEach(function(user){
     var name = user.name;
     var id = user.id;

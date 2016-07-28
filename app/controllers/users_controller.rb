@@ -44,6 +44,8 @@ class UsersController < ApplicationController
 
     if request.xhr?
       render :json => { :filecontent => @users}
+    else
+      render :index
     end
 
   end
