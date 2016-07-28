@@ -238,8 +238,8 @@ User.create!(
   name: "Jonathan Hall",
   github: "https://github.com/jlhall",
   profile_image: "https://avatars.githubusercontent.com/u/14889356",
-  city: "Sanibel",
-  state: "FL",
+  city: "Reykjavik",
+  state: "IS",
   postal_code: "33908",
   country: "US",
   )
