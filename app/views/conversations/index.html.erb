@@ -8,8 +8,8 @@
       <% end %>
       <h4><%=  current_user.name %></h4>
       <span class="text-muted">
-        <%= current_user.cohorts.last.name %><br>
-        <%= current_user.cohorts.last.campus %>
+        <%= current_user.graduating_cohort %><br>
+        <%= current_user.cohorts.last.campus if !current_user.cohorts.empty? %>
       </span>
     </div>
   </div>

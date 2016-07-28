@@ -4,10 +4,18 @@
       <img src="<%= @user.profile_image %>" width="200" height="200" class="img-responsive" alt="Boot profile image">
       <h4><%=  @user.name %></h4>
       <span class="text-muted">
-        <% @user.cohorts.reverse.each do |cohort| %>
-          <%= cohort.name %><br>
+
+        <% if !@user.cohorts.empty? %>
+          <% @user.cohorts.reverse.each do |cohort| %>
+            <%= cohort.name %><br>
+          <% end %>
+        <% else %>
+          <%= @user.graduating_cohort %>
         <% end %>
-        <%= @user.cohorts.last.campus %>
+
+        <% if !@user.cohorts.empty? %>
+          <%= @user.cohorts.last.campus %>
+        <% end %>
         <br>
         <% if @user.is_graduate %>
           Graduate
@@ -77,10 +85,10 @@
 
   <!-- Location Info -->
   <div class='location-info'>
-    <% if @user.country == 'US' %>
-      <p><%= @user.city ? "#{@user.city}" : "Winterfell" %>, <%= @user.state ? "#{@user.state}" : "Neverland"%></p>
+    <% if @user.country == 'United States' %>
+      <p><%= @user.city %>, <%= @user.state %></p>
     <% else %>
-      <p><%= @user.city ? "#{@user.city}" : "SS Enterprise" %>, <%= @user.country ? "#{@user.country}" : "Galaxy Far Far Away"%></p>
+      <p><%= @user.city %>, <%= @user.country %></p>
     <% end %>
   </div>
   <!-- Employment Info -->
@@ -208,7 +216,7 @@
             <h4><%= user.name %></h4>
           </a>
           <span class="text-muted">
-            <%= user.cohorts.last.name %><br>
+            <%= user.graduating_cohort %><br>
             <% if user.country == 'US' %>
               <%= user.city %>, <%= user.state %><br>
             <% else %>

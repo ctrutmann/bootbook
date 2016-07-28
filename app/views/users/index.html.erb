@@ -8,8 +8,8 @@
       <% end %>
       <h4><%=  current_user.name %></h4>
       <span class="text-muted">
-        <%= current_user.cohorts.last.name %><br>
-        <%= current_user.cohorts.last.campus %>
+        <%= current_user.graduating_cohort %><br>
+        <%= current_user.cohorts.last.campus if !current_user.cohorts.empty? %>
       </span>
     </div>
   </div>
@@ -83,8 +83,8 @@
       <img src="<%= user.profile_image %>" width="200" height="200" class="img-responsive" alt="profile image">
       <h4><%= user.name %></h4>
     </a>
-        <span class="text-muted"><%= user.cohorts.last.name %></span><br>
-        <% if user.country == 'US' %>
+        <span class="text-muted"><%= user.graduating_cohort %></span><br>
+        <% if user.country == 'United States' %>
           <span class="text-muted"><%= user.city %>, <%= user.state %></span><br>
         <% else %>
           <span class="text-muted"><%= user.city %>, <%= user.country %>
