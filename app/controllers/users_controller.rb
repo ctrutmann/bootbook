@@ -42,9 +42,7 @@ class UsersController < ApplicationController
       @users = @users.interest(params[:interest]) if params[:interest].present?
     end
 
-    # p "***************** @users count: #{@users.length}"
     if request.xhr?
-      p "************* Oh yeah XHR"
       render :json => { :filecontent => @users}
     end
 

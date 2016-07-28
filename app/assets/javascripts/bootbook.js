@@ -20,7 +20,6 @@ function usersIndex() {
   });
 }
 
-
 function formatDataAndPlaceMarker(users) {
   users.forEach(function(user){
     var name = user.name;
@@ -58,36 +57,36 @@ function formatDataAndPlaceMarker(users) {
     };
 
     var infoWindowContent = constructInfoWindowContent(profile_image, name, userPageLink, locationString);
-    // console.log(infoWindowContent)
 
-    var userLatLng = geocode(locationString);
-
-    // call set marker here, with locationString & infoWindowContent
-
-  });
-}
-
-function geocode(locationString) {
-  var queryString = {locationString: locationString}
-  $.ajax({
-    url: '/geocode',
-    method: 'GET',
-    data: queryString,
-    dataType: 'json'
-  }).done(function(response){
-    actualResponse = response.response.results[0];
-    latLng = actualResponse.geometry.location;
-    console.log(latLng);
-    return latLng;
-  }).fail(function(response){
-    console.log("shit");
+    var queryString = {locationString: locationString}
+    $.ajax({
+      url: '/geocode',
+      method: 'GET',
+      data: queryString,
+      dataType: 'json'
+    }).done(function(response){
+      var actualResponse = response.response.results[0];
+      var latLng = actualResponse.geometry.location;
+      setMarker(latLng, infoWindowContent);
+    }).fail(function(response){
+      console.log("fail");
+    });
   });
 }
 
 
-
-
-
+function setMarker(latLng, infoWindowContent) {
+  var infowindow = new google.maps.InfoWindow;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: latLng,
+  });
+  infowindow.setContent(infoWindowContent);
+  // infowindow.open(map, marker);
+  marker.addListener('click', function() {
+    infowindow.open(map, marker)
+  })
+}
 
 
 function constructInfoWindowContent(profile_image, name, userPageLink, locationString) {
