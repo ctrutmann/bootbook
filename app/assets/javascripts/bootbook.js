@@ -12,17 +12,73 @@ function usersIndex() {
       method: 'GET',
       dataType: 'json'
     }).done(function(response){
-      console.log(response);
-      initMap();
-
-
-
+      initMap();   // maybe don't need this here again...
+      formatDataAndPlaceMarker(response.filecontent);
     }).fail(function(response){
       console.log("shit");
     });
+  });
+}
+
+
+function formatDataAndPlaceMarker(users) {
+  users.forEach(function(user){
+    var name = user.name;
+    var id = user.id;
+    var userPageLink = '/users/' + id;
+    var profile_image = user.profile_image;
+    var city = user.city;
+    var state = user.state;
+    var postal_code = user.postal_code;
+    var country = user.country;
+    var locationString = "";
+    if (city != null) { locationString += city; };
+    if (state != null) {
+      if (city != null) {
+        locationString += (', ' + state);
+      } else {
+        locationString += (state);
+      };
+    };
+    if (postal_code != null) {
+      if (locationString != "") {
+        locationString += (' ' + postal_code);
+      } else {
+        locationString += postal_code;
+      }
+    };
+    if (country != null) {
+      if (country != "US") {
+        if (locationString != "") {
+          locationString += (' ' + country);
+        } else {
+          locationString += country;
+        }
+      }
+    };
+
+    infoWindowContent = constructInfoWindowContent(profile_image, name, userPageLink, locationString);
+    console.log(infoWindowContent)
+
+    // call set marker here, with locationString & infoWindowContent
 
   });
 }
+
+function constructInfoWindowContent(profile_image, name, userPageLink, locationString) {
+  contentString =
+    '<div id="content">' +
+      '<a href="' + userPageLink + '"><span><img src="' + profile_image + '" width="40" height="40" class="img-responsive"></span><h2 id="firstHeading" class="firstHeading">' + name + '</h2></a>' +
+      '<div id="bodyContent">' +
+        '<p>' + locationString + '<p>' +
+      '</div>' +
+    '</div>';
+    return contentString;
+}
+
+
+
+
 
 
 
