@@ -1,0 +1,14 @@
+<%  @users.order('name ASC').each do |user| %>
+  <div class="col-xs-6 col-sm-3 placeholder mini-boot-show">
+  <a href="users/<%=user.id%>">
+    <img src="<%= user.profile_image %>" width="200" height="200" class="img-responsive" alt="profile image">
+    <h4><%= user.name %></h4>
+  </a>
+      <span class="text-muted"><%= user.graduating_cohort %></span><br>
+      <% if user.country == 'United States' %>
+        <span class="text-muted"><%= user.city %>, <%= user.state %></span><br>
+      <% else %>
+        <span class="text-muted"><%= user.city %>, <%= user.country %>
+      <% end %>
+  </div>
+<% end %>

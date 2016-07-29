@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  # get 'message/index'
-
   resources :users do
     get 'search', :on => :collection
   end
@@ -10,6 +8,11 @@ Rails.application.routes.draw do
   end
 
   resources :follows
+
+  # custom AJAX-only route to geocode user locations (get latLng)
+  get '/geocode' => 'geocode#geocode', :as => :geocode
+
+  # get 'message/index'
 
   match '/auth/failure', :via => [:get], :to => 'sessions#failure'
 

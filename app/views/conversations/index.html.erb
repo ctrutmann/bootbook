@@ -1,28 +1,49 @@
-<h1 align="center"> INBOX </h1>
-<% @conversations = @conversations.sort_by(&:updated_at).reverse %>
-<% @conversations.each do |convo| %>
-  <% if convo.variety.variety == 'mentorship' %>
-    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-  <% elsif convo.variety.variety == 'collaboration' %>
-    <i class="fa fa-puzzle-piece" aria-hidden="true"></i>
-  <% else %>
-    <i class="fa fa-paper-plane" aria-hidden="true"></i>
-  <% end %>
-
-  <% if convo.sender == current_user %>
-    <% if convo.messages.last.read == false && convo.messages.last.user_id != current_user.id %>
-      <strong><a class="name-holder" href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.recipient.name %></a>
-      </strong> <br>
-      <% else %>
-        <a class="name-holder" href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.recipient.name %></a><br>
+<div class="col-sm-3 col-md-2 sidebar">
+  <div class="row placeholders-sidebar">
+    <div class="col-m-6 col-m-3 placeholder-sidebar">
+      <%= link_to(current_user) do %>
+        <div class="col-m-6 col-m-3 placeholder">
+          <img src="<%= current_user.profile_image %>" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+        </div>
       <% end %>
-  <% elsif convo.recipient == current_user %>
-    <% if convo.messages.last.read == false && convo.messages.last.user_id != current_user.id %>
-      <strong><a class="name-holder" href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.sender.name %></a>
-      </strong><br>
-    <% else %>
-      <a class="name-holder" href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.sender.name %></a><br>
+      <h4><%=  current_user.name %></h4>
+      <span class="text-muted">
+        <%= current_user.graduating_cohort %><br>
+        <%= current_user.cohorts.last.campus if !current_user.cohorts.empty? %>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+  <div class="conversation col-md-6 col-md-offset-3">
+    <h1> Conversations </h1>
+    <% @conversations = @conversations.sort_by(&:updated_at).reverse %>
+    <% @conversations.each do |convo| %>
+      <% if convo.variety.variety == 'mentorship' %>
+        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+      <% elsif convo.variety.variety == 'collaboration' %>
+        <i class="fa fa-puzzle-piece" aria-hidden="true"></i>
+      <% else %>
+        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+      <% end %>
+
+      <% if convo.sender == current_user %>
+        <% if convo.messages.last.read == false && convo.messages.last.user_id != current_user.id %>
+          <strong><a class="name-holder" href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.recipient.name %></a>
+          </strong> <br>
+          <% else %>
+            <a class="name-holder" href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.recipient.name %></a><br>
+          <% end %>
+      <% elsif convo.recipient == current_user %>
+        <% if convo.messages.last.read == false && convo.messages.last.user_id != current_user.id %>
+          <strong><a class="name-holder" href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.sender.name %></a>
+          </strong><br>
+        <% else %>
+          <a class="name-holder" href="/conversations/<%= "#{convo.id}" %>/messages"><%= convo.sender.name %></a><br>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
-<% end %>
+  </div>
+</div>
 

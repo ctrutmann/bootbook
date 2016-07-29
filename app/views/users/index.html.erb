@@ -1,19 +1,16 @@
 <div class="col-sm-3 col-md-2 sidebar">
   <div class="row placeholders-sidebar">
     <div class="col-m-6 col-m-3 placeholder-sidebar">
-      <img src="<%= current_user.profile_image %>" width="200" height="200" class="img-responsive" alt="Boot profile image">
+      <%= link_to(current_user) do %>
+        <div class="col-m-6 col-m-3 placeholder">
+          <img src="<%= current_user.profile_image %>" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+        </div>
+      <% end %>
       <h4><%=  current_user.name %></h4>
-      <span class="text-muted"><%= current_user.cohorts.last.name %>
-        <br>
-        <%= current_user.cohorts.last.campus %>
-        <br>
-        <% if current_user.is_graduate %>
-          Graduate
-        <% else %>
-          Student
-        <% end %>
+      <span class="text-muted">
+        <%= current_user.graduating_cohort %><br>
+        <%= current_user.cohorts.last.campus if !current_user.cohorts.empty? %>
       </span>
-
     </div>
   </div>
 
@@ -78,21 +75,14 @@
 </div>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-  <h1 class="page-header">Boots</h1>
-  <div class="row placeholders">
-  <%  @users.order('name ASC').each do |user| %>
-    <div class="col-xs-6 col-sm-3 placeholder mini-boot-show">
-    <a href="users/<%=user.id%>">
-      <img src="<%= user.profile_image %>" width="200" height="200" class="img-responsive" alt="profile image">
-      <h4><%= user.name %></h4>
-    </a>
-        <span class="text-muted"><%= user.cohorts.last.name %></span><br>
-        <% if user.country == 'US' %>
-          <span class="text-muted"><%= user.city %>, <%= user.state %></span><br>
-        <% else %>
-          <span class="text-muted"><%= user.city %>, <%= user.country %>
-        <% end %>
-    </div>
-  <% end %>
+  <h1 class="page-header">Boots<span>&nbsp;&nbsp;<a href="" id="toggle-view" class="smaller-header-text">Show as Map</a></span></h1>
+
+  <div id="grid-view" class="row placeholders">
+    <%= render 'gridview' %>
   </div>
+
+  <div id="map-view" style="display: none">
+    <div id="map"></div>
+  </div>
+
 </div>
