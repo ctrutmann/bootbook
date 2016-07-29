@@ -8,10 +8,9 @@ BootBook started as a Dev Bootcamp (DBC) final project, but our hope is that in 
 * Bundle install!
 * Proceed using awesome git workflow, of course.
 
-
 ----
 ## Making Changes
 * We don't currently follow a style guide ourselves, but we'll update this when we do. In the meantime, just do your best.
-* Push your changes to a topic branch in your fork of the repository.
+* Push your changes to a feature branch in your fork of the repository.
 * Submit a pull request to the repository in the BootBook organization.
-* Update your ticket to mark that you have submitted code and are ready for it to be reviewed (Status: Ready for Merge). Include a link to the pull request in the ticket.
+* Update your ticket to mark that you have submitted code and are ready for it to be reviewed. Include a link to the pull request in the ticket.

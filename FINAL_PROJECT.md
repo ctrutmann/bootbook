@@ -1,7 +1,7 @@
 # BootBook
 
 ## Team Agreements
-- Core Hours: 9AM - 9 PM
+- Core Hours: 9AM - 9PM
 - Daily 1 min Checkins
 - Group dessert daily
 - Group walks 1x day
