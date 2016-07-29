@@ -69,6 +69,11 @@ body {
   color: blue;
 }
 
+#boot-logo {
+  margin-top: 3px;
+  padding-top: 0px;
+  /*padding-bottom: 10px;*/
+}
 /*
  * Sidebar
  */
