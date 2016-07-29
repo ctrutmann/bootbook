@@ -1,4 +1,4 @@
-# BootBook
+#BootBook
 BootBook is a private social network for [**Dev Bootcamp**]('http://devbootcamp.com/') students and graduates, built to help boots connect across cohorts and campuses.
 
 Filters make it easier to find mentors or collaborators with similar interests, while optional mentor/collab conversation buttons only show on a boot's profile if they have indicated that they are open to mentoring or collaborating. This alleviates much of the awkwardness of cold-contacting someone, while shielding boots from unwanted requests. Plain direct messaging is possible with each boot.
@@ -23,16 +23,16 @@ Please read [CONTRIBUTING]('CONTRIBUTING') and our [CODE OF CONDUCT]('CODE_OF_CO
 - Boot can favorite other boots.
 
 ### Signed-In Boot's Profile
-![Profile](current_user_profile.png)
+![Profile](current_user_profile.jpg)
 
 ### Viewing Another Boot's Profile
 ![Profile](other_profile.png)
 
 ### Searching/Filtering Other Boots
-![Profile](users_filter.png)
+![Profile](users_filter.jpg)
 
 ### Mapping Other Boots
-![Profile](map_search.png)
+![Profile](map_search.jpg)
 
 ### Starting a Conversation
 ![Profile](conversation.png)
