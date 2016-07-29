@@ -58,7 +58,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 9
   name: "Squirrels 2013",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2013-06-21",
   github_org: "squirrels-2013"
   )
@@ -72,14 +72,14 @@ Cohort.create!(
 Cohort.create!(
   #id: 11
   name: "Foxes 2013",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2013-07-12",
   github_org: "foxes-2013"
   )
 Cohort.create!(
   #id: 12
   name: "Otters 2013",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2013-08-02",
   github_org: "otters-2013"
   )
@@ -93,7 +93,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 14
   name: "Grasshoppers 2013",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2013-08-23",
   github_org: "grasshoppers-2013"
   )
@@ -107,7 +107,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 16
   name: "Dragonflies 2013",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2013-09-13",
   github_org: "dragonflies-2013"
   )
@@ -128,14 +128,14 @@ Cohort.create!(
 Cohort.create!(
   #id: 19
   name: "Nighthawks 2013",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2013-10-04",
   github_org: "nighthawks-2013"
   )
 Cohort.create!(
   #id: 20
   name: "Fireflies 2013",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2013-10-25",
   github_org: "fireflies-2013"
   )
@@ -149,7 +149,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 22
   name: "Coyotes 2013",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2013-11-15",
   github_org: "coyotes-2013"
   )
@@ -163,7 +163,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 24
   name: "Salamanders 2013",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2013-12-06",
   github_org: "salamanders-2013"
   )
@@ -177,7 +177,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 26
   name: "Squirrels 2014",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2014-03-07",
   github_org: "squirrels-2014"
   )
@@ -191,7 +191,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 28
   name: "Foxes 2014",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2014-03-28",
   github_org: "foxes-2014"
   )
@@ -226,21 +226,21 @@ Cohort.create!(
 Cohort.create!(
   #id: 33
   name: "Otters 2014",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2014-04-18",
   github_org: "otters-2014"
   )
 Cohort.create!(
   #id: 34
   name: "Nighthawks 2014",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2014-06-20",
   github_org: "nighthawks-2014"
   )
 Cohort.create!(
   #id: 35
   name: "Grasshoppers 2014",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2014-05-09",
   github_org: "grasshoppers-2014"
   )
@@ -254,16 +254,16 @@ Cohort.create!(
 Cohort.create!(
   #id: 37
   name: "HoneyBadgers 2014",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2014-07-11",
   github_org: "honeybadgers-2014"
   )
 Cohort.create!(
   #id: 38
-  name: "CiCaliforniadas 2014",
+  name: "Cicadas 2014",
   campus: "New York City",
   graduation_date: "2014-07-11",
-  github_org: "ciCaliforniadas-2014"
+  github_org: "cicadas-2014"
   )
 Cohort.create!(
   #id: 39
@@ -289,14 +289,14 @@ Cohort.create!(
 Cohort.create!(
   #id: 42
   name: "Dragonflies 2014",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2014-05-30",
   github_org: "dragonflies-2014"
   )
 Cohort.create!(
   #id: 43
   name: "Coyotes 2014",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2014-08-01",
   github_org: "coyotes-2014"
   )
@@ -324,7 +324,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 47
   name: "Salamanders 2014",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2014-08-22",
   github_org: "salamanders-2014"
   )
@@ -338,16 +338,16 @@ Cohort.create!(
 Cohort.create!(
   #id: 49
   name: "Bobolinks 2014",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2014-09-12",
   github_org: "bobolinks-2014"
   )
 Cohort.create!(
   #id: 50
-  name: "Woolly Bear Californiaterpillars 2014",
+  name: "Woolly Bear caterpillars 2014",
   campus: "New York City",
   graduation_date: "2014-09-12",
-  github_org: "woolly-bear-Californiaterpillars-2014"
+  github_org: "woolly-bear-caterpillars-2014"
   )
 Cohort.create!(
   #id: 51
@@ -366,7 +366,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 53
   name: "Mantises 2014",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2014-10-03",
   github_org: "mantises-2014"
   )
@@ -394,7 +394,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 57
   name: "Herons 2014",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2014-10-24",
   github_org: "herons-2014"
   )
@@ -408,7 +408,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 59
   name: "Mudpuppies 2014",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2014-11-14",
   github_org: "mudpuppies-2014"
   )
@@ -422,7 +422,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 61
   name: "Wolves 2014",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2014-12-05",
   github_org: "wolves-2014"
   )
@@ -450,7 +450,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 65
   name: "Copperheads 2014",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2015-01-09",
   github_org: "copperheads-2014"
   )
@@ -478,7 +478,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 69
   name: "Bluegills 2015",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2015-01-30",
   github_org: "bluegills-2014"
   )
@@ -499,14 +499,14 @@ Cohort.create!(
 Cohort.create!(
   #id: 72
   name: "Bison 2015",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2015-02-20",
   github_org: "bison-2014"
   )
 Cohort.create!(
   #id: 73
   name: "Squirrels 2015",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2015-03-13",
   github_org: "chi-squirrels-2015"
   )
@@ -534,7 +534,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 77
   name: "Fiddler Crabs 2015",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2015-04-03",
   github_org: "chi-fiddler-crabs-2015"
   )
@@ -548,7 +548,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 79
   name: "Sea Lions 2015",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2015-04-24",
   github_org: "chi-sea-lions-2015"
   )
@@ -583,7 +583,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 84
   name: "Rock Doves 2015",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2015-05-15",
   github_org: "chi-rock-doves-2015"
   )
@@ -604,7 +604,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 87
   name: "Pocket Gophers 2015",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2015-06-05",
   github_org: "chi-pocket-gophers-2015"
   )
@@ -632,7 +632,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 91
   name: "Dragonflies 2015",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2015-07-24",
   github_org: "chi-dragonflies-2015"
   )
@@ -667,7 +667,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 96
   name: "Bumblebees 2015",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2015-08-14",
   github_org: "chi-bumblebees-2015"
   )
@@ -681,7 +681,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 98
   name: "Grasshoppers 2015",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2015-09-04",
   github_org: "chi-grasshoppers-2015"
   )
@@ -695,7 +695,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 100
   name: "Fireflies 2015",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2015-09-25",
   github_org: "chi-fireflies-2015"
   )
@@ -708,24 +708,24 @@ Cohort.create!(
   )
 Cohort.create!(
   #id: 102
-  name: "CiCaliforniadas 2015",
+  name: "Cicadas 2015",
   campus: "San Francisco",
   graduation_date: "2015-10-16",
-  github_org: "sf-ciCaliforniadas-2015"
+  github_org: "sf-cicadas-2015"
   )
 Cohort.create!(
   #id: 103
-  name: "CiCaliforniadas 2015",
-  campus: "ChiCaliforniago",
+  name: "Cicadas 2015",
+  campus: "Chicago",
   graduation_date: "2015-10-16",
-  github_org: "chi-ciCaliforniadas-2015"
+  github_org: "chi-cicadas-2015"
   )
 Cohort.create!(
   #id: 104
-  name: "CiCaliforniadas 2015",
+  name: "Cicadas 2015",
   campus: "New York City",
   graduation_date: "2015-10-16",
-  github_org: "nyc-ciCaliforniadas-2015"
+  github_org: "nyc-cicadas-2015"
   )
 Cohort.create!(
   #id: 105
@@ -744,7 +744,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 107
   name: "Mud Turtles 2015",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2015-11-06",
   github_org: "chi-mud-turtles-2015"
   )
@@ -765,7 +765,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 110
   name: "Purple Martins 2015",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2015-11-27",
   github_org: "chi-purple-martins-2015"
   )
@@ -786,7 +786,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 113
   name: "Bobolinks 2015",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2015-12-18",
   github_org: "chi-bobolinks-2015"
   )
@@ -807,14 +807,14 @@ Cohort.create!(
 Cohort.create!(
   #id: 116
   name: "Copperheads 2016",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2016-01-15",
   github_org: "chi-copperheads-2016"
   )
 Cohort.create!(
   #id: 117
   name: "Island Foxes 2016",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2016-02-05",
   github_org: "chi-island-foxes-2016"
   )
@@ -842,7 +842,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 121
   name: "Chorus Frogs 2016",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2016-02-26",
   github_org: "chi-chorus-frogs-2016"
   )
@@ -856,7 +856,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 123
   name: "Squirrels 2016",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2016-03-18",
   github_org: "chi-squirrels-2016"
   )
@@ -884,7 +884,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 127
   name: "Fiddler Crabs 2016",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2016-04-08",
   github_org: "chi-fiddler-crabs-2016"
   )
@@ -912,7 +912,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 131
   name: "Sea Lions 2016",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2016-04-29",
   github_org: "chi-sea-lions-2016"
   )
@@ -926,7 +926,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 133
   name: "Rock Doves 2016",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2016-05-20",
   github_org: "chi-rock-doves-2016"
   )
@@ -947,7 +947,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 136
   name: "Fiery Skippers 2016",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2016-06-10",
   github_org: "chi-fiery-skippers-2016"
   )
@@ -989,7 +989,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 142
   name: "Pocket Gophers 2016",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2016-07-01",
   github_org: "chi-pocket-gophers-2016"
   )
@@ -1010,7 +1010,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 145
   name: "Nighthawks 2016",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2016-07-29",
   github_org: "chi-nighthawks-2016"
   )
@@ -1024,7 +1024,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 147
   name: "Golden Bears 2016",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2016-08-19",
   github_org: "chi-golden-bears-2016"
   )
@@ -1066,7 +1066,7 @@ Cohort.create!(
 Cohort.create!(
   #id: 153
   name: "Red Pandas 2016",
-  campus: "ChiCaliforniago",
+  campus: "Chicago",
   graduation_date: "2016-09-09",
   github_org: "chi-red-pandas-2016"
   )
@@ -1115,7 +1115,7 @@ Cohort.create!(
 # Cohort.create!(
 #   #id: 160
 #   name: "Salamanders 2016",
-#   campus: "ChiCaliforniago",
+#   campus: "Chicago",
 #   graduation_date: "2016-09-30",
 #   github_org: "chi-salamanders-2016"
 #   )
@@ -1136,7 +1136,7 @@ Cohort.create!(
 # Cohort.create!(
 #   #id: 163
 #   name: "Wolves 2016",
-#   campus: "ChiCaliforniago",
+#   campus: "Chicago",
 #   graduation_date: "2016-10-21",
 #   github_org: "chi-wolves-2016"
 #   )
@@ -1157,7 +1157,7 @@ Cohort.create!(
 # Cohort.create!(
 #   #id: 166
 #   name: "Bobolinks 2016",
-#   campus: "ChiCaliforniago",
+#   campus: "Chicago",
 #   graduation_date: "2016-11-11",
 #   github_org: "chi-bobolinks-2016"
 #   )
@@ -1220,7 +1220,7 @@ Cohort.create!(
 # Cohort.create!(
 #   #id: 175
 #   name: "Coyotes 2016",
-#   campus: "ChiCaliforniago",
+#   campus: "Chicago",
 #   graduation_date: "2016-12-02",
 #   github_org: "chi-coyotes-2016"
 #   )
@@ -1248,14 +1248,14 @@ Cohort.create!(
 # Cohort.create!(
 #   #id: 179
 #   name: "Chipmunks 2016",
-#   campus: "ChiCaliforniago",
+#   campus: "Chicago",
 #   graduation_date: "2016-12-23",
 #   github_org: "chi-chipmunks-2016"
 #   )
 # Cohort.create!(
 #   #id: 180
 #   name: "Jackrabbits 2017",
-#   campus: "ChiCaliforniago",
+#   campus: "Chicago",
 #   graduation_date: "2017-01-20",
 #   github_org: "chi-jackrabbits-2017"
 #   )
@@ -1304,7 +1304,7 @@ Cohort.create!(
 # Cohort.create!(
 #   #id: 187
 #   name: "Otters 2017",
-#   campus: "ChiCaliforniago",
+#   campus: "Chicago",
 #   graduation_date: "2017-02-10",
 #   github_org: "chi-otters-2017"
 #   )
@@ -1318,7 +1318,7 @@ Cohort.create!(
 # Cohort.create!(
 #   #id: 189
 #   name: "Squirrels 2017",
-#   campus: "ChiCaliforniago",
+#   campus: "Chicago",
 #   graduation_date: "2017-03-03",
 #   github_org: "chi-squirrels-2017"
 #   )
@@ -1339,7 +1339,7 @@ Cohort.create!(
 # Cohort.create!(
 #   #id: 192
 #   name: "Fireflies 2017",
-#   campus: "ChiCaliforniago",
+#   campus: "Chicago",
 #   graduation_date: "2017-03-24",
 #   github_org: "chi-fireflies-2017"
 #   )
@@ -1360,7 +1360,7 @@ Cohort.create!(
 # Cohort.create!(
 #   #id: 195
 #   name: "Foxes 2017",
-#   campus: "ChiCaliforniago",
+#   campus: "Chicago",
 #   graduation_date: "2017-04-14",
 #   github_org: "chi-foxes-2017"
 #   )
@@ -1389,7 +1389,7 @@ User.create!(
   profile_image: "https://avatars.githubusercontent.com/u/16233095",
 
   # The rest
-  city: "IthaCalifornia",
+  city: "Ithaca",
   state: "NY",
   postal_code: "14850",
   country: "United States",
@@ -1433,7 +1433,7 @@ User.create!(
   is_graduate: "true",
   is_admin: "true",
   love: "Homebrew kombucha",
-  quirk: "Please spell your name so I Californian remember it",
+  quirk: "Please spell your name so I can remember it",
   bio: "SF native, former IT & QA, bicycle enthusiast, music lover, vegan",
   advice_to_students: "Embrace the confusion!",
   advice_to_graduates: "Network!",
@@ -1444,7 +1444,7 @@ User.create!(
   linkedin: "https://www.linkedin.com/in/edmechem",
   facebook: "https://www.facebook.com/ed.mechem",
   twitter: "https://twitter.com/eddiejoesf",
-  employ: "http://employ.devbootCaliforniamp.com/Californiandidates/3411",
+  employ: "http://employ.devbootcamp.com/candidates/3411",
   personal_website: "http://www.edmechem.com",
   female_scholarship: "false",
   poc_scholarship: "false",
@@ -1477,7 +1477,7 @@ User.create!(
   willing_to_mentor: false,
   willing_to_collaborate: false,
   employment_status: 'Employed Full-Time',
-  employer: 'Californiat Wizard',
+  employer: 'Cat Wizard',
   role: 'Full Stack Developer',
   linkedin: nil,
   facebook: nil,
@@ -1606,7 +1606,7 @@ User.create!(
   uid: "17437771",
   provider: "github",
   name: "Justin Wong",
-  github: "https://github.com/justinCaliforniadburywong",
+  github: "https://github.com/justincadburywong",
   profile_image: "https://avatars.githubusercontent.com/u/17437771",
   city: "Mill Valley",
   state: "California",
