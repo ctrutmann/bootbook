@@ -49,14 +49,14 @@
       <div>
         <% @conversation.messages.each do |message| %>
           <% if message.user_id == @conversation.sender_id %>
-           <div class="sender-message">
-            <div class="time-stamp"><%= message.created_at.strftime('%a, %d %b %Y %H:%M:%S') %></div>
-            <p><strong><%= User.find(@conversation.sender_id).name %></strong> : <%= message.content %></p>
+            <div class="sender-message">
+              <div class="time-stamp"><%= message.created_at.strftime('%a, %d %b %Y %H:%M:%S') %></div>
+              <p><strong><%= User.find(@conversation.sender_id).name %></strong> : <%= message.content %></p>
             </div>
           <% elsif message.user_id == @conversation.recipient_id %>
             <div class="recipient-message">
-            <div class="time-stamp"><%= message.created_at.strftime('%a, %d %b %Y %H:%M:%S') %></div>
-            <p><strong><%= User.find(@conversation.recipient_id).name %></strong> : <%= message.content %></p>
+             <div class="time-stamp"><%= message.created_at.strftime('%a, %d %b %Y %H:%M:%S') %></div>
+              <p><strong><%= User.find(@conversation.recipient_id).name %></strong> : <%= message.content %></p>
             </div>
           <% end %>
         <% end %>
