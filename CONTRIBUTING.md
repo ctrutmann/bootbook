@@ -1,0 +1,15 @@
+## Contributing to BootBook
+BootBook started as a Dev Bootcamp (DBC) final project, but our hope is that in addition to using the app to connect, other DBC students and grads will help tailor it to our community's needs. We'll be doing our best to administer it as a friendly open source project where fellow boots can get started contributing to a live code base.
+
+----
+## Getting Started
+* Submit a [ticket](https://github.com/ctrutmann/bootbook/issues) for your issue, assuming there isn't one already.
+* Fork the repository on GitHub, just like regular DBC challenges. Clone the forked repo onto your local machine and make a new branch. Proceed using awesome git workflow, of course.
+
+
+----
+## Making Changes
+* We don't currently follow a style guide ourselves, but we'll update this when we do. In the meantime, just do your best.
+* Push your changes to a topic branch in your fork of the repository.
+* Submit a pull request to the repository in the BootBook organization.
+* Update your ticket to mark that you have submitted code and are ready for it to be reviewed (Status: Ready for Merge). Include a link to the pull request in the ticket.
