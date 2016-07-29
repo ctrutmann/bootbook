@@ -10,10 +10,10 @@ class AddColumnsToUsers < ActiveRecord::Migration[5.0]
     add_column :users, :profile_image, :string
 
     # Required Personal Info
-    add_column :users, :city, :string
-    add_column :users, :state, :string
-    add_column :users, :postal_code, :string
-    add_column :users, :country, :string
+    add_column :users, :city, :string, default: "Ajeltake"
+    add_column :users, :state, :string, default: "Majuro Atoll"
+    add_column :users, :postal_code, :string, default: "96960"
+    add_column :users, :country, :string, default: "Marshall Islands"
 
     # Fields Not Editable by User
     add_column :users, :graduation_date, :date
@@ -22,6 +22,7 @@ class AddColumnsToUsers < ActiveRecord::Migration[5.0]
     # DBC fields
     add_column :users, :love, :string
     add_column :users, :quirk, :string
+    add_column :users, :graduating_cohort, :string, default: "Purple Unicorns"
     add_column :users, :is_graduate, :boolean, default: false
 
     # Social links fields

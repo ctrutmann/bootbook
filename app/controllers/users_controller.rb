@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-
   def index
+    @all_users = User.all.order(name: :asc)
     @users = User.all
 
-    # FUNKY: These all belongs in users_helper.rb. FROM HERE...
     @cities = []
     User.all.each {|user| @cities << user.city if user.city != nil}
     @cities.sort!.uniq!
@@ -25,19 +24,14 @@ class UsersController < ApplicationController
     @campuses.sort!.uniq!
 
     @graduation_dates = []
-    User.all.each {|user| @graduation_dates << user.graduation_date if user.graduation_date != nil}
+    Cohort.all.each {|cohort| @graduation_dates << cohort.graduation_date.to_s if cohort.graduation_date != nil}
     @graduation_dates.sort!.uniq!
 
     @interests = []
     Interest.all.each {|interest| @interests << interest.interest if interest.interest != nil}
     @interests.sort!.uniq!
-    #... TO HERE.
-
-    p "***********************************"
-    p params[:favorite_boots]
 
     filtering_params(params).each do |key, value|
-      @users = current_user.followees if params[:favorite_boots] == '1'
       @users = @users.city(params[:city]) if params[:city].present?
       @users = @users.state(params[:state]) if params[:state].present?
       @users = @users.country(params[:country]) if params[:country].present?
@@ -56,6 +50,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @all_users = User.all.order(name: :asc)
     @user = current_user
   end
 
@@ -71,8 +66,10 @@ class UsersController < ApplicationController
     end
 
     # Create new UserInterest relationship if interests field provided.
-    params[:interests][:interest_id].each do |id|
-      UserInterest.create(user_id: current_user.id, interest_id: id) if !id.blank?
+    if params[:interests]
+      params[:interests][:interest_id].each do |id|
+        UserInterest.create(user_id: current_user.id, interest_id: id) if !id.blank?
+      end
     end
 
     # Create new Salary object if salary fields provided.
@@ -88,13 +85,17 @@ class UsersController < ApplicationController
   end
 
   def search
+    @all_users = User.all.order(name: :asc)
     @user = User.find_by(name: params[:boot_name])
+
     redirect_to user_path(@user)
   end
 
   def show
+    @all_users = User.all.order(name: :asc)
     @user = User.find(params[:id])
     @am_i_following = Follow.find_by(followee_id: @user.id)
+    # @user = User.find(user_params)
   end
 
   def delete
@@ -119,6 +120,7 @@ class UsersController < ApplicationController
       :employer,
       :role,
       :bio,
+      :cohort_id,
       :profile_image,
       :female_scholarship,
       :poc_scholarship,
@@ -145,13 +147,13 @@ class UsersController < ApplicationController
   end
 
   def interests_params
-    params.require(:interests).permit(
+    params.permit(:interests).permit(
       :interest_id
     )
   end
 
   def salary_params
-    params.require(:salary).permit(
+    params.permit(:salary).permit(
       :salary,
       :year,
       :quarter,

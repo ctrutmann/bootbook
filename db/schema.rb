@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160728053731) do
+ActiveRecord::Schema.define(version: 20160728222746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160728053731) do
     t.date     "graduation_date"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "github_org"
   end
 
   create_table "conversation_varieties", force: :cascade do |t|
@@ -95,21 +96,22 @@ ActiveRecord::Schema.define(version: 20160728053731) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
     t.integer  "uid"
     t.string   "provider"
     t.string   "name"
     t.string   "email"
     t.string   "profile_image"
-    t.string   "city"
-    t.string   "state"
-    t.string   "postal_code"
-    t.string   "country"
+    t.string   "city",                    default: "Ajeltake"
+    t.string   "state",                   default: "Majuro Atoll"
+    t.string   "postal_code",             default: "96960"
+    t.string   "country",                 default: "Marshall Islands"
     t.date     "graduation_date"
     t.boolean  "is_admin",                default: false
     t.string   "love"
     t.string   "quirk"
+    t.string   "graduating_cohort",       default: "Purple Unicorns"
     t.boolean  "is_graduate",             default: false
     t.string   "linkedin"
     t.string   "github"
