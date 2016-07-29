@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'dotenv-rails', :groups => [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
@@ -33,6 +34,8 @@ gem 'omniauth-github'
 gem 'octokit', '~> 2.0'
 # Use 'strip_attributes' to change blank attributes to nil on validation
 gem 'strip_attributes'
+
+gem 'httparty'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

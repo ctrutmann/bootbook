@@ -4,7 +4,8 @@
     <title>Bootbook</title>
 
     <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"   ></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"   ></script> -->
 
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js   "></script>
@@ -22,8 +23,14 @@
 
     <script src="https://use.fontawesome.com/0bd70f2800.js"></script>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- turn off turbolinks for now (map branch) -->
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <!-- < %= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> -->
+
+    <!-- < %= javascript_include_tag 'application' %> -->
+    <!-- < %= render '/layouts/bootbook.js' %> -->
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_SECRET_KEY'] %>&libraries=places"></script>
   </head>
 
   <body>
@@ -86,6 +93,10 @@
       </footer>
     </div>
   </body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+  <!-- <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script> -->
+
+  <!-- must be at bottom to be sure document ready loads during normal nav & not only on page refresh -->
+  <%= javascript_include_tag 'application' %>
 </html>
