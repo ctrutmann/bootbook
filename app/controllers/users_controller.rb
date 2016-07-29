@@ -58,8 +58,23 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.assign_attributes(user_params)
-    @cohort = Cohort.where(cohorts_params).first
-    UserCohort.create(user_id: current_user.id, cohort_id: @cohort.id)
+
+    # Create new UserCohort relationship if cohorts field provided.
+    params[:cohorts][:id].each do |cohort_id|
+      if !cohort_id.blank?
+        UserCohort.create(user_id: current_user.id, cohort_id: cohort_id)
+      end
+    end
+
+    # Create new UserInterest relationship if interests field provided.
+    if params[:interests]
+      params[:interests][:interest_id].each do |id|
+        UserInterest.create(user_id: current_user.id, interest_id: id) if !id.blank?
+      end
+    end
+
+    # Create new Salary object if salary fields provided.
+    Salary.create(salary_params)
 
     if @user.save
       flash[:success] = "You're all updated!"
@@ -133,8 +148,17 @@ class UsersController < ApplicationController
   end
 
   def interests_params
-    params.require(:interests).permit(
-      :interest
+    params.permit(:interests).permit(
+      :interest_id
+    )
+  end
+
+  def salary_params
+    params.permit(:salary).permit(
+      :salary,
+      :year,
+      :quarter,
+      :job_since_dbc
     )
   end
 

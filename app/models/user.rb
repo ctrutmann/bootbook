@@ -14,13 +14,13 @@ class User < ApplicationRecord
   has_many :messages
   has_many :posts
 
-  validates_presence_of :name, :email, :uid, :provider
+  validates_presence_of :email, :uid, :provider
   validates_uniqueness_of :email, :uid
 
   # gem 'strip attributes' method that sets blank ('') fields to nil
   strip_attributes
 
-  after_save :set_graduation_date
+  after_save :set_graduation_date, :set_graduating_cohort
 
   scope :city, -> (city) do
     where('(users.city = ?)', city)
@@ -70,6 +70,13 @@ class User < ApplicationRecord
     if self.is_graduate == true && self.cohorts.last && self.graduation_date != self.cohorts.last.graduation_date
 
       self.graduation_date = self.cohorts.last.graduation_date
+      self.save
+    end
+  end
+
+  def set_graduating_cohort
+    if self.cohorts.last && self.cohorts.last.name != self.graduating_cohort
+      self.graduating_cohort = self.cohorts.last.name
       self.save
     end
   end
