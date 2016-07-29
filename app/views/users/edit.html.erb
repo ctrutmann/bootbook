@@ -2,7 +2,13 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-primary">
-        <div class="panel-heading"><strong>Hi <%= @user.name.split(' ').shift %>!</strong></div>
+        <div class="panel-heading">
+          <% if @user.name %>
+            <strong>Hi <%= @user.name.split(' ').shift %>!</strong>
+          <% else %>
+            <strong>Welcome to BootBook!</strong>
+          <% end %>
+        </div>
         <div class="panel-body">
           <!-- MASSIVE USER EDIT FORM!!! -->
           <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
@@ -10,6 +16,15 @@
           <!-- DBC Info -->
           <div class='DBC-fields'>
           <h4>Dev Bootcamp Info</h4>
+          <div class="form-group">
+            <div class="control-label col-sm-2">
+              <%= f.label :name %>
+            </div>
+            <div class="col-sm-8">
+              <%= f.text_field :name, class: "form-control", placeholder: "Enter name", autofocus: true, required: true %>
+            </div>
+          </div>
+
           <div class="form-group">
             <div class="control-label col-sm-2">
               <%= f.label :quirk! %>
@@ -35,9 +50,9 @@
             <div class="col-sm-8">
               <%= fields_for :cohorts do |c| %>
 
-              <%= c.select(:id, options_for_select(Cohort.all.map { |cohort| ["#{cohort.name} - #{cohort.campus}", cohort.id] }),
+              <%= c.select :id, options_for_select(Cohort.all.map { |cohort| ["#{cohort.name} - #{cohort.campus}", cohort.id] }, @user.cohorts.map {|cohort| cohort.id}),
                 {},
-                {multiple: true}) %>
+                {multiple: true, required: true} %>
                 <% end %>
               </div>
             </div>
@@ -60,7 +75,7 @@
                 <%= f.label :city %>
               </div>
               <div class="col-sm-8">
-                <%= f.text_field :city, class: "form-control", placeholder: "Enter Your City", autofocus: true %>
+                <%= f.text_field :city, class: "form-control", placeholder: "Enter Your City", autofocus: true, required: true %>
               </div>
             </div>
 
@@ -69,7 +84,7 @@
                 <%= f.label :state  %>
               </div>
               <div class="col-sm-8">
-               <%= f.select(:state, [['Alaska', 'Alaska'], ['Alabama', 'Alabama'], ['Arkansas', 'Arkansas'], ['Arizona', 'Arizona'], ['California', 'California'], ['Colorado', 'Colorado'], ['Connecticut', 'Connecticut'], ['District of Columbia', 'District of Columbia'], ['Delaware', 'Delaware'], ['Florida', 'Florida'], ['Georgia', 'Georgia'], ['Hawaii', 'Hawaii'], ['Iowa', 'Iowa'], ['Idaho', 'Idaho'], ['Illinois', 'Illinois'], ['Indiana', 'Indiana'], ['Kansas', 'Kansas'], ['Kentucky', 'Kentucky'], ['Louisiana', 'Louisiana'], ['Massachusetts', 'Massachusetts'], ['Maryland', 'Maryland'], ['Maine', 'Maine'], ['Michigan', 'Michigan'], ['Minnesota', 'Minnesota'], ['Missouri', 'Missouri'], ['Mississippi', 'Mississippi'], ['Montana', 'Montana'], ['North Carolina', 'North Carolina'], ['North Dakota', 'North Dakota'], ['Nebraska', 'Nebraska'], ['New Hampshire', 'New Hampshire'], ['New Jersey', 'New Jersey'], ['New Mexico', 'New Mexico'], ['Nevada', 'Nevada'], ['New York', 'New York'], ['Ohio', 'Ohio'], ['Oklahoma', 'Oklahoma'], ['Oregon', 'Oregon'], ['Pennsylvania', 'Pennsylvania'], ['Puerto Rico', 'Puerto Rico'], ['Rhode Island', 'Rhode Island'], ['South Carolina', 'South Carolina'], ['South Dakota', 'South Dakota'], ['Tennessee', 'Tennessee'], ['Texas', 'Texas'], ['Utah', 'Utah'], ['Virginia', 'Virginia'], ['Vermont', 'Vermont'], ['Washington', 'Washington'], ['Wisconsin', 'Wisconsin'], ['West Virginia', 'West Virginia'], ['Wyoming', 'Wyoming'], ['N/A (Non-US)', '']]) %>
+               <%= f.select(:state, [['', ''], ['Alaska', 'Alaska'], ['Alabama', 'Alabama'], ['Arkansas', 'Arkansas'], ['Arizona', 'Arizona'], ['California', 'California'], ['Colorado', 'Colorado'], ['Connecticut', 'Connecticut'], ['District of Columbia', 'District of Columbia'], ['Delaware', 'Delaware'], ['Florida', 'Florida'], ['Georgia', 'Georgia'], ['Hawaii', 'Hawaii'], ['Iowa', 'Iowa'], ['Idaho', 'Idaho'], ['Illinois', 'Illinois'], ['Indiana', 'Indiana'], ['Kansas', 'Kansas'], ['Kentucky', 'Kentucky'], ['Louisiana', 'Louisiana'], ['Massachusetts', 'Massachusetts'], ['Maryland', 'Maryland'], ['Maine', 'Maine'], ['Michigan', 'Michigan'], ['Minnesota', 'Minnesota'], ['Missouri', 'Missouri'], ['Mississippi', 'Mississippi'], ['Montana', 'Montana'], ['North Carolina', 'North Carolina'], ['North Dakota', 'North Dakota'], ['Nebraska', 'Nebraska'], ['New Hampshire', 'New Hampshire'], ['New Jersey', 'New Jersey'], ['New Mexico', 'New Mexico'], ['Nevada', 'Nevada'], ['New York', 'New York'], ['Ohio', 'Ohio'], ['Oklahoma', 'Oklahoma'], ['Oregon', 'Oregon'], ['Pennsylvania', 'Pennsylvania'], ['Puerto Rico', 'Puerto Rico'], ['Rhode Island', 'Rhode Island'], ['South Carolina', 'South Carolina'], ['South Dakota', 'South Dakota'], ['Tennessee', 'Tennessee'], ['Texas', 'Texas'], ['Utah', 'Utah'], ['Virginia', 'Virginia'], ['Vermont', 'Vermont'], ['Washington', 'Washington'], ['Wisconsin', 'Wisconsin'], ['West Virginia', 'West Virginia'], ['Wyoming', 'Wyoming'], ['N/A (Non-US)', '']]) %>
              </div>
           </div>
 
@@ -78,7 +93,7 @@
               <%= f.label :postal_code %>
             </div>
             <div class="col-sm-8">
-              <%= f.text_field :postal_code, class: "form-control", placeholder: "Enter Your Postal Code", autofocus: true %>
+              <%= f.text_field :postal_code, class: "form-control", placeholder: "Enter Your Postal Code", autofocus: true, required: true %>
             </div>
           </div>
 
@@ -94,7 +109,7 @@
 
        <!-- The following does not display the first time the user signs in. -->
        <!-- This is a hack-y way of checking whether their primary information has been filled in yet. -->
-       <% if current_user.city  %>
+       <% if !current_user.cohorts.empty?  %>
 
        <!-- Social Media Links -->
        <div class='social-media-fields'>
@@ -318,9 +333,6 @@
       <!-- This end's larger part of form that's hidden unless user has filled out  -->
       <% end %>
 
-      <% if !current_user.city %>
-        <p>(None of this info is officially required by fancy validations or anything like that, but listen, you can't edit anything else on your profile until you make an effort here.)</p>
-      <% end %>
       <!-- Submit Button -->
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">

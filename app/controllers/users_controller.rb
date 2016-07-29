@@ -33,9 +33,6 @@ class UsersController < ApplicationController
     @interests.sort!.uniq!
     #... TO HERE.
 
-    p "***********************************"
-    p params[:favorite_boots]
-
     filtering_params(params).each do |key, value|
       @users = current_user.followees if params[:favorite_boots] == '1'
       @users = @users.city(params[:city]) if params[:city].present?
@@ -71,8 +68,10 @@ class UsersController < ApplicationController
     end
 
     # Create new UserInterest relationship if interests field provided.
-    params[:interests][:interest_id].each do |id|
-      UserInterest.create(user_id: current_user.id, interest_id: id) if !id.blank?
+    if params[:interests]
+      params[:interests][:interest_id].each do |id|
+        UserInterest.create(user_id: current_user.id, interest_id: id) if !id.blank?
+      end
     end
 
     # Create new Salary object if salary fields provided.
@@ -145,13 +144,13 @@ class UsersController < ApplicationController
   end
 
   def interests_params
-    params.require(:interests).permit(
+    params.permit(:interests).permit(
       :interest_id
     )
   end
 
   def salary_params
-    params.require(:salary).permit(
+    params.permit(:salary).permit(
       :salary,
       :year,
       :quarter,
