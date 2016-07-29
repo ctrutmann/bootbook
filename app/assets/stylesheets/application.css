@@ -211,3 +211,19 @@ body {
 .fa-paper-plane {
   color: purple;
 }
+
+/* Coversations */
+
+.sender-message {
+  background-color: #c9d7e8;
+  padding: 16px;
+  margin: 10px;
+  border-radius: 25px;
+}
+
+.recipient-message {
+  padding: 16px;
+  background-color: #deb0b0;
+  border-radius: 25px;
+  margin: 10px;
+}
