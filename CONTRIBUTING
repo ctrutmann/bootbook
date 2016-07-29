@@ -4,7 +4,9 @@ BootBook started as a Dev Bootcamp (DBC) final project, but our hope is that in 
 ----
 ## Getting Started
 * Submit a [ticket](https://github.com/ctrutmann/bootbook/issues) for your issue, assuming there isn't one already.
-* Fork the repository on GitHub, just like regular DBC challenges. Clone the forked repo onto your local machine and make a new branch. Proceed using awesome git workflow, of course.
+* Fork the repository on GitHub, just like regular DBC challenges. Clone the forked repo onto your local machine and make a new branch.
+* Bundle install!
+* Proceed using awesome git workflow, of course.
 
 
 ----
